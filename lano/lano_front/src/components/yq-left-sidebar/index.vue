@@ -1,8 +1,9 @@
 <template>
     <div class="yq-siderbar-component" ref="card">
-        <yq-sidebar-add @openPlanCreate="openPlanCreate" @getGroups="getGroups"></yq-sidebar-add>
+        <yq-sidebar-add @openPlanCreate="openPlanCreate" @getGroups="getGroups" ref="add"></yq-sidebar-add>
         <yq-sidebar-collapse :file_name="title" :plan_list="plan_list" :groups="groups" :plans="plans"
-                             @modifCurrentPlan="modifCurrentPlan"></yq-sidebar-collapse>
+                             @modifCurrentPlan="modifCurrentPlan" @changeToEditPlan="changeToEditPlan"
+                             @getGroups="getGroups"></yq-sidebar-collapse>
     </div>
 </template>
 
@@ -52,7 +53,8 @@
                 this.$emit('modifCurrentPlan',cp);
             },
             getGroups() {
-                this.$emit('getGroups')
+                this.$emit('getGroups');
+                // this.$refs.add.
             },
             openPlanCreate() {
                 this.$emit('openPlanCreate')

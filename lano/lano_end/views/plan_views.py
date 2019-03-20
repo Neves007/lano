@@ -82,3 +82,20 @@ def update_plans(request):
         response['error_num'] = 1
 
     return HttpResponse(json.dumps(response), content_type="application/json")
+
+
+@require_http_methods(['POST'])
+@csrf_exempt
+def delete_plan(request):
+    response = {}
+    try:
+        if not request.user.is_authenticated:
+            plan = Plan.objects.get(id=request.body)
+            plan.delete()
+            response['msg'] = 'success'
+            response['error_num'] = 0
+    except Exception as e:
+        response['msg'] = str(e)
+        response['error_num'] = 1
+    return HttpResponse(json.dumps(response), content_type="application/json")
+

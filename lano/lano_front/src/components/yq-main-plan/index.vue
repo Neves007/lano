@@ -26,7 +26,7 @@
         <yq-sidebar-add-gp-dialog @getGroups="getGroups" :show.sync="show"></yq-sidebar-add-gp-dialog>
         <div v-if="show_setting">
             <yq-main-plan-fast-create :show-fast="showFast" @openInfolist="openInfolist"></yq-main-plan-fast-create>
-            <yq-main-plan-advance-create :show-advance="showAdvance" :groupid="groupid" @emitPlans="emitPlans"></yq-main-plan-advance-create>
+            <yq-main-plan-advance-create :show-advance="showAdvance" :groupid="groupid" @getPlans="getPlans" ></yq-main-plan-advance-create>
         </div>
     </div>
 </template>
@@ -48,7 +48,7 @@
         },
         data(){
             return{
-                plans:{},
+                // plans:{},
                 groups:[],
                 show: false,
                 show_setting: false,
@@ -65,25 +65,9 @@
             getGroups(){
                 this.$emit('getGroups')
             },
-            getPlans() {
-                let that = this;
-                let temple_list = [];
-                axios.get(base_url + 'api/get_plans').then((r) => {
-                    if (r.data.error_num === 0) {
-                        for (let i = 0; i < r.data.list.length; i++) {
-                            temple_list[i] = r.data.list[i];
-                        }
-                        that.plans = temple_list; //拿到所有分组
-                        this.$emit('emitPlans',this.plans)
-
-                    }
-                }).catch(err => {
-                    console.log('group error %o', err)
-                })
-            },
-            emitPlans(plans){
-                this.plans=plans
-                this.$emit('emitPlans',this.plans)
+            getPlans(){
+                // this.plans=plans
+                this.$emit('getPlans')
             },
             open () {
                 this.show = true;

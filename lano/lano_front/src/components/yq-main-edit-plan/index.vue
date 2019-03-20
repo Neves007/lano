@@ -7,7 +7,9 @@
             </el-button>
         </div>
         <yq-main-edit-plan-fast-create :show-fast="showFast" @openInfolist="openInfolist"></yq-main-edit-plan-fast-create>
-        <yq-main-edit-plan-advance-create :show-advance="showAdvance" :currentPlan="currentPlan"></yq-main-edit-plan-advance-create>
+        <yq-main-edit-plan-advance-create :show-advance="showAdvance" :currentPlan="currentPlan"
+                                           @changeToEditPlan="changeToEditPlan"
+                                           @getPlans="getPlans"></yq-main-edit-plan-advance-create>
     </div>
 </template>
 
@@ -31,6 +33,17 @@
         },
 
         methods:{
+            getPlans(){
+                this.$emit('getPlans')
+            },
+            getGroups() {
+                console.log('222222222222')
+                this.$emit('getGroups')
+            },
+            changeToEditPlan() {
+                this.$emit('changeToEditPlan')
+                this.$emit('getGroups')
+            },
             changeForm() {
                 if (this.type === '高级') {
                     this.showFast = false;

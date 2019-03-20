@@ -20,19 +20,12 @@
                         </div>
                     </div>
 
-
-
                     <el-row style="border-bottom: 1px solid #dcdfe6">
                         <el-form-item label="新建结构组/组名：" style="margin-left: 20px;margin-top: 20px">
                             <el-input
                                     style="margin-left: 10px;width: 70%;" v-model="group.name"></el-input>
                         </el-form-item>
                     </el-row>
-
-
-
-
-
 
                     <!--<div class="warning_header" style="margin-top: 20px">-->
                         <!--<div style="border-left: 4px solid orange;margin-top: 5px; display: inline-block;text-align: center">-->
@@ -93,7 +86,7 @@
         },
         methods: {
             getGroups() {
-                 this.$emit('getGroups')
+                this.$emit('getGroups')
             },
 
             createGroup() {
@@ -111,6 +104,7 @@
                         this.$message.error("该分组已存在")
                     }
                 })
+                console.log('add.dialog里creat')
             }
         },
         props: {

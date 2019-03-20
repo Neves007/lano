@@ -129,35 +129,7 @@
         props: ['showAdvance', 'groupid'],
         methods: {
             getPlans() {
-                let that = this;
-                let temple_list = [];
-                axios.get(base_url + 'api/get_plans').then((r) => {
-                    if (r.data.error_num === 0) {
-                        for (let i = 0; i < r.data.list.length; i++) {
-                            temple_list[i] = r.data.list[i];
-                        }
-                        that.plans = temple_list; //拿到所有分组
-                        this.$emit('emitPlans',this.plans)
-
-                    }
-                }).catch(err => {
-                    console.log('group error %o', err)
-                })
-            },
-            getPlans() {
-                let that = this;
-                let temple_list = [];
-                axios.get(base_url + 'api/get_plans').then((r) => {
-                    if (r.data.error_num === 0) {
-                        for (let i = 0; i < r.data.list.length; i++) {
-                            temple_list[i] = r.data.list[i];
-                        }
-                        that.plans = temple_list; //拿到所有分组
-                        this.$emit('emitPlans',this.plans)
-                    }
-                }).catch(err => {
-                    console.log('group error %o', err)
-                })
+                this.$emit('getPlans')
             },
             createPlan() {
                 if (this.plan.name === '') {

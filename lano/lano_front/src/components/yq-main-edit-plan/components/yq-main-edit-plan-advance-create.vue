@@ -62,6 +62,7 @@
         <el-row>
             <el-form-item>
                 <el-button class="save" @click="modifPlan">保存</el-button>
+                <el-button class="delete" @click="deletePlan">删除</el-button>
                 <!--<el-button id="cancel">取消</el-button>-->
             </el-form-item>
         </el-row>
@@ -126,6 +127,20 @@
         },
         props: ['showAdvance', 'currentPlan'],
         methods: {
+            deletePlan(){
+                console.log('planid',this.currentPlan.pk);
+                axios.post(base_url + 'api/delete_plan',this.currentPlan.pk).then(r => {
+                    if (r.data.error_num === 0) {
+                        this.$message.success("方案删除成功")
+                        this.$emit('changeToEditPlan')
+                        this.$emit('getPlans')
+                    } else {
+                        console.log('传递失败',r.data.msg)
+                        this.$message.error("方案删除错误")
+                    }
+                })
+                this.visible=false;
+            },
             modifPlan() {
                 if (this.currentPlan.fields.name === '') {
                     this.$message.error('please input plan name')
@@ -134,10 +149,10 @@
                 console.log('update_plans currrentPlan',this.currentPlan)
                 axios.post(base_url + 'api/update_plans', JSON.stringify(this.currentPlan)).then(r => {
                     if (r.data.error_num === 0) {
-                        this.$message.success("方案添加成功")
+                        this.$message.success("方案修改成功")
                     } else {
                         console.log('传递失败', r.data.msg)
-                        this.$message.error("方案添加错误")
+                        this.$message.error("方案修改错误")
                     }
                 })
             },

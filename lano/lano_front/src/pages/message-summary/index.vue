@@ -6,7 +6,8 @@
                     <yq-left-sidebar ref="leftSidebar" :plan_list="plan_list" :currentPlan='currentPlan' :plans="plans" :groups="groups"
                                      @getGroups="getGroups"
                                      @modifCurrentPlan='modifCurrentPlan'
-                                     @openPlanCreate="openPlanCreate"></yq-left-sidebar>
+                                     @openPlanCreate="openPlanCreate"
+                                     @changeToEditPlan='changeToEditPlan'></yq-left-sidebar>
                 </el-card>
             </el-col>
             <el-col :span="mainContentSpan">
@@ -46,10 +47,10 @@
                     </el-tab-pane>
                     <!--方案新建和修改tab-->
                     <el-tab-pane label="新建方案" v-if="plan_operations" name="seventh">
-                        <yq-main-plan @openInfolist="openInfolist" @emitPlans="emitPlans" @getGroups="getGroups" :groups="groups"></yq-main-plan>
+                        <yq-main-plan @openInfolist="openInfolist" @getPlans="getPlans" @getGroups="getGroups" :groups="groups"></yq-main-plan>
                     </el-tab-pane>
                     <el-tab-pane label="修改方案" v-else name="eighth">
-                        <yq-main-edit-plan :currentPlan="currentPlan"></yq-main-edit-plan>
+                        <yq-main-edit-plan :currentPlan="currentPlan" @changeToEditPlan="changeToEditPlan" @getPlans="getPlans"></yq-main-edit-plan>
                     </el-tab-pane>
                 </el-tabs>
             </el-col>
@@ -92,8 +93,28 @@
             }
         },
         methods: {
-
+            getPlans() {
+                let that = this;
+                let temple_list = [];
+                axios.get(base_url + 'api/get_plans').then((r) => {
+                    if (r.data.error_num === 0) {
+                        for (let i = 0; i < r.data.list.length; i++) {
+                            temple_list[i] = r.data.list[i];
+                        }
+                        that.plans = temple_list; //拿到所有分组
+                        this.$emit('emitPlans',this.plans)
+                    }
+                }).catch(err => {
+                    console.log('group error %o', err)
+                })
+            },
+            changeToEditPlan() {
+                this.plan_operations = false;
+                this.activeName = 'first'
+                this.getGroups()
+            },
             getGroups() {
+                console.log('123')
                 let that = this;
                 let temple_list = [];
                 axios.get(base_url + 'api/get_groups').then((r) => {
@@ -114,9 +135,9 @@
                 this.plan_operations = false;
                 this.currentPlan=cp
             },
-            emitPlans(plans){
-               this.plans=plans
-            },
+            // emitPlans(plans){
+            //    this.plans=plans
+            // },
             getPlanList() {
                 let that = this
                 axios.get('/api/plan/plan_list').then((r) => {
