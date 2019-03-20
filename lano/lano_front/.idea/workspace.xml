@@ -11,16 +11,38 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FUSProjectUsageTrigger">
+    <session id="-198151461">
+      <usages-collector id="statistics.lifecycle.project">
+        <counts>
+          <entry key="project.closed" value="1" />
+          <entry key="project.open.time.12" value="1" />
+          <entry key="project.open.time.13" value="1" />
+          <entry key="project.opened" value="2" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.open">
+        <counts>
+          <entry key="json" value="1" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.open">
+        <counts>
+          <entry key="JSON" value="1" />
+        </counts>
+      </usages-collector>
+    </session>
+  </component>
   <component name="FavoritesManager">
     <favorites_list name="rebuild" />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/pages/message-summary/index.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2565">
-              <caret line="161" selection-start-line="161" selection-end-line="161" />
+            <state relative-caret-position="714">
+              <caret line="161" lean-forward="true" selection-start-line="161" selection-end-line="161" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#el-col#1;n#el-row#0;n#d2-container#0;n#template#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#el-tab-pane#1;n#el-tabs#0;n#el-col#1;n#el-row#0;n#d2-container#0;n#template#0;n#!!top" expanded="true" />
@@ -32,18 +54,7 @@
                 <element signature="n#el-card#0;n#el-tab-pane#2;n#el-tabs#0;n#el-col#1;n#el-row#0;n#d2-container#0;n#template#0;n#!!top" />
                 <element signature="n#style#0;n#div#0;n#el-col#0;n#el-row#0;n#el-card#0;n#el-tab-pane#2;n#el-tabs#0;n#el-col#1;n#el-row#0;n#d2-container#0;n#template#0;n#!!top" expanded="true" />
                 <element signature="n#el-tab-pane#4;n#el-tabs#0;n#el-col#1;n#el-row#0;n#d2-container#0;n#template#0;n#!!top" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/components/index.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="171">
-              <caret line="9" selection-start-line="9" selection-end-line="9" />
-              <folding>
-                <element signature="e#0#21#0" expanded="true" />
+                <element signature="e#3037#3125#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -52,7 +63,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/package.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="209">
+            <state relative-caret-position="264">
               <caret line="11" column="19" selection-start-line="11" selection-start-column="19" selection-end-line="11" selection-end-column="19" />
             </state>
           </provider>
@@ -156,11 +167,27 @@
       </list>
     </option>
   </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER">
+    <package-json value="$PROJECT_DIR$/package.json" />
+  </component>
   <component name="JsFlowSettings">
     <service-enabled>true</service-enabled>
     <exe-path />
     <other-services-enabled>true</other-services-enabled>
     <auto-save>true</auto-save>
+  </component>
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="NodeModulesDirectoryManager">
+    <handled-path value="$PROJECT_DIR$/node_modules" />
+  </component>
+  <component name="NodePackageJsonFileManager">
+    <packageJsonPaths>
+      <path value="$PROJECT_DIR$/package.json" />
+    </packageJsonPaths>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="436" />
@@ -173,8 +200,18 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="ProjectPane" />
       <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="lano-front-rebuild" type="b2602c69:ProjectViewProjectNode" />
+              <item name="yq-rebuild" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -219,7 +256,7 @@
     </option>
   </component>
   <component name="RunManager" selected="npm.dev">
-    <configuration name="dev" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+    <configuration name="dev" type="js.build_tools.npm" factoryName="npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
       <scripts>
@@ -229,7 +266,7 @@
       <envs />
       <method v="2" />
     </configuration>
-    <configuration name="serve" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+    <configuration name="serve" type="js.build_tools.npm" factoryName="npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
       <scripts>
@@ -240,8 +277,8 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="npm.dev" />
       <item itemvalue="npm.serve" />
+      <item itemvalue="npm.dev" />
     </list>
     <recent_temporary>
       <list>
@@ -289,17 +326,15 @@
       <workItem from="1551228950533" duration="958000" />
       <workItem from="1551231201940" duration="241000" />
       <workItem from="1551237227942" duration="1663000" />
-      <workItem from="1552646816344" duration="4000" />
-      <workItem from="1552647513760" duration="5000" />
-      <workItem from="1552647535799" duration="4000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="114767000" />
+    <option name="totallyTimeSpent" value="114754000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49838188" visible="true" weight="0.19283456" />
       <window_info id="Structure" order="1" sideWeight="0.50161815" side_tool="true" weight="0.09799789" />
@@ -413,6 +448,13 @@
     <entry file="file://$PROJECT_DIR$/src/App.vue">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="57">
+          <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/yq-main-infor-list/components/yq-infor-list-top.vue" />
     <entry file="file://$PROJECT_DIR$/node_modules/element-ui/packages/upload/src/upload.vue">
       <provider selected="true" editor-type-id="text-editor">
@@ -421,7 +463,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/yq-main-infor-list/index.vue" />
+    <entry file="file://$PROJECT_DIR$/src/components/yq-main-infor-list/index.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="114">
+          <caret line="6" column="19" selection-start-line="6" selection-start-column="19" selection-end-line="6" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/yq-main-directional-monitor/index.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="345">
@@ -446,7 +494,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/yq-infoList/components/infoListItemDetail.vue" />
+    <entry file="file://$PROJECT_DIR$/src/components/yq-infoList/components/infoListItemDetail.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="582" column="16" selection-start-line="582" selection-start-column="16" selection-end-line="582" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/yq-left-sidebar/components/yq-sidebar-add-gp-dialog.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="195">
@@ -555,8 +609,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/yq-main-infor-list/componets/yq-infor-list-top.vue" />
-    <entry file="file://$PROJECT_DIR$/src/components/yq-infoList/index.vue" />
+    <entry file="file://$PROJECT_DIR$/src/components/yq-main-infor-list/componets/yq-infor-list-top.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="246" column="12" selection-start-line="246" selection-start-column="12" selection-end-line="246" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/yq-infoList/index.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="435">
+          <caret line="560" column="11" selection-start-line="560" selection-end-line="562" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/mock/api/plan/index.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="95">
@@ -576,8 +642,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/pages/message-summary/index.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2565">
-          <caret line="161" selection-start-line="161" selection-end-line="161" />
+        <state relative-caret-position="714">
+          <caret line="161" lean-forward="true" selection-start-line="161" selection-end-line="161" />
           <folding>
             <element signature="n#style#0;n#div#0;n#el-col#1;n#el-row#0;n#d2-container#0;n#template#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#el-tab-pane#1;n#el-tabs#0;n#el-col#1;n#el-row#0;n#d2-container#0;n#template#0;n#!!top" expanded="true" />
@@ -589,24 +655,15 @@
             <element signature="n#el-card#0;n#el-tab-pane#2;n#el-tabs#0;n#el-col#1;n#el-row#0;n#d2-container#0;n#template#0;n#!!top" />
             <element signature="n#style#0;n#div#0;n#el-col#0;n#el-row#0;n#el-card#0;n#el-tab-pane#2;n#el-tabs#0;n#el-col#1;n#el-row#0;n#d2-container#0;n#template#0;n#!!top" expanded="true" />
             <element signature="n#el-tab-pane#4;n#el-tabs#0;n#el-col#1;n#el-row#0;n#d2-container#0;n#template#0;n#!!top" />
+            <element signature="e#3037#3125#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/package.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
+        <state relative-caret-position="264">
           <caret line="11" column="19" selection-start-line="11" selection-start-column="19" selection-end-line="11" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="9" selection-start-line="9" selection-end-line="9" />
-          <folding>
-            <element signature="e#0#21#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>

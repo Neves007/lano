@@ -2,7 +2,7 @@
     <div class="yq-siderbar-component" ref="card">
         <yq-sidebar-add @openPlanCreate="openPlanCreate" @getGroups="getGroups"></yq-sidebar-add>
         <yq-sidebar-collapse :file_name="title" :plan_list="plan_list" :groups="groups" :plans="plans"
-                             @modifCurrentPlan="modifCurrentPlan" @changeToEditPlan="changeToEditPlan"></yq-sidebar-collapse>
+                             @modifCurrentPlan="modifCurrentPlan"></yq-sidebar-collapse>
     </div>
 </template>
 

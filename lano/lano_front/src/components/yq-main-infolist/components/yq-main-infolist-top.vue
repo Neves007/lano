@@ -243,6 +243,7 @@
             },
             source_type_handleCheckAllChange(val) {
                 this.infolist_filter.source_type_checkList = val ? source_type : [];
+                console.log("source_type_checkList",this.infolist_filter.source_type_checkList)
                 this.infolist_filter.isIndeterminate = false
             },
             zidingyishijian() {
@@ -268,14 +269,8 @@
                 this.activeName = 'fifth'
             },
             search_source(selected) {
-                if (selected.length === 0) {
-                    this.checkList.push('0')
-                } else if (selected[selected.length - 1] === '0') {
-                    this.checkList = ['0']
-                } else {
-                    let index = this.checkList.indexOf('0')
-                    if (index > -1) this.checkList.splice(index, 1)
-                }
+                this.infolist_filter.source_type_checkList=selected
+                console.log('source_type_checkList',this.infolist_filter.source_type_checkList)
             },
         },
     }

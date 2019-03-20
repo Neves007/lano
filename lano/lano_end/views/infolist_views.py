@@ -13,6 +13,7 @@ import datetime
 def filter_conditions(filter_params, time_start, time_end):
     infolist = {}
     print(filter_params)
+
     # 文章排序：
     # 智能或降序
     if (filter_params['article_order_radio'] == 1 or filter_params['article_order_radio'] == 2):
@@ -250,6 +251,7 @@ def filter_conditions(filter_params, time_start, time_end):
 
     return infolist
 
+
 # this method get the sina_infolist
 @require_http_methods(['GET'])
 @csrf_exempt
@@ -261,7 +263,7 @@ def get_infolist(request):
     filter_params = json.loads(request.GET.get('filter_data'))
     time_start = ''
     time_end = ''
-    if(any(filter_params['time_value'])):
+    if (any(filter_params['time_value'])):
         print(filter_params['source_type_checkList'], filter_params['time_value'])
 
         UTC_FORMAT = "%Y-%m-%dT%H:%M:%S.%fZ"
@@ -270,8 +272,6 @@ def get_infolist(request):
 
         time_start = time_start + datetime.timedelta(hours=8)
         time_end = time_end + datetime.timedelta(hours=8)
-
-        print(time_start, time_end)
     response = {}
     infolist = {}
     try:
@@ -289,16 +289,17 @@ def get_infolist(request):
                                                               source='微信').exclude(
                             content=None).order_by('-time')
 
-                    elif ('新闻' in filter_params['source_type_checkList'] ):
+                    elif ('新闻' in filter_params['source_type_checkList']):
                         infolist = Allinfolist.objects.filter(sensitive_state=1, time__contains=today,
                                                               source='新浪新闻').exclude(
                             content=None).order_by('-time')
 
-                    elif('新闻' in filter_params['source_type_checkList'] and '微信' in filter_params['source_type_checkList']):
+                    elif ('新闻' in filter_params['source_type_checkList'] and '微信' in filter_params[
+                        'source_type_checkList']):
                         infolist = Allinfolist.objects.filter(sensitive_state=1, time__contains=today).exclude(
                             content=None).order_by('-time')
                 # 敏感
-                if(filter_params['sensitive_attr_radio'] == 3):
+                if (filter_params['sensitive_attr_radio'] == 3):
                     # 媒体来源
                     if ('微信' in filter_params['source_type_checkList']):
                         infolist = Allinfolist.objects.filter(sensitive_state=0, time__contains=today,
@@ -309,7 +310,7 @@ def get_infolist(request):
                                                               source='新浪新闻').exclude(
                             content=None).order_by('-time')
                     if ('新闻' in filter_params['source_type_checkList'] and '微信' in filter_params[
-                            'source_type_checkList']):
+                        'source_type_checkList']):
                         infolist = Allinfolist.objects.filter(sensitive_state=0, time__contains=today,
                                                               ).exclude(
                             content=None).order_by('-time')
@@ -325,7 +326,8 @@ def get_infolist(request):
                                                               source='新浪新闻').exclude(content=None).order_by('-time')
                     if ('新闻' in filter_params['source_type_checkList'] and '微信' in filter_params[
                         'source_type_checkList']):
-                        infolist = Allinfolist.objects.filter(time__contains=today).exclude(content=None).order_by('-time')
+                        infolist = Allinfolist.objects.filter(time__contains=today).exclude(content=None).order_by(
+                            '-time')
 
             # 时间升序
             if (filter_params['article_order_radio'] == 3):
@@ -380,7 +382,7 @@ def get_infolist(request):
                                                               ).exclude(
                             content=None).order_by('time')
 
-            #相似文章
+            # 相似文章
             if (filter_params['article_order_radio'] == 4):
                 # 敏感性
                 # 非敏感
@@ -433,7 +435,7 @@ def get_infolist(request):
                                                               ).exclude(
                             content=None).order_by('-similar_article')
 
-            #采集顺序(降序)
+            # 采集顺序(降序)
             if (filter_params['article_order_radio'] == 5):
                 # 敏感性
                 # 非敏感
@@ -448,7 +450,8 @@ def get_infolist(request):
                         infolist = Allinfolist.objects.filter(sensitive_state=1, time__contains=today,
                                                               source='新浪新闻').exclude(
                             content=None).order_by('-id')
-                    if ('新闻' in filter_params['source_type_checkList'] and '微信' in filter_params['source_type_checkList']):
+                    if ('新闻' in filter_params['source_type_checkList'] and '微信' in filter_params[
+                        'source_type_checkList']):
                         infolist = Allinfolist.objects.filter(sensitive_state=1, time__contains=today).exclude(
                             content=None).order_by('-id')
                 # 敏感
@@ -464,7 +467,6 @@ def get_infolist(request):
                             content=None).order_by('-id')
                     if ('新闻' in filter_params['source_type_checkList'] and '微信' in filter_params[
                         'source_type_checkList']):
-
                         infolist = Allinfolist.objects.filter(sensitive_state=0, time__contains=today,
                                                               ).exclude(
                             content=None).order_by('-id')
@@ -513,4 +515,3 @@ def get_infolist(request):
         response['error_num'] = 1
 
     return JsonResponse(response)
-

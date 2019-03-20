@@ -44,7 +44,7 @@
             getInfoList(page_size, page_num, filter_data) {
                 let that = this;
                 let temple_list = [];
-                axios.get(base_url + 'api/get_infolist', {
+                axios.get(base_url + 'api/switch_get_infolist', {
                     params: {
                         page_size: page_size,
                         page_num: page_num,
@@ -68,6 +68,7 @@
                         // that.flag = true
                     }
                 }).catch(err => {
+                    console.log("是不是这儿错了")
                     console.log('error %o', err)
                 })
             },

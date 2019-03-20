@@ -6,8 +6,7 @@
                     <yq-left-sidebar ref="leftSidebar" :plan_list="plan_list" :currentPlan='currentPlan' :plans="plans" :groups="groups"
                                      @getGroups="getGroups"
                                      @modifCurrentPlan='modifCurrentPlan'
-                                     @openPlanCreate="openPlanCreate"
-                                     @changeToEditPlan='changeToEditPlan'></yq-left-sidebar>
+                                     @openPlanCreate="openPlanCreate"></yq-left-sidebar>
                 </el-card>
             </el-col>
             <el-col :span="mainContentSpan">
@@ -93,10 +92,7 @@
             }
         },
         methods: {
-            changeToEditPlan() {
-                this.plan_operations = false;
-                this.activeName = 'first'
-            },
+
             getGroups() {
                 let that = this;
                 let temple_list = [];
