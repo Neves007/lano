@@ -11,5 +11,7 @@ urlpatterns = [
     url(r'create_plan', plan_views.create_plan),
     url(r'get_plans', plan_views.get_plans),
     url(r'update_plans', plan_views.update_plans),
+    url(r'delete_group', group_views.delete_group),
+    url(r'delete_plan', plan_views.delete_plan),
     url(r'switch_get_infolist', switch_infolist_views.get_infolist),
 ]
