@@ -1,0 +1,614 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="7da09003-4a69-48ec-82cb-ecdbca4c3812" name="Default Changelist" comment="" />
+    <ignored path="$PROJECT_DIR$/.tmp/" />
+    <ignored path="$PROJECT_DIR$/temp/" />
+    <ignored path="$PROJECT_DIR$/tmp/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FavoritesManager">
+    <favorites_list name="rebuild" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/pages/message-summary/index.vue">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2565">
+              <caret line="161" selection-start-line="161" selection-end-line="161" />
+              <folding>
+                <element signature="n#style#0;n#div#0;n#el-col#1;n#el-row#0;n#d2-container#0;n#template#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#el-tab-pane#1;n#el-tabs#0;n#el-col#1;n#el-row#0;n#d2-container#0;n#template#0;n#!!top" expanded="true" />
+                <element signature="n#el-tab-pane#1;n#el-tabs#0;n#el-col#1;n#el-row#0;n#d2-container#0;n#template#0;n#!!top" />
+                <element signature="n#style#0;n#el-card#0;n#el-col#0;n#el-row#0;n#el-tab-pane#1;n#el-tabs#0;n#el-col#1;n#el-row#0;n#d2-container#0;n#template#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#el-card#0;n#el-col#0;n#el-row#0;n#el-tab-pane#1;n#el-tabs#0;n#el-col#1;n#el-row#0;n#d2-container#0;n#template#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#0;n#el-card#0;n#el-col#0;n#el-row#0;n#el-tab-pane#1;n#el-tabs#0;n#el-col#1;n#el-row#0;n#d2-container#0;n#template#0;n#!!top" expanded="true" />
+                <element signature="n#el-tab-pane#2;n#el-tabs#0;n#el-col#1;n#el-row#0;n#d2-container#0;n#template#0;n#!!top" />
+                <element signature="n#el-card#0;n#el-tab-pane#2;n#el-tabs#0;n#el-col#1;n#el-row#0;n#d2-container#0;n#template#0;n#!!top" />
+                <element signature="n#style#0;n#div#0;n#el-col#0;n#el-row#0;n#el-card#0;n#el-tab-pane#2;n#el-tabs#0;n#el-col#1;n#el-row#0;n#d2-container#0;n#template#0;n#!!top" expanded="true" />
+                <element signature="n#el-tab-pane#4;n#el-tabs#0;n#el-col#1;n#el-row#0;n#d2-container#0;n#template#0;n#!!top" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/components/index.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="171">
+              <caret line="9" selection-start-line="9" selection-end-line="9" />
+              <folding>
+                <element signature="e#0#21#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/package.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="209">
+              <caret line="11" column="19" selection-start-line="11" selection-start-column="19" selection-end-line="11" selection-end-column="19" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+        <option value="Vue Single File Component" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>openInfolist</find>
+      <find>add</find>
+      <find>axios</find>
+      <find>getCurrentPlan</find>
+      <find>current_plan_onSubmit</find>
+      <find>currentPlan2</find>
+      <find>plan_operations</find>
+      <find>currentPlan</find>
+      <find>changeToEditPlan</find>
+      <find>changeToEdit</find>
+      <find>yq-left-sidebar</find>
+      <find>yq-main-plan</find>
+      <find>yq-main-edit-plan</find>
+      <find>centre</find>
+      <find>yq-main-in</find>
+      <find>tabPosition</find>
+      <find>通过省份选择网站</find>
+      <find>请输入</find>
+      <find>ex_mutipleAdd_dialogVisible</find>
+      <find>请输入网站域名</find>
+      <find>请选择要</find>
+      <find>请选择监测网站，支持多选，最多不能超出300个</find>
+      <find>dirTab_showInput</find>
+      <find>deleteWechat</find>
+      <find>delete</find>
+      <find>deleteDomain</find>
+      <find>ex_dir_inputChange</find>
+      <find>ex_dirTab_showInput</find>
+      <find>handleClick</find>
+      <find>left</find>
+    </findStrings>
+    <replaceStrings>
+      <replace>fast_form</replace>
+    </replaceStrings>
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/src/menu/header.js" />
+        <option value="$PROJECT_DIR$/src/router/routes.js" />
+        <option value="$PROJECT_DIR$/src/mock/api/plan/index.js" />
+        <option value="$PROJECT_DIR$/src/mock/api/info/index.js" />
+        <option value="$PROJECT_DIR$/src/layout/header-aside/layout.vue" />
+        <option value="$PROJECT_DIR$/vue.config.js" />
+        <option value="$PROJECT_DIR$/src/components/yq_left_sidebar/yq_siderbar_collaspse.vue" />
+        <option value="$PROJECT_DIR$/src/components/yq_left_sidebar/index.vue" />
+        <option value="$PROJECT_DIR$/.eslintrc.js" />
+        <option value="$PROJECT_DIR$/.eslintignore" />
+        <option value="$PROJECT_DIR$/src/components/yq-left-sidebar/yq-sidebar-add-gp.vue" />
+        <option value="$PROJECT_DIR$/src/components/yq-left-sidebar/components/yq-sidebar-add-gp.vue" />
+        <option value="$PROJECT_DIR$/src/components/yq-left-sidebar/components/test.vue" />
+        <option value="$PROJECT_DIR$/src/components/yq-left-sidebar/components/yq-sidebar-add-gp-form.vue" />
+        <option value="$PROJECT_DIR$/src/components/yq-left-sidebar/components/eventBus.js" />
+        <option value="$PROJECT_DIR$/src/components/yq-main-content/index.vue" />
+        <option value="$PROJECT_DIR$/src/components/yq-main-content/components/yq-main-infolist.vue" />
+        <option value="$PROJECT_DIR$/src/components/yq-main-content/components/yq-main-analysis.vue" />
+        <option value="$PROJECT_DIR$/src/components/yq-main-content/components/yq-main-precision-setting.vue" />
+        <option value="$PROJECT_DIR$/src/components/yq-main-content/components/yq-main-directional.vue" />
+        <option value="$PROJECT_DIR$/src/components/yq-main-content/components/yq-main-warnnig.vue" />
+        <option value="$PROJECT_DIR$/src/components/yq-main-content/components/yq-main-summary.vue" />
+        <option value="$PROJECT_DIR$/src/components/yq-main-content/components/yq-main-plan.vue" />
+        <option value="$PROJECT_DIR$/src/components/yq-main-plan-create/components/yq-main-plan-create-fast.vue" />
+        <option value="$PROJECT_DIR$/src/components/yq-main-plan-create/index.vue" />
+        <option value="$PROJECT_DIR$/src/components/yq-left-sidebar/components/yq-sidebar-add.vue" />
+        <option value="$PROJECT_DIR$/src/components/yq-main-plan/components/yq-main-plan-edit.vue" />
+        <option value="$PROJECT_DIR$/src/components/yq-main-plan/components/yq-main-plan-fast-create.vue" />
+        <option value="$PROJECT_DIR$/src/components/yq-main-plan/components/yq-main-plan-advance-create.vue" />
+        <option value="$PROJECT_DIR$/src/components/yq-main-plan/index.vue" />
+        <option value="$PROJECT_DIR$/src/components/yq-main-edit-plan/components/yq-main-edit-plan-advance-create.vue" />
+        <option value="$PROJECT_DIR$/src/components/yq-main-edit-plan/components/yq-main-edit-plan-fast-create.vue" />
+        <option value="$PROJECT_DIR$/src/components/yq-left-sidebar/components/yq-siderbar-collapse.vue" />
+        <option value="$PROJECT_DIR$/src/components/yq-left-sidebar/index.vue" />
+        <option value="$PROJECT_DIR$/src/components/yq-main-edit-plan/index.vue" />
+        <option value="$PROJECT_DIR$/src/components/yq-main-infor-list/index.vue" />
+        <option value="$PROJECT_DIR$/src/components/yq-main-directional-monitor/componets/yq-profession-classification.vue" />
+        <option value="$PROJECT_DIR$/src/components/yq-main-directional-monitor/index.vue" />
+        <option value="$PROJECT_DIR$/src/components/yq-main-directional-monitor/componets/yq-directional-monitor.vue" />
+        <option value="$PROJECT_DIR$/src/assets/style/page1/yuqing.scss" />
+        <option value="$PROJECT_DIR$/src/components/yq-main-directional-monitor/componets/yq-directional-exclude.vue" />
+        <option value="$PROJECT_DIR$/src/components/yq-left-sidebar/components/yq-sidebar-add-gp-dialog.vue" />
+        <option value="$PROJECT_DIR$/src/components/yq-infoList/index.vue" />
+        <option value="$PROJECT_DIR$/src/components/yq-main-infor-list/componets/yq-infor-list-top.vue" />
+        <option value="$PROJECT_DIR$/src/pages/message-summary/index.vue" />
+      </list>
+    </option>
+  </component>
+  <component name="JsFlowSettings">
+    <service-enabled>true</service-enabled>
+    <exe-path />
+    <other-services-enabled>true</other-services-enabled>
+    <auto-save>true</auto-save>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="436" />
+    <option name="y" value="101" />
+    <option name="width" value="974" />
+    <option name="height" value="1040" />
+  </component>
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="ProjectPane" />
+      <pane id="Scope" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Documents/rebuild" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.standard" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.standard" value="project" />
+    <property name="node.js.selected.package.eslint" value="C:\Users\Kacey\Desktop\rebuild\node_modules\eslint" />
+    <property name="node.js.selected.package.standard" value="C:\Users\Kacey\Desktop\rebuild\node_modules\eslint" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="prettierjs.PrettierConfiguration.Package" value="D:\Software_Data\WebStorm-project\lano\lano-front\node_modules\prettier" />
+    <property name="settings.editor.selected.configurable" value="settings.javascript.linters.eslint" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Lenovo\Desktop\rebuild\src\components" />
+      <recent name="C:\Users\Kacey\Desktop\rebuild\src\components" />
+      <recent name="C:\Users\Kacey\Desktop\rebuild\src\components\yq-left-sidebar\components" />
+      <recent name="C:\Users\Kacey\Desktop\rebuild\src\components\yq_left_sidebar\components" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Lenovo\Desktop\rebuild\src\assets\style" />
+      <recent name="C:\Users\Lenovo\Desktop\rebuild\src\components" />
+      <recent name="C:\Users\Kacey\Desktop\rebuild\src\components\yq-main-edit-plan" />
+      <recent name="D:\Software_Data\WebStorm-project\lano\lano-front\public\image\theme\d2\logo" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="npm.dev">
+    <configuration name="dev" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="dev" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="serve" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="serve" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="npm.dev" />
+      <item itemvalue="npm.serve" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="npm.dev" />
+        <item itemvalue="npm.serve" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="7da09003-4a69-48ec-82cb-ecdbca4c3812" name="Default Changelist" comment="" />
+      <created>1545202159756</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1545202159756</updated>
+      <workItem from="1545202164105" duration="6326000" />
+      <workItem from="1545215292796" duration="2422000" />
+      <workItem from="1545268793950" duration="275000" />
+      <workItem from="1545295146896" duration="1919000" />
+      <workItem from="1545355944261" duration="2785000" />
+      <workItem from="1545631686137" duration="3294000" />
+      <workItem from="1545738879888" duration="6826000" />
+      <workItem from="1545746872629" duration="656000" />
+      <workItem from="1545747724101" duration="658000" />
+      <workItem from="1550216009554" duration="1827000" />
+      <workItem from="1550452321051" duration="692000" />
+      <workItem from="1550560666398" duration="634000" />
+      <workItem from="1550626524082" duration="611000" />
+      <workItem from="1550713265114" duration="377000" />
+      <workItem from="1550713701223" duration="1936000" />
+      <workItem from="1550715694589" duration="12044000" />
+      <workItem from="1550798563881" duration="13226000" />
+      <workItem from="1550902653999" duration="8020000" />
+      <workItem from="1551058438816" duration="9913000" />
+      <workItem from="1551078383011" duration="11817000" />
+      <workItem from="1551097623901" duration="1723000" />
+      <workItem from="1551144352985" duration="800000" />
+      <workItem from="1551147011150" duration="1934000" />
+      <workItem from="1551148959535" duration="467000" />
+      <workItem from="1551149438190" duration="12433000" />
+      <workItem from="1551171047380" duration="8277000" />
+      <workItem from="1551228950533" duration="958000" />
+      <workItem from="1551231201940" duration="241000" />
+      <workItem from="1551237227942" duration="1663000" />
+      <workItem from="1552646816344" duration="4000" />
+      <workItem from="1552647513760" duration="5000" />
+      <workItem from="1552647535799" duration="4000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="114767000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <layout>
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49838188" visible="true" weight="0.19283456" />
+      <window_info id="Structure" order="1" sideWeight="0.50161815" side_tool="true" weight="0.09799789" />
+      <window_info id="npm" order="2" sideWeight="0.50161815" side_tool="true" weight="0.09799789" />
+      <window_info id="Favorites" order="3" sideWeight="0.50161815" side_tool="true" weight="0.09799789" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.013015185" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.10303687" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="8" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
+      <window_info anchor="bottom" id="Terminal" order="10" weight="0.30911064" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/components/d2-container/components/d2-container-card.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="10" column="18" selection-start-line="10" selection-start-column="18" selection-end-line="10" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/d2-container/components/d2-container-full.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="48">
+          <caret line="2" column="21" selection-start-line="2" selection-start-column="15" selection-end-line="2" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/d2-container/index.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-624">
+          <caret line="4" column="28" selection-start-line="4" selection-start-column="28" selection-end-line="4" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/yq-main-content/components/yq-main-infolist.vue" />
+    <entry file="file://$PROJECT_DIR$/src/components/yq-main-content/components/yq-main-analysis.vue" />
+    <entry file="file://$PROJECT_DIR$/src/components/yq-main-content/components/yq-main-precision-setting.vue" />
+    <entry file="file://$PROJECT_DIR$/src/components/yq-main-content/components/yq-main-directional.vue" />
+    <entry file="file://$PROJECT_DIR$/src/components/yq-main-content/components/yq-main-warnnig.vue" />
+    <entry file="file://$PROJECT_DIR$/src/components/yq-main-content/index.vue" />
+    <entry file="file://$PROJECT_DIR$/src/components/yq-main-content/components/yq-main-summary.vue" />
+    <entry file="file://$PROJECT_DIR$/src/components/yq-main-content/components/yq-main-plan.vue" />
+    <entry file="file://$PROJECT_DIR$/src/components/yq-main-plan/components/yq-main-plan-create-fast.vue" />
+    <entry file="file://$PROJECT_DIR$/vue.config.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="51" column="17" lean-forward="true" selection-start-line="51" selection-start-column="17" selection-end-line="51" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/yq-main-plan/components/yq-main-plan-edit.vue" />
+    <entry file="file://$PROJECT_DIR$/src/components/yq-main-plan/components/yq-main-plan-fast-create.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="617">
+          <caret line="124" column="18" lean-forward="true" selection-start-line="118" selection-start-column="16" selection-end-line="124" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="19">
+          <caret line="14" column="29" selection-start-line="14" selection-start-column="23" selection-end-line="14" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/yq-centre-infor-list/.idea/misc.xml" />
+    <entry file="file://$PROJECT_DIR$/src/components/yq-left-sidebar/components/eventBus.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="57">
+          <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/yq-main-edit-plan/components/yq-main-edit-plan-fast-create.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-851">
+          <caret line="91" selection-start-line="91" selection-end-line="91" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/yq-main-infor-list/components/radio-group.vue" />
+    <entry file="file://$PROJECT_DIR$/src/components/yq-main-edit-plan/components/yq-main-edit-plan-advance-create.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2776">
+          <caret line="24" column="34" lean-forward="true" selection-start-line="24" selection-start-column="34" selection-end-line="24" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/yq-main-plan/components/yq-main-plan-advance-create.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="283">
+          <caret line="187" column="41" lean-forward="true" selection-start-line="187" selection-start-column="41" selection-end-line="187" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/App.vue">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/yq-main-infor-list/components/yq-infor-list-top.vue" />
+    <entry file="file://$PROJECT_DIR$/node_modules/element-ui/packages/upload/src/upload.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="701">
+          <caret line="205" column="87" selection-start-line="205" selection-start-column="87" selection-end-line="205" selection-end-column="87" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/yq-main-infor-list/index.vue" />
+    <entry file="file://$PROJECT_DIR$/src/components/yq-main-directional-monitor/index.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="31" column="26" lean-forward="true" selection-start-line="31" selection-start-column="26" selection-end-line="31" selection-end-column="26" />
+          <folding>
+            <element signature="n#style#0;n#span#0;n#template#0;n#el-collapse-item#0;n#el-card#0;n#el-collapse#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/d2-icon/font-awesome-4.7.0/css/font-awesome.min.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="57">
+          <caret line="3" column="21695" selection-start-line="3" selection-start-column="21695" selection-end-line="3" selection-end-column="21695" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/yq-left-sidebar/components/yq-sidebar-add-gp-form.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="228">
+          <caret line="12" column="82" lean-forward="true" selection-start-line="12" selection-start-column="82" selection-end-line="12" selection-end-column="82" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/yq-infoList/components/infoListItemDetail.vue" />
+    <entry file="file://$PROJECT_DIR$/src/components/yq-left-sidebar/components/yq-sidebar-add-gp-dialog.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="75" column="16" selection-start-line="75" selection-start-column="16" selection-end-line="75" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/layout/header-aside/components/components/menu-item/index.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="269">
+          <caret line="15" column="6" selection-start-line="15" selection-start-column="6" selection-end-line="15" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/yq-main-plan/index.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="203">
+          <caret line="25" column="14" selection-start-line="25" selection-start-column="14" selection-end-line="25" selection-end-column="14" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#el-button#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="e#576#649#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/router/routes.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="203">
+          <caret line="24" column="15" selection-start-line="24" selection-start-column="15" selection-end-line="24" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pages/demo/page1/index.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="203">
+          <caret line="45" column="16" selection-start-line="45" selection-start-column="16" selection-end-line="45" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pages/demo/page3/index.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="203">
+          <caret line="21" column="6" selection-start-line="21" selection-start-column="6" selection-end-line="21" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/layout/header-aside/components/header-theme/components/d2-theme-list/index.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="203">
+          <caret line="24" column="16" selection-start-line="24" selection-start-column="16" selection-end-line="24" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/yq-left-sidebar/components/yq-sidebar-add.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="203">
+          <caret line="17" column="67" selection-start-line="17" selection-start-column="67" selection-end-line="17" selection-end-column="67" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/yq-left-sidebar/components/yq-siderbar-collapse.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1102">
+          <caret line="58" column="12" selection-start-line="58" selection-start-column="12" selection-end-line="58" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/assets/style/page1/yuqing.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="160">
+          <caret line="804" column="27" selection-start-line="804" selection-start-column="27" selection-end-line="804" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/yq-main-edit-plan/index.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="19">
+          <caret line="32" column="12" selection-start-line="32" selection-start-column="12" selection-end-line="32" selection-end-column="12" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#el-button#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="e#596#678#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/yq-main-directional-monitor/componets/yq-profession-classification.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="288">
+          <caret line="44" column="12" selection-start-line="44" selection-start-column="12" selection-end-line="44" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/yq-main-directional-monitor/componets/yq-directional-exclude.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="384" column="21" selection-start-line="384" selection-start-column="21" selection-end-line="384" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/yq-main-directional-monitor/componets/yq-directional-monitor.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="365" column="12" selection-start-line="365" selection-start-column="12" selection-end-line="365" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/yq-main-infor-list/componets/yq-infor-list-top.vue" />
+    <entry file="file://$PROJECT_DIR$/src/components/yq-infoList/index.vue" />
+    <entry file="file://$PROJECT_DIR$/src/mock/api/plan/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="95">
+          <caret line="5" column="4" selection-start-line="5" selection-start-column="4" selection-end-line="5" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/yq-left-sidebar/index.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="893">
+          <caret line="47" column="12" selection-start-line="47" selection-start-column="12" selection-end-line="47" selection-end-column="12" />
+          <folding>
+            <element signature="e#315#384#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pages/message-summary/index.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2565">
+          <caret line="161" selection-start-line="161" selection-end-line="161" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#el-col#1;n#el-row#0;n#d2-container#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#el-tab-pane#1;n#el-tabs#0;n#el-col#1;n#el-row#0;n#d2-container#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#el-tab-pane#1;n#el-tabs#0;n#el-col#1;n#el-row#0;n#d2-container#0;n#template#0;n#!!top" />
+            <element signature="n#style#0;n#el-card#0;n#el-col#0;n#el-row#0;n#el-tab-pane#1;n#el-tabs#0;n#el-col#1;n#el-row#0;n#d2-container#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#el-card#0;n#el-col#0;n#el-row#0;n#el-tab-pane#1;n#el-tabs#0;n#el-col#1;n#el-row#0;n#d2-container#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#el-card#0;n#el-col#0;n#el-row#0;n#el-tab-pane#1;n#el-tabs#0;n#el-col#1;n#el-row#0;n#d2-container#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#el-tab-pane#2;n#el-tabs#0;n#el-col#1;n#el-row#0;n#d2-container#0;n#template#0;n#!!top" />
+            <element signature="n#el-card#0;n#el-tab-pane#2;n#el-tabs#0;n#el-col#1;n#el-row#0;n#d2-container#0;n#template#0;n#!!top" />
+            <element signature="n#style#0;n#div#0;n#el-col#0;n#el-row#0;n#el-card#0;n#el-tab-pane#2;n#el-tabs#0;n#el-col#1;n#el-row#0;n#d2-container#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#el-tab-pane#4;n#el-tabs#0;n#el-col#1;n#el-row#0;n#d2-container#0;n#template#0;n#!!top" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="209">
+          <caret line="11" column="19" selection-start-line="11" selection-start-column="19" selection-end-line="11" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="9" selection-start-line="9" selection-end-line="9" />
+          <folding>
+            <element signature="e#0#21#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>
