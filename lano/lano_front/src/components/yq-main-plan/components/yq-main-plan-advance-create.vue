@@ -195,31 +195,40 @@
                     })
             },
             add1() {
-                this.$refs.match_input.value = this.$refs.match_input.value + '+'
+                this.$refs.match_input.value = this.$refs.match_input.value + '+';
+                this.advance_form.match = this.$refs.match_input.value
             },
 
             or1() {
-                this.$refs.match_input.value = this.$refs.match_input.value + '|'
+                this.$refs.match_input.value = this.$refs.match_input.value + '|';
+                this.advance_form.match = this.$refs.match_input.value
             },
 
             left_bracket1() {
-                this.$refs.match_input.value = this.$refs.match_input.value + '('
+                this.$refs.match_input.value = this.$refs.match_input.value + '(';
+                this.advance_form.matchf = this.$refs.match_input.value
             },
 
             right_bracket1() {
-                this.$refs.match_input.value = this.$refs.match_input.value + ')'
-            }, add2() {
-                this.$refs.except_input.value = this.$refs.except_input.value + '+'
+                this.$refs.match_input.value = this.$refs.match_input.value + ')';
+                this.advance_form.match = this.$refs.match_input.value
+            },
+            add2() {
+                this.$refs.except_input.value = this.$refs.except_input.value + '+';
+                 this.advance_form.except2 = this.$refs.except_input.value
             },
 
             or2() {
-                this.$refs.except_input.value = this.$refs.except_input.value + '|'
+                this.$refs.except_input.value = this.$refs.except_input.value + '|';
+                this.advance_form.except2 = this.$refs.except_input.value
             },
             left_bracket2() {
-                this.$refs.except_input.value = this.$refs.except_input.value + '('
+                this.$refs.except_input.value = this.$refs.except_input.value + '(';
+                this.advance_form.except2 = this.$refs.except_input.value
             },
             right_bracket2() {
-                this.$refs.except_input.value = this.$refs.except_input.value + ')'
+                this.$refs.except_input.value = this.$refs.except_input.value + ')';
+                this.advance_form.except2 = this.$refs.except_input.value
             },
 
         }

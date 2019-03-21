@@ -20,7 +20,7 @@
             return {
                 title: '舆情监测方案',
                 plan_list: {},
-                currentPlan: '',
+                // currentPlan: '',
                 successToCreateGroup: false
             }
         },
@@ -45,7 +45,7 @@
                 required: false,
                 default: false
             },
-            currentPlan: {}
+            // currentPlan: {}
 
         },
         methods: {

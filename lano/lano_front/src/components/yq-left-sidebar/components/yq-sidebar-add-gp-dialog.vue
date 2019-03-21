@@ -104,7 +104,6 @@
                         this.$message.error("该分组已存在")
                     }
                 })
-                console.log('add.dialog里creat')
             }
         },
         props: {

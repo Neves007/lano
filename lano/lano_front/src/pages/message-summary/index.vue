@@ -7,11 +7,12 @@
                                      @getGroups="getGroups"
                                      @modifCurrentPlan='modifCurrentPlan'
                                      @openPlanCreate="openPlanCreate"
-                                     @changeToEditPlan='changeToEditPlan'></yq-left-sidebar>
+                                     @changeToEditPlan='changeToEditPlan'
+                                     @getPlanName="getPlanName"></yq-left-sidebar>
                 </el-card>
             </el-col>
             <el-col :span="mainContentSpan">
-                <div class="bg-purple-light" style="margin-bottom: 10px; padding: 10px"><b>{{currentPlan.name}}</b>
+                <div class="bg-purple-light" style="margin-bottom: 10px; padding: 10px"><b>{{name}}</b>
                 </div>
                 <el-tabs v-model="activeName" @tab-click="handleClick" type="border-card">
                     <el-tab-pane label="信息列表" name="first">
@@ -90,6 +91,7 @@
                 currentPlan: {},
                 asideSpan: 4,
                 mainContentSpan: 20,
+                name:''
             }
         },
         methods: {
@@ -134,6 +136,8 @@
             modifCurrentPlan(cp){
                 this.plan_operations = false;
                 this.currentPlan=cp
+                this.name=cp.fields.name
+                console.log('1111111111')
             },
             // emitPlans(plans){
             //    this.plans=plans
