@@ -327,7 +327,7 @@
                             small
                             background
                             layout="total, prev, pager, next"
-                            :total="list_count"
+                            :total="infolist_count"
                             :page-size="pagination.pageSize"
                             :current-page="pagination.currentPage"
                             @current-change="nextPage"
@@ -347,8 +347,8 @@
         <!--checkbox-->
         <td style="width: 20px;">
             <div class="choose">
-                <el-checkbox v-model="item.is_checked"
-                             @change="chooseInfo(item.id)"></el-checkbox>
+                <el-checkbox v-model="item.fields.is_checked"
+                             @change="chooseInfo(item.pk)"></el-checkbox>
             </div>
         </td>
         <!--头像-->
@@ -362,10 +362,10 @@
             <div style="line-height: 30px; margin-bottom: 10px; position: relative; bottom: -5px;">
                 <!--用户名-->
                 <h4 style="display: inline-block; margin: 0 20px 0 0; color: #6699cc">
-                    {{item.author_name}}
+                    {{item.fields.author_name}}
                 </h4>
                 <!--敏感性-->
-                <el-button type="success" size="mini" v-if="item.sensitive_state"
+                <el-button type="success" size="mini" v-if="item.fields.sensitive_state"
                            @click="subChangeSensitive">非敏感
                 </el-button>
 
@@ -374,28 +374,28 @@
                 </el-button>
                 <!--方向性-->
                 <div style="position: relative; display: inline-block;">
-                    <el-select class="feeling_select" v-model="item.feelings" size="mini">
+                    <el-select class="feeling_select" v-model="item.fields.feelings" size="mini">
                         <el-option label="正面" value=1>正面</el-option>
                         <el-option label="负面" value=2>负面</el-option>
                         <el-option label="中性" value=3>中性</el-option>
                     </el-select>
 
-                    <el-button v-if="item.feelings=== 1"
+                    <el-button v-if="item.fields.feelings=== 1"
                                style="position: absolute; left: 13px; top: 2px; background-color: #67c23a; color: #fff;"
                                size="mini">正面
                     </el-button>
-                    <el-button v-if="item.feelings === 2"
+                    <el-button v-if="item.fields.feelings === 2"
                                style="position: absolute; left: 13px; top: 2px; background-color: #f56c6c; color: #fff;"
                                size="mini">负面
                     </el-button>
-                    <el-button v-if="item.feelings === 3"
+                    <el-button v-if="item.fields.feelings === 3"
                                style="position: absolute; left: 13px; top: 2px; background-color: #909399; color: #fff;"
                                size="mini">中性
                     </el-button>
                 </div>
 
                 <!--危险性-->
-                <el-select class="warning_select" v-model="item.warning_level" size="mini"
+                <el-select class="warning_select" v-model="item.fields.warning_level" size="mini"
                            style="color: #000!important;">
                     <el-option label="高危预警" value='1' style="color:#f56c6c;">高危预警
                     </el-option>
@@ -405,15 +405,15 @@
                     </el-option>
                 </el-select>
 
-                <el-button v-if="item.warning_level === '1'"
+                <el-button v-if="item.fields.warning_level === '1'"
                            style="position: relative; left: -115px; top: -1px; background-color: #f56c6c; color: #fff;"
                            size="mini">高危预警
                 </el-button>
-                <el-button v-if="item.warning_level === '2'"
+                <el-button v-if="item.fields.warning_level === '2'"
                            style="position: relative; left: -115px; top: -1px; background-color: #e6a23c; color: #fff;"
                            size="mini">中危预警
                 </el-button>
-                <el-button v-if="item.warning_level === '3'"
+                <el-button v-if="item.fields.warning_level === '3'"
                            style="position: relative; left: -115px; top: -1px; background-color: #3a8ee6; color: #fff;"
                            size="mini">低危预警
                 </el-button>
@@ -428,7 +428,7 @@
             <!--文章内容-->
             <div>
                 <p style="display: inline-block; font-size: 14px; color: grey; margin-top: 10px;margin-right: 50px;">
-                    {{item.content}}
+                    {{item.fields.content}}
                 </p>
             </div>
 
@@ -437,15 +437,15 @@
                 <!--涉及词-->
                 <div style="font-size: 14px; margin-top: 20px;">
                     <span>涉及词：</span>
-                    <span style="color: orangered">{{item.key_word}}</span>
+                    <span style="color: orangered">{{item.fields.key_word}}</span>
                 </div>
                 <!--新源区域 信息类别-->
                 <div style="font-size: 14px;">
                     <span>信源区域：</span>
-                    <span style="color: #6699cc">{{item.article_province}}</span>
+                    <span style="color: #6699cc">{{item.fields.article_province}}</span>
                     &nbsp;&nbsp;&nbsp;
                     <span>分类：</span>
-                    <span style="color: #6699cc">{{item.type}}</span>
+                    <span style="color: #6699cc">{{item.fields.type}}</span>
                 </div>
             </div>
 
@@ -922,14 +922,14 @@
         <!--@subChange_Sensitive="changeSensitive"></info-list-item-detail>-->
         <!--相似文章数-->
         <td style="font-size: 14px; width: 25px; text-align: center;color: #6699cc">
-            {{item.similar_article}}
+            {{item.fields.similar_article}}
         </td>
         <!--来源-->
         <td style="font-size: 14px; width: 80px; text-align: center; color: #6699cc">
-            {{item.source}}
+            {{item.fields.source}}
         </td>
         <!--时间-->
-        <td style="text-align: center; font-size: 14px;">{{item.time}}</td>
+        <td style="text-align: center; font-size: 14px;">{{item.fields.time}}</td>
     </tr>
     </tbody>
 </template>
@@ -937,7 +937,7 @@
 <script>
     export default {
         name: "yq-main-infolist-table",
-        props: ['infolist','list_count'],
+        props: ['infolist', 'infolist_count'],
         data() {
             return {
                 list: [],
@@ -997,6 +997,7 @@
             nextPage(val) {
                 this.pagination.currentPage = val;
                 this.$emit('nextPage', this.pagination.currentPage)
+                console.log("table this.infolist",this.infolist)
             },
             subChangeSensitive() {
                 this.$emit('subChange_Sensitive', this.item.id);
@@ -1006,59 +1007,70 @@
                 this.$emit('subChange_ReadState', this.item.id);
 
             },
-            change_readState(id) {
-                axios.post('/api/info/readstate_change', {
-                    'id': id
-                }).then(r => {
-                    console.log('response %o', r)
-                    if (r.data.code === 0) {
-                        // this.info_list = r.data.info_list
-                        let info = this.infolist.find(e => e.id === id)
-                        let index = this.infolist.indexOf(info)
-                        this.infolist[index]['is_read'] = !this.infolist[index]['is_read']
-                    }
-                }).catch(err => {
-                    console.log('error %o', err)
-                })
-            },
-            changeSensitive(id) {
-                axios.post('/api/info/sensitive_change', {
-                    'id': id
-                }).then(r => {
-                    console.log('response %o', r)
-                    if (r.data.code === 0) {
-                        // this.info_list = r.data.info_list
-                        let info = this.infolist.find(e => e.id === id)
-                        let index = this.infolist.indexOf(info)
 
-                        this.infolist[index]['sensitive_state'] = !this.info_list[index]['sensitive_state']
-                    }
-                }).catch(err => {
-                    console.log('error %o', err)
-                })
-            },
-            chooseInfo(id) {
-                for (let index in this.infolist) {
-                    if (this.infolist[index].is_checked === false) {
-                        this.checked = false
-                        return
-                    }
-                }
-                this.checked = true
-                // axios.post('/api/info/choose_change', {
-                //   'id': id
-                // }).then(r => {
-                //   console.log('response %o', r)
-                //   if (r.data.code === 0) {
-                //     let info = this.info_list.find(e => e.id === id)
-                //     let index = this.info_list.indexOf(info)
-                //     this.info_list[index]['is_checked'] = !this.info_list[index]['is_checked']
-                //   }
-                // })
-            },
+
+
+            // change_readState(id) {
+            //     axios.post('/api/info/readstate_change', {
+            //         'id': id
+            //     }).then(r => {
+            //         console.log('response %o', r)
+            //         if (r.data.code === 0) {
+            //             // this.infolist = r.data.infolist
+            //             let info = this.infolist.find(e => e.id === id)
+            //             let index = this.infolist.indexOf(info)
+            //             this.infolist[index]['is_read'] = !this.infolist[index]['is_read']
+            //         }
+            //     }).catch(err => {
+            //         console.log('error %o', err)
+            //     })
+            // },
+            //
+
+
+            // changeSensitive(id) {
+            //     axios.post('/api/info/sensitive_change', {
+            //         'id': id
+            //     }).then(r => {
+            //         console.log('response %o', r)
+            //         if (r.data.code === 0) {
+            //             // this.infolist = r.data.infolist
+            //             let info = this.infolist.find(e => e.id === id)
+            //             let index = this.infolist.indexOf(info)
+            //
+            //             this.infolist[index]['sensitive_state'] = !this.infolist[index]['sensitive_state']
+            //         }
+            //     }).catch(err => {
+            //         console.log('error %o', err)
+            //     })
+            // },
+
+
+            // chooseInfo(id) {
+            //     for (let index in this.infolist) {
+            //         if (this.infolist[index].fields.is_checked === false) {
+            //             this.checked = false
+            //             return
+            //         }
+            //     }
+            //     this.checked = true
+            //
+            //     // axios.post('/api/info/choose_change', {
+            //     //   'id': id
+            //     // }).then(r => {
+            //     //   console.log('response %o', r)
+            //     //   if (r.data.code === 0) {
+            //     //     let info = this..find(e => e.id === id)
+            //     //     let index = this.infolist.indexOf(info)
+            //     //     this.infolist[index]['is_checked'] = !this.infolist[index]['is_checked']
+            //     //   }
+            //     // })
+            // },
+
+
             chooseAll() {
                 for (let index in this.infolist) {
-                    this.infolist[index].is_checked = this.checked
+                    this.infolist[index].fields.is_checked = this.checked
                 }
             },
 
@@ -1069,21 +1081,23 @@
                     num = this.infolist.length
                 } else {
                     for (let index in this.infolist) {
-                        if (this.infolist[index].is_checked === true) {
+                        if (this.infolist[index].fields.is_checked === true) {
                             num++
                         }
                     }
                 }
                 this.news_number = num
             },
+
+
             insert_shoucangjia() {
                 this.piliang_jiarushoucangjia = true
                 let num = 0
                 if (this.checked === true) {
-                    num = this.info_list.length
+                    num = this.infolist.length
                 } else {
-                    for (let index in this.info_list) {
-                        if (this.info_list[index].is_checked === true) {
+                    for (let index in this.infolist) {
+                        if (this.infolist[index].fields.is_checked === true) {
                             num++
                         }
                     }
@@ -1092,8 +1106,8 @@
             },
             markAllRead() {
                 for (let index in this.infolist) {
-                    if (this.infolist[index].is_checked) {
-                        this.infolist[index].is_read = true
+                    if (this.infolist[index].fields.is_checked) {
+                        this.infolist[index].fields.is_read = true
                     }
                 }
             },

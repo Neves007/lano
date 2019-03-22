@@ -1,8 +1,8 @@
 <template>
     <div class="yq-siderbar-component" ref="card">
         <yq-sidebar-add @openPlanCreate="openPlanCreate" @getGroups="getGroups" ref="add"></yq-sidebar-add>
-        <yq-sidebar-collapse :file_name="title" :plan_list="plan_list" :groups="groups" :plans="plans"
-                             @modifCurrentPlan="modifCurrentPlan" @changeToEditPlan="changeToEditPlan"
+        <yq-sidebar-collapse :plan_list="plan_list" :groups="groups" :plans="plans"
+                             @clickCurrentPlan="clickCurrentPlan"
                              @getGroups="getGroups"></yq-sidebar-collapse>
     </div>
 </template>
@@ -20,8 +20,7 @@
             return {
                 title: '舆情监测方案',
                 plan_list: {},
-                // currentPlan: '',
-                successToCreateGroup: false
+                currentPlan: '',                successToCreateGroup: false
             }
         },
 
@@ -45,13 +44,10 @@
                 required: false,
                 default: false
             },
-            // currentPlan: {}
-
+            currentPlan: {}
         },
         methods: {
-            modifCurrentPlan(cp){
-                this.$emit('modifCurrentPlan',cp);
-            },
+
             getGroups() {
                 this.$emit('getGroups');
                 // this.$refs.add.
@@ -59,8 +55,8 @@
             openPlanCreate() {
                 this.$emit('openPlanCreate')
             },
-            changeToEditPlan() {
-                this.$emit('changeToEditPlan')
+            clickCurrentPlan(cp){
+                this.$emit('clickCurrentPlan',cp);
             }
 
         },

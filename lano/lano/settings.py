@@ -117,7 +117,7 @@ DATABASES = {
         'NAME': 'db_lano',
         'USER': 'root',
         # fjq的数据库密码是123456789
-        'PASSWORD': '123456',
+        'PASSWORD': 'cdliwenyao23',
         'HOST': 'localhost',
         'PORT': '3306',
     }

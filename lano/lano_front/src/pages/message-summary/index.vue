@@ -3,20 +3,16 @@
         <el-row :gutter="10">
             <el-col :span="asideSpan">
                 <el-card shadow="never">
-                    <yq-left-sidebar ref="leftSidebar" :plan_list="plan_list" :currentPlan='currentPlan' :plans="plans" :groups="groups"
+                    <yq-left-sidebar ref="leftSidebar" :plan_list="plan_list" :currentPlan='currentPlan' :plans="plans"
+                                     :groups="groups"
                                      @getGroups="getGroups"
-                                     @modifCurrentPlan='modifCurrentPlan'
-                                     @openPlanCreate="openPlanCreate"
-                                     @changeToEditPlan='changeToEditPlan'
-                                     @getPlanName="getPlanName"></yq-left-sidebar>
                 </el-card>
             </el-col>
             <el-col :span="mainContentSpan">
-                <div class="bg-purple-light" style="margin-bottom: 10px; padding: 10px"><b>{{name}}</b>
-                </div>
+                <div class="bg-purple-light" style="margin-bottom: 10px; padding: 10px"><b>{{currentPlan.fields.name}}</b>                </div>
                 <el-tabs v-model="activeName" @tab-click="handleClick" type="border-card">
                     <el-tab-pane label="信息列表" name="first">
-                        <yq-main-infolist></yq-main-infolist>
+                        <yq-main-infolist :infolist="infolist" :infolist_count="infolist_count" :currentPlan="currentPlan" @getInfoList="getInfoList" @emitFilterData="filtInfolist"></yq-main-infolist>
                     </el-tab-pane>
                     <el-tab-pane label="监测概述" name="collapse" style="background-color: #f8f8f9">
                         <el-row :gutter="30">
@@ -48,10 +44,12 @@
                     </el-tab-pane>
                     <!--方案新建和修改tab-->
                     <el-tab-pane label="新建方案" v-if="plan_operations" name="seventh">
-                        <yq-main-plan @openInfolist="openInfolist" @getPlans="getPlans" @getGroups="getGroups" :groups="groups"></yq-main-plan>
+                        <yq-main-plan @openInfolist="openInfolist" @getPlans="getPlans" @getGroups="getGroups"
+                                      :groups="groups"></yq-main-plan>
                     </el-tab-pane>
                     <el-tab-pane label="修改方案" v-else name="eighth">
-                        <yq-main-edit-plan :currentPlan="currentPlan" @changeToEditPlan="changeToEditPlan" @getPlans="getPlans"></yq-main-edit-plan>
+                        <yq-main-edit-plan :currentPlan="currentPlan" @changeToEditPlan="changeToEditPlan"
+                                           @getPlans="getPlans"></yq-main-edit-plan>
                     </el-tab-pane>
                 </el-tabs>
             </el-col>
@@ -63,6 +61,7 @@
 
     import D2ContainerCard from '../../components/d2-container/components/d2-container-card'
     import axios from 'axios'
+
     let base_url = 'http://127.0.0.1:8000/';
 
 
@@ -83,19 +82,43 @@
             this.colors = ['#0694d6', '#e6a23a', '#61a0a8', '#d48265', '#91c7ae', '#749f83', '#ca8622', '#bda29a', '#6e7074', '#546570', '#c4ccd3']
 
             return {
-                groups:{},
-                plans:{},
+                filter_data: {},
+                groups: {},
+                plans: {},
                 plan_operations: true,
                 plan_list: [],
                 activeName: 'first',
-                currentPlan: {},
+                currentPlan: {fields:{name:'initialplan'}},
                 asideSpan: 4,
                 mainContentSpan: 20,
-                name:''
-            }
+                infolist: [],
+                infolist_count:'',            }
         },
         methods: {
-            getPlans() {
+            filtInfolist(filter_data){
+                this.getInfoList(30,1,filter_data)
+            },
+            changeToEditPlan() {
+                this.plan_operations = false;
+                this.activeName = 'first'
+                this.getGroups()
+            },
+            getGroups() {
+                let that = this;
+                let temple_list = [];
+                axios.get(base_url + 'api/get_groups').then((r) => {
+                    if (r.data.error_num === 0) {
+                        for (let i = 0; i < r.data.list.length; i++) {
+                            temple_list[i] = r.data.list[i];
+                        }
+                        that.groups = temple_list; //拿到所有分组
+                        this.$emit('emitGroups', this.groups)
+                    }
+                }).catch(err => {
+                    console.log('group error %o', err)
+                })
+            },
+getPlans() {
                 let that = this;
                 let temple_list = [];
                 axios.get(base_url + 'api/get_plans').then((r) => {
@@ -104,69 +127,26 @@
                             temple_list[i] = r.data.list[i];
                         }
                         that.plans = temple_list; //拿到所有分组
-                        this.$emit('emitPlans',this.plans)
-                    }
+                        this.$emit('emitPlans', this.plans)                    }
                 }).catch(err => {
                     console.log('group error %o', err)
                 })
+            },
+            clickCurrentPlan(cp){
+                this.modifCurrentPlan(cp);
+                this.changeToEditPlan();
+                this.getCurrentPlanInfoList(30,1,this.filter_data)
+            },
+            modifCurrentPlan(cp) {
+                this.plan_operations = false;
+                this.currentPlan = cp
             },
             changeToEditPlan() {
                 this.plan_operations = false;
                 this.activeName = 'first'
-                this.getGroups()
             },
-            getGroups() {
-                console.log('123')
-                let that = this;
-                let temple_list = [];
-                axios.get(base_url + 'api/get_groups').then((r) => {
-                    if (r.data.error_num === 0) {
-                        for (let i = 0; i < r.data.list.length; i++) {
-                            temple_list[i] = r.data.list[i];
-                        }
-                        console.log('大index收到mainplan的请求啦，现在要把把新的groups返回去',this.groups)
-                        that.groups = temple_list; //拿到所有分组
-                        this.$emit('emitGroups', this.groups)
-                    }
-                }).catch(err => {
-                    console.log('group error %o', err)
-                })
-            },
-
-            modifCurrentPlan(cp){
-                this.plan_operations = false;
-                this.currentPlan=cp
-                this.name=cp.fields.name
-                console.log('1111111111')
-            },
-            // emitPlans(plans){
-            //    this.plans=plans
-            // },
-            getPlanList() {
-                let that = this
-                axios.get('/api/plan/plan_list').then((r) => {
-                    if (r.data.code === 0) {
-                        that.plan_list = r.data.plan
-                        that.currentPlan = r.data.plan[0]
-                    }
-                }).catch(err => {
-                    console.log('error %o', err)
-                })
-            },
-
-            // getDomainList() {
-            //     let that = this
-            //     axios.get('/api/directional/domain_list').then((r) => {
-            //         if (r.data.code === 0) {
-            //             that.directional_data.dir_website_tableData = r.data.domain
-            //         }
-            //         console.log('response %o', r)
-            //     }).catch(err => {
-            //         console.log('error %o', err)
-            //     })
-            // },
             getCurrentPlan(id) {
-                console.log('id %o', id)
+                console.log('大 index 点击方案getCurrentPlan id %o', id)
                 this.plan_operations = false
                 this.activeName = 'first'
                 for (var p in this.plan_list) {
@@ -179,16 +159,46 @@
                 this.plan_operations = true;
                 this.activeName = 'seventh'
             },
-            changeToEditPlan() {
-                this.plan_operations = false;
-                this.activeName = 'first'
-            },
 
+            getInfoList(page_size, page_num, filter_data) {
+                this.filter_data=filter_data;
+                let that = this;
+                let temple_list = [];
+                axios.get(base_url + 'api/switch_get_infolist', {
+                    params: {
+                        page_size: page_size,
+                        page_num: page_num,
+                        filter_data: filter_data,
+                        current_plan: this.currentPlan,
+                    }
+                }).then((r) => {
+                    if (r.data.error_num === 0) {
+                        this.infolist=r.data.list;
+                        console.log("大index中返回当前页面的infolist",this.infolist)
+                        for (let i = 0; i < this.infolist.length; i++) {
+                            temple_list[i] = r.data.list[i]['fields'];
+                            // temple_list[i]['time'] = temple_list[i]['time'].replace("T", " ").replace("+08:00", "");
+                            temple_list[i]['content'] = temple_list[i]['content'].replace(/<[^>]+>/g, "");
+                            temple_list[i]['key_word'] = temple_list[i]['key_word'].replace(/@/g, "、");
+                            temple_list[i]['type'] = temple_list[i]['type'];
+                            temple_list[i]['content'] = temple_list[i]['content'].substring(1, 300);
+                            temple_list[i]['id'] = i + 1;
+                            // temple_list[i]['feelings'] = temple_list[i]['feelings'].toString();
+                            temple_list[i]['warning_level'] = temple_list[i]['warning_level'].toString();
+                        }
+                        // that.infolist = temple_list;
+                        that.infolist_count = r.data.list_count;
+                    }
+                }).catch(err => {
+                    console.log('error %o', err)
+                })
+            },
         },
 
+
         mounted() {
-            // this.getDomainList()
-            this.getPlanList()
+            console.log("大index mouted的時候filter_data",this.filter_data)
+            console.log("大index mouted的時候currentPlan",this.currentPlan)
         },
 
     }

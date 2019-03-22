@@ -52,13 +52,13 @@
             getCurrentPlan(id) {
                 // this.plan_operations = false;
                 // this.activeName = 'first';
-                this.$emit('changeToEditPlan')
                 for (let p in this.plans) {
                     if (this.plans[p].pk === id) {
                         this.currentPlan = this.plans[p]
                     }
                 }
-                this.$emit('modifCurrentPlan',this.currentPlan);
+                // console.log('collapse currentPlan',this.currentPlan.fields.name)
+                this.$emit('clickCurrentPlan',this.currentPlan);
             },
         },
     }

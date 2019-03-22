@@ -96,7 +96,6 @@
         methods: {
             getGroups() {
                 this.$emit('getGroups')
-                console.log('???')
             },
 
             createGroup() {

@@ -239,7 +239,7 @@
         methods: {
 
             filterData() {
-                this.$emit("filterData", this.infolist_filter)
+                this.$emit("emitFilterData", this.infolist_filter)
             },
             source_type_handleCheckAllChange(val) {
                 this.infolist_filter.source_type_checkList = val ? source_type : [];

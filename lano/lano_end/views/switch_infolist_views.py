@@ -66,16 +66,26 @@ def get_infolist(request):
     page_num = request.GET.get('page_num')  # 页数
     current_col = int(page_size) * (int(page_num) - 1)  #当前这一页的30条数据
     filter_params = json.loads(request.GET.get('filter_data'))  # 筛选参数
+    current_plan = json.loads(request.GET.get('current_plan'))
+    print('current_plan.fields', current_plan['fields'])
+    print('filter_params', filter_params)
     response = {}
     try:
-        # infolist = chooseTimeRange(filter_params['time_range_radio'], user_defined_time_start, user_defined_time_end)
-        # 初始化infolist，微信 新闻源，时间降序，排除空内容
-        infolist = Allinfolist.objects.filter(source__in=['微信', '新闻']).exclude(content=None)
-        infolist = chooseTimeRange(infolist, filter_params)  # 经过 时间 筛选后的infolist
-        infolist = chooseArticleOrder(infolist, filter_params)  # 经过 排序 筛选后的infolist
-        infolist = infolist.filter(source__in=filter_params['source_type_checkList'])  # 经过 来源类型 筛选后的infolist
-        infolist = chooseSensitiveState(infolist, filter_params)  # 经过 敏感 筛选后的infolist
-
+        if current_plan['fields']['name'] == 'initialplan':
+            # infolist = chooseTimeRange(filter_params['time_range_radio'], user_defined_time_start, user_defined_time_end)
+            # 初始化infolist，微信 新闻源，时间降序，排除空内容
+            infolist = Allinfolist.objects.filter(source__in=['微信', '新闻']).exclude(content=None)
+            infolist = chooseTimeRange(infolist, filter_params)  # 经过 时间 筛选后的infolist
+            infolist = chooseArticleOrder(infolist, filter_params)  # 经过 排序 筛选后的infolist
+            infolist = infolist.filter(source__in=filter_params['source_type_checkList'])  # 经过 来源类型 筛选后的infolist
+            infolist = chooseSensitiveState(infolist, filter_params)  # 经过 敏感 筛选后的infolist
+        else:
+            infolist = Allinfolist.objects.filter(source__in=['微信', '新闻']).exclude(content=None)
+            infolist = chooseTimeRange(infolist, filter_params)  # 经过 时间 筛选后的infolist
+            infolist = chooseArticleOrder(infolist, filter_params)  # 经过 排序 筛选后的infolist
+            infolist = infolist.filter(source__in=filter_params['source_type_checkList'])  # 经过 来源类型 筛选后的infolist
+            infolist = chooseSensitiveState(infolist, filter_params)  # 经过 敏感 筛选后的infolist
+            infolist = infolist.filter(key_word__contains=current_plan['fields']['ad_conf'])
         list = infolist[current_col:current_col + int(page_size)]
         response['list_count'] = infolist.count()
         response['list'] = json.loads(serializers.serialize("json", list))
