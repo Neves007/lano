@@ -358,102 +358,107 @@
                      style="width: 40px; height: 40px; position: absolute; top: 10px;">
             </div>
         </td>
-        <td style="border-left: none;">
-            <div style="line-height: 30px; margin-bottom: 10px; position: relative; bottom: -5px;">
-                <!--用户名-->
-                <h4 style="display: inline-block; margin: 0 20px 0 0; color: #6699cc">
-                    {{item.fields.author_name}}
-                </h4>
-                <!--敏感性-->
-                <el-button type="success" size="mini" v-if="item.fields.sensitive_state"
-                           @click="subChangeSensitive">非敏感
-                </el-button>
 
-                <el-button type="danger" size="mini" v-else
-                           @click="subChangeSensitive">敏感
-                </el-button>
-                <!--方向性-->
-                <div style="position: relative; display: inline-block;">
-                    <el-select class="feeling_select" v-model="item.fields.feelings" size="mini">
-                        <el-option label="正面" value=1>正面</el-option>
-                        <el-option label="负面" value=2>负面</el-option>
-                        <el-option label="中性" value=3>中性</el-option>
+
+        <td style="border-left: none; display: flex; flex-flow: column nowrap;">
+            <div style="display: flex; flex-flow: row nowrap;justify-content: space-between; align-items: center">
+                <div style="line-height: 30px; margin-bottom: 10px; position: relative; bottom: -5px; display: flex; flex-flow: row nowrap;justify-content: flex-start">
+                    <!--用户名-->
+                    <h4 style="display: inline-block; margin: 0 20px 0 0; color: #6699cc">
+                        {{item.fields.author_name}}
+                    </h4>
+                    <!--敏感性-->
+                    <el-button type="success" size="mini" v-if="item.fields.sensitive_state"
+                               @click="subChangeSensitive">非敏感
+                    </el-button>
+
+                    <el-button type="danger" size="mini" v-else
+                               @click="subChangeSensitive">敏感
+                    </el-button>
+                    <!--方向性-->
+                    <div style="position: relative; display: inline-block;">
+                        <el-select class="feeling_select" v-model="item.fields.feelings" size="mini">
+                            <el-option label="正面" value=1>正面</el-option>
+                            <el-option label="负面" value=2>负面</el-option>
+                            <el-option label="中性" value=3>中性</el-option>
+                        </el-select>
+
+                        <el-button v-if="item.fields.feelings=== 1"
+                                   style="position: absolute; left: 13px; top: 2px; background-color: #67c23a; color: #fff;"
+                                   size="mini">正面
+                        </el-button>
+                        <el-button v-if="item.fields.feelings === 2"
+                                   style="position: absolute; left: 13px; top: 2px; background-color: #f56c6c; color: #fff;"
+                                   size="mini">负面
+                        </el-button>
+                        <el-button v-if="item.fields.feelings === 3"
+                                   style="position: absolute; left: 13px; top: 2px; background-color: #909399; color: #fff;"
+                                   size="mini">中性
+                        </el-button>
+                    </div>
+
+                    <!--危险性-->
+                    <el-select class="warning_select" v-model="item.fields.warning_level" size="mini"
+                               style="color: #000!important;">
+                        <el-option label="高危预警" value='1' style="color:#f56c6c;">高危预警
+                        </el-option>
+                        <el-option label="中危预警" value='2' style="color:#e6a23c;">中危预警
+                        </el-option>
+                        <el-option label="低危预警" value='3' style="color:#3a8ee6;">低危预警
+                        </el-option>
                     </el-select>
 
-                    <el-button v-if="item.fields.feelings=== 1"
-                               style="position: absolute; left: 13px; top: 2px; background-color: #67c23a; color: #fff;"
-                               size="mini">正面
+                    <el-button v-if="item.fields.warning_level === '1'"
+                               style="position: relative; left: -115px; top: -1px; background-color: #f56c6c; color: #fff;"
+                               size="mini">高危预警
                     </el-button>
-                    <el-button v-if="item.fields.feelings === 2"
-                               style="position: absolute; left: 13px; top: 2px; background-color: #f56c6c; color: #fff;"
-                               size="mini">负面
+                    <el-button v-if="item.fields.warning_level === '2'"
+                               style="position: relative; left: -115px; top: -1px; background-color: #e6a23c; color: #fff;"
+                               size="mini">中危预警
                     </el-button>
-                    <el-button v-if="item.fields.feelings === 3"
-                               style="position: absolute; left: 13px; top: 2px; background-color: #909399; color: #fff;"
-                               size="mini">中性
+                    <el-button v-if="item.fields.warning_level === '3'"
+                               style="position: relative; left: -115px; top: -1px; background-color: #3a8ee6; color: #fff;"
+                               size="mini">低危预警
                     </el-button>
+
                 </div>
-
-                <!--危险性-->
-                <el-select class="warning_select" v-model="item.fields.warning_level" size="mini"
-                           style="color: #000!important;">
-                    <el-option label="高危预警" value='1' style="color:#f56c6c;">高危预警
-                    </el-option>
-                    <el-option label="中危预警" value='2' style="color:#e6a23c;">中危预警
-                    </el-option>
-                    <el-option label="低危预警" value='3' style="color:#3a8ee6;">低危预警
-                    </el-option>
-                </el-select>
-
-                <el-button v-if="item.fields.warning_level === '1'"
-                           style="position: relative; left: -115px; top: -1px; background-color: #f56c6c; color: #fff;"
-                           size="mini">高危预警
-                </el-button>
-                <el-button v-if="item.fields.warning_level === '2'"
-                           style="position: relative; left: -115px; top: -1px; background-color: #e6a23c; color: #fff;"
-                           size="mini">中危预警
-                </el-button>
-                <el-button v-if="item.fields.warning_level === '3'"
-                           style="position: relative; left: -115px; top: -1px; background-color: #3a8ee6; color: #fff;"
-                           size="mini">低危预警
-                </el-button>
-
                 <!--原创性-->
-                <div style="display: inline-block;position: relative;bottom: -2px; background-color: #a1becc; width: 25px;height: 25px;text-align: center;float: right;">
+                <div style="background-color: #a1becc; width: 25px;height: 25px;text-align: center;">
                     <span style="color: white;" v-if="item.article_source">原</span>
-                    <span style="color: #7c8084;" v-else>转</span>
+                    <span style="color: #7c8084; " v-else>转</span>
                 </div>
+
             </div>
 
             <!--文章内容-->
             <div>
-                <p style="display: inline-block; font-size: 14px; color: grey; margin-top: 10px;margin-right: 50px;">
+                <p style="display: inline-block; font-size: 14px; color: grey; margin-top: 10px;margin-right: 50px; display: flex; flex-flow: wrap; ">
                     {{item.fields.content}}
                 </p>
             </div>
 
             <!--附属信息-->
-            <div style="display: inline-block">
-                <!--涉及词-->
-                <div style="font-size: 14px; margin-top: 20px;">
-                    <span>涉及词：</span>
-                    <span style="color: orangered">{{item.fields.key_word}}</span>
-                </div>
-                <!--新源区域 信息类别-->
-                <div style="font-size: 14px;">
-                    <span>信源区域：</span>
-                    <span style="color: #6699cc">{{item.fields.article_province}}</span>
-                    &nbsp;&nbsp;&nbsp;
-                    <span>分类：</span>
-                    <span style="color: #6699cc">{{item.fields.type}}</span>
-                </div>
-            </div>
+            <div style="display: flex; flex-flow: row nowrap; justify-content: space-between;">
+                <div style="display: inline-block;display: flex; flex-flow: column nowrap;">
 
-
-            <div class="pull-right">
-                <!--子组件添加jiarushoucangjia属性jiarujianbaosucai属性duanxin_tongxunlu属性youxiang_tongxunlu属性wechat_tongxunlu属性-->
-                <!--按钮集合-->
-                <div style="float: right;position: relative;bottom: -30px">
+                    <!--涉及词-->
+                    <div style="font-size: 14px; margin-top: 20px;">
+                        <span>涉及词：</span>
+                        <span style="color: orangered">{{item.fields.key_word}}</span>
+                    </div>
+                    <!--新源区域 信息类别-->
+                    <div style="font-size: 14px;">
+                        <span>信源区域：</span>
+                        <span style="color: #6699cc">{{item.fields.article_province}}</span>
+                        &nbsp;&nbsp;&nbsp;
+                        <span>分类：</span>
+                        <span style="color: #6699cc">{{item.fields.type}}</span>
+                    </div>
+                </div>
+                <div class="pull-right"
+                     style="display: flex; flex-flow: row nowrap; justify-content: flex-start; align-self: flex-end; align-items: center; ">
+                    <!--子组件添加jiarushoucangjia属性jiarujianbaosucai属性duanxin_tongxunlu属性youxiang_tongxunlu属性wechat_tongxunlu属性-->
+                    <!--按钮集合-->
                     <el-tooltip class="item" effect="dark" content="加入收藏夹"
                                 placement="bottom">
                         <el-button type="info" style="padding: 4px 4px;"
@@ -997,7 +1002,7 @@
             nextPage(val) {
                 this.pagination.currentPage = val;
                 this.$emit('nextPage', this.pagination.currentPage)
-                console.log("table this.infolist",this.infolist)
+                console.log("table this.infolist", this.infolist)
             },
             subChangeSensitive() {
                 this.$emit('subChange_Sensitive', this.item.id);
@@ -1007,7 +1012,6 @@
                 this.$emit('subChange_ReadState', this.item.id);
 
             },
-
 
 
             // change_readState(id) {
