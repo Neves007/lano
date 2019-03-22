@@ -6,10 +6,11 @@
                     <yq-left-sidebar ref="leftSidebar" :plan_list="plan_list" :currentPlan='currentPlan' :plans="plans"
                                      :groups="groups"
                                      @getGroups="getGroups"
+                                     @clickCurrentPlan="clickCurrentPlan"></yq-left-sidebar>
                 </el-card>
             </el-col>
             <el-col :span="mainContentSpan">
-                <div class="bg-purple-light" style="margin-bottom: 10px; padding: 10px"><b>{{currentPlan.fields.name}}</b>                </div>
+                <div class="bg-purple-light" style="margin-bottom: 10px; padding: 10px"><b>{{currentPlan.fields.name}}</b></div>
                 <el-tabs v-model="activeName" @tab-click="handleClick" type="border-card">
                     <el-tab-pane label="信息列表" name="first">
                         <yq-main-infolist :infolist="infolist" :infolist_count="infolist_count" :currentPlan="currentPlan" @getInfoList="getInfoList" @emitFilterData="filtInfolist"></yq-main-infolist>
@@ -92,7 +93,8 @@
                 asideSpan: 4,
                 mainContentSpan: 20,
                 infolist: [],
-                infolist_count:'',            }
+                infolist_count:'',
+            }
         },
         methods: {
             filtInfolist(filter_data){
@@ -118,7 +120,7 @@
                     console.log('group error %o', err)
                 })
             },
-getPlans() {
+            getPlans() {
                 let that = this;
                 let temple_list = [];
                 axios.get(base_url + 'api/get_plans').then((r) => {
@@ -135,7 +137,7 @@ getPlans() {
             clickCurrentPlan(cp){
                 this.modifCurrentPlan(cp);
                 this.changeToEditPlan();
-                this.getCurrentPlanInfoList(30,1,this.filter_data)
+                this.getInfoList(30,1,this.filter_data)
             },
             modifCurrentPlan(cp) {
                 this.plan_operations = false;
