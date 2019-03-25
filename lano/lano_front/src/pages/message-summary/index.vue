@@ -6,6 +6,7 @@
                     <yq-left-sidebar ref="leftSidebar" :plan_list="plan_list" :currentPlan='currentPlan' :plans="plans"
                                      :groups="groups"
                                      @getGroups="getGroups"
+                                     @openPlanCreate="openPlanCreate"
                                      @clickCurrentPlan="clickCurrentPlan"></yq-left-sidebar>
                 </el-card>
             </el-col>
@@ -203,7 +204,7 @@
                             temple_list[i]['content'] = temple_list[i]['content'].replace(/<[^>]+>/g, "");
                             temple_list[i]['key_word'] = temple_list[i]['key_word'].replace(/@/g, "、");
                             temple_list[i]['type'] = temple_list[i]['type'];
-                            temple_list[i]['content'] = temple_list[i]['content'].substring(1, 300);
+                            temple_list[i]['content'] = temple_list[i]['content'].substring(0, 300);
                             temple_list[i]['id'] = i + 1;
                             // temple_list[i]['feelings'] = temple_list[i]['feelings'].toString();
                             temple_list[i]['warning_level'] = temple_list[i]['warning_level'].toString();
