@@ -85,6 +85,9 @@
             }
         },
         methods: {
+            close(){
+                this.visible=false
+            },
             getGroups() {
                 this.$emit('getGroups')
             },
