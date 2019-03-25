@@ -60,8 +60,8 @@
             </el-form-item>
         </el-row>
         <el-row>
-            <el-form-item>
-                <el-button class="save" @click="savePlan">保存</el-button>
+            <el-form-item style="text-align:center">
+                <el-button class="save" @click="openInfolist">保存</el-button>
                 <!--<el-button id="cancel">取消</el-button>-->
             </el-form-item>
         </el-row>
