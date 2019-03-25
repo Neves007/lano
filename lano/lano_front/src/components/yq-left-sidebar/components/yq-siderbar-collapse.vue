@@ -7,7 +7,7 @@
                 </template>
                 <el-row style="margin-bottom: 0" v-for="plan_item in plans" :key="plan_item.pk">
                     <el-button-group v-show="plan_item.fields.group_id==gp.pk">
-                        <el-button plain @click="getCurrentPlan(plan_item.pk)"><i class="fa fa-wrench"></i>
+                        <el-button id="1" plain @click="getCurrentPlan(plan_item.pk)"><i class="fa fa-wrench"></i>
                             {{plan_item.fields.name}}
                         </el-button>
                     </el-button-group>
@@ -65,40 +65,6 @@
 </script>
 
 <style scoped>
-    .cu_plan_collapse >>> .el-collapse-item__wrap {
-        will-change: height;
-        overflow: hidden;
-        -webkit-box-sizing: border-box;
-        box-sizing: border-box;
-        border-bottom: 0 solid #ebeef5;
-    }
 
-    .cu_plan_collapse >>> .el-collapse-item__header {
-        border-bottom: 0;
-        border-top: 3px solid orange;
-    }
-
-    .el-button-group > .el-button:first-child:last-child {
-        border-radius: 0;
-        border: 0;
-        border-left: 3px solid white;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-        width: 260px;
-        text-align: left;
-
-    }
-
-    .el-button-group > .el-button:first-child:last-child:hover {
-        background: #eaeaea;
-        color: orange;
-    }
-
-    .el-button-group > .el-button:first-child:last-child:focus {
-        background: #eaeaea;
-        border-left: 3px solid orange;
-        color: orange;
-    }
 
 </style>

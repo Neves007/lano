@@ -98,6 +98,7 @@
         },
         methods: {
             filtInfolist(filter_data){
+                console.log('点击查询后的filterdata',filter_data);
                 this.getInfoList(30,1,filter_data)
             },
             changeToEditPlan() {
@@ -137,7 +138,26 @@
             clickCurrentPlan(cp){
                 this.modifCurrentPlan(cp);
                 this.changeToEditPlan();
-                this.getInfoList(30,1,this.filter_data)
+                this.filter_data={
+                    time_range_radio: 1,
+                    article_order_radio: 1,
+                    result_show_radio: 1,
+                    repost_weibo_radio: 1,
+                    msg_region: '四川',
+                    msg_region_radio: 2,
+                    weibo_content_radio: 1,
+                    source_website_radio: 1,
+                    sensitive_attr_radio: 1,
+                    similar_article_radio: 1,
+                    related_method_radio: 1,
+                    match_method_radio: 1,
+                    source_type_checkList: ['微信'],
+                    source_type_checkAll: false,
+                    isIndeterminate: true,
+                    time_value: '',
+                };
+                
+                this.getInfoList(30,1,this.filter_data);
             },
             modifCurrentPlan(cp) {
                 this.plan_operations = false;

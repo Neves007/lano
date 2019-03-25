@@ -362,64 +362,70 @@
 
         <td style="border-left: none; display: flex; flex-flow: column nowrap;">
             <div style="display: flex; flex-flow: row nowrap;justify-content: space-between; align-items: center">
-                <div style="line-height: 30px; margin-bottom: 10px; position: relative; bottom: -5px; display: flex; flex-flow: row nowrap;justify-content: flex-start">
+                <div style="line-height: 30px; margin-bottom: 10px; position: relative; bottom: -5px; display: flex; flex-flow: row nowrap;justify-content: flex-start;align-items: baseline;">
                     <!--用户名-->
                     <h4 style="display: inline-block; margin: 0 20px 0 0; color: #6699cc">
                         {{item.fields.author_name}}
                     </h4>
-                    <!--敏感性-->
-                    <el-button type="success" size="mini" v-if="item.fields.sensitive_state"
-                               @click="subChangeSensitive">非敏感
-                    </el-button>
 
-                    <el-button type="danger" size="mini" v-else
-                               @click="subChangeSensitive">敏感
-                    </el-button>
-                    <!--方向性-->
-                    <div style="position: relative; display: inline-block;">
-                        <el-select class="feeling_select" v-model="item.fields.feelings" size="mini">
-                            <el-option label="正面" value=1>正面</el-option>
-                            <el-option label="负面" value=2>负面</el-option>
-                            <el-option label="中性" value=3>中性</el-option>
-                        </el-select>
+                    <div style="height: 28px; display: flex; align-items: baseline;">
+                        <!--敏感性-->
+                        <el-button type="success" size="mini" style="height: 27px;" v-if="item.fields.sensitive_state"
+                                   @click="subChangeSensitive">非敏感
+                        </el-button>
 
-                        <el-button v-if="item.fields.feelings=== 1"
-                                   style="position: absolute; left: 13px; top: 2px; background-color: #67c23a; color: #fff;"
-                                   size="mini">正面
+                        <el-button type="danger" size="mini" style="height: 27px;" v-else
+                                   @click="subChangeSensitive">敏感
                         </el-button>
-                        <el-button v-if="item.fields.feelings === 2"
-                                   style="position: absolute; left: 13px; top: 2px; background-color: #f56c6c; color: #fff;"
-                                   size="mini">负面
-                        </el-button>
-                        <el-button v-if="item.fields.feelings === 3"
-                                   style="position: absolute; left: 13px; top: 2px; background-color: #909399; color: #fff;"
-                                   size="mini">中性
-                        </el-button>
+                        <!--方向性-->
+                        <div style="position: relative; display: inline-block; height: 27px;">
+                            <el-select class="feeling_select" v-model="item.fields.feelings" size="mini" style="height: 27px;">
+                                <el-option label="正面" value=1>正面</el-option>
+                                <el-option label="负面" value=2>负面</el-option>
+                                <el-option label="中性" value=3>中性</el-option>
+                            </el-select>
+
+                            <el-button v-if="item.fields.feelings=== 1"
+                                       style="position: absolute; left: 13px; top: 2px; background-color: #67c23a; color: #fff;height: 27px;"
+                                       size="mini">正面
+                            </el-button>
+                            <el-button v-if="item.fields.feelings === 2"
+                                       style="position: absolute; left: 13px; top: 2px; background-color: #f56c6c; color: #fff;height: 27px;"
+                                       size="mini">负面
+                            </el-button>
+                            <el-button v-if="item.fields.feelings === 3"
+                                       style="position: absolute; left: 13px; top: 2px; background-color: #909399; color: #fff;height: 27px; "
+                                       size="mini">中性
+                            </el-button>
+                        </div>
+
+                        <!--危险性-->
+                        <div style="position: relative; bottom: -1px; display: inline-block; height: 27px;">
+                            <el-select class="warning_select" v-model="item.fields.warning_level" size="mini"
+                                       style="color: #000!important;height: 27px;">
+                                <el-option label="高危预警" value='1' style="color:#f56c6c;">高危预警
+                                </el-option>
+                                <el-option label="中危预警" value='2' style="color:#e6a23c;">中危预警
+                                </el-option>
+                                <el-option label="低危预警" value='3' style="color:#3a8ee6;">低危预警
+                                </el-option>
+                            </el-select>
+
+                            <el-button v-if="item.fields.warning_level === '1'"
+                                       style="position: relative; left: -115px; top: -1px; background-color: #f56c6c; color: #fff;height: 27px;"
+                                       size="mini">高危预警
+                            </el-button>
+                            <el-button v-if="item.fields.warning_level === '2'"
+                                       style="position: relative; left: -115px; top: -1px; background-color: #e6a23c; color: #fff;height: 27px;"
+                                       size="mini">中危预警
+                            </el-button>
+                            <el-button v-if="item.fields.warning_level === '3'"
+                                       style="position: relative; left: -115px; top: -1px; background-color: #3a8ee6; color: #fff;height: 27px;"
+                                       size="mini">低危预警
+                            </el-button>
+                        </div>
+
                     </div>
-
-                    <!--危险性-->
-                    <el-select class="warning_select" v-model="item.fields.warning_level" size="mini"
-                               style="color: #000!important;">
-                        <el-option label="高危预警" value='1' style="color:#f56c6c;">高危预警
-                        </el-option>
-                        <el-option label="中危预警" value='2' style="color:#e6a23c;">中危预警
-                        </el-option>
-                        <el-option label="低危预警" value='3' style="color:#3a8ee6;">低危预警
-                        </el-option>
-                    </el-select>
-
-                    <el-button v-if="item.fields.warning_level === '1'"
-                               style="position: relative; left: -115px; top: -1px; background-color: #f56c6c; color: #fff;"
-                               size="mini">高危预警
-                    </el-button>
-                    <el-button v-if="item.fields.warning_level === '2'"
-                               style="position: relative; left: -115px; top: -1px; background-color: #e6a23c; color: #fff;"
-                               size="mini">中危预警
-                    </el-button>
-                    <el-button v-if="item.fields.warning_level === '3'"
-                               style="position: relative; left: -115px; top: -1px; background-color: #3a8ee6; color: #fff;"
-                               size="mini">低危预警
-                    </el-button>
 
                 </div>
                 <!--原创性-->
