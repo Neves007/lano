@@ -60,7 +60,7 @@
             </el-form-item>
         </el-row>
         <el-row>
-            <el-form-item>
+            <el-form-item style="text-align:center">
                 <el-button class="save" @click="modifPlan">保存</el-button>
                 <el-button class="delete" @click="deletePlan">删除</el-button>
                 <!--<el-button id="cancel">取消</el-button>-->
