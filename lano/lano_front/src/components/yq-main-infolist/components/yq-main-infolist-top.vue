@@ -1,95 +1,25 @@
 <template>
-    <div>
-        <el-row class="shuxing" style="padding-left: 10px">
-            <el-col :span="12">
+    <div style="display: flex;flex-flow: column nowrap">
+        <el-row class="shuxing" style="padding-left: 10px; display: flex;flex-flow: column nowrap">
+            <div style="line-height:19px;display: flex;flex-flow: row nowrap;align-items:flex-end">
                 <!--时间范围-->
-                <div style="font-size: 14px; display: inline-block">时间范围：</div>
-                <el-radio-group v-model="infolist_filter.time_range_radio" class="cu_infolist_radio"
-                                @change="zidingyishijian">
-                    <el-radio :label=1>今日</el-radio>
-                    <el-radio :label=2>24小时</el-radio>
-                    <el-radio :label=3>2天</el-radio>
-                    <el-radio :label=4>3天</el-radio>
-                    <el-radio :label=5>7天</el-radio>
-                    <el-radio :label=6>10天</el-radio>
-                    <el-radio :label=7>自定义</el-radio>
-                </el-radio-group>
-                <br/>
-                <hr style="background-color:#d2d5db;height: 1px;border: none;"/>
-                <!--文章排序-->
-                <div style="font-size: 14px; display: inline-block">文章排序：</div>
-                <el-radio-group v-model="infolist_filter.article_order_radio" class="cu_infolist_radio">
-                    <el-radio :label=1>智能排序</el-radio>
-                    <el-radio :label=2>时间降序</el-radio>
-                    <el-radio :label=3>时间升序</el-radio>
-                    <el-radio :label=4>相似文章</el-radio>
-                    <el-radio :label=5>采集顺序</el-radio>
-                </el-radio-group>
-                <br/>
-                <hr style="background-color:#d2d5db;height: 1px;border: none;"/>
-                <!--结果呈现-->
-                <div style="font-size: 14px; display: inline-block">结果呈现：</div>
-                <el-radio-group v-model="infolist_filter.result_show_radio" class="cu_infolist_radio">
-                    <el-radio :label="1">正常信息</el-radio>
-                    <el-radio :label="2">精准信息</el-radio>
-                    <el-radio :label="3">疑似垃圾</el-radio>
-                </el-radio-group>
-                <br/>
-                <hr style="background-color:#d2d5db;height: 1px;border: none;"/>
-                <!--转发微博-->
-                <div style="font-size: 14px; display: inline-block">转发微博：</div>
-                <el-radio-group v-model="infolist_filter.repost_weibo_radio" class="cu_infolist_radio">
-                    <el-radio :label="1">显示</el-radio>
-                    <el-radio :label="2">不显示</el-radio>
-                </el-radio-group>
-                <el-tooltip class="item" effect="dark" content="微博只对新浪微博生效" placement="right">
-                    <i class="el-icon-question custom-helper-info"></i>
-                </el-tooltip>
-                <br/>
-                <hr style="background-color:#d2d5db;height: 1px;border: none;margin-bottom: 4px;"/>
-                <!--信源区域-->
-                <div style="font-size: 14px; display: inline-block">信源区域：</div>
-                <el-select class="xinyuanquyu" v-model="infolist_filter.msg_region" placeholder="全部" size="mini"
-                           @change="xinyuanquyu">
-                    <el-option
-                            v-for="item in options"
-                            :key="item.value"
-                            :label="item.label"
-                            :value="item.value">
-                    </el-option>
-                </el-select>
-                <el-radio-group v-model="infolist_filter.msg_region_radio" class="cu_infolist_radio"
-                                @change="xinyuanquyu_danxuan">
-                    <el-radio :label="2">省内</el-radio>
-                    <el-radio :label="3">省外</el-radio>
-                </el-radio-group>
-                <br/>
-                <hr style="background-color:#d2d5db;height: 1px;border: none;margin-top: 4px;"/>
-                <!--微博内容-->
-                <div style="font-size: 14px; display: inline-block">微博内容：</div>
-                <el-radio-group v-model="infolist_filter.weibo_content_radio" class="cu_infolist_radio">
-                    <el-radio :label="1">全部</el-radio>
-                    <el-radio :label="2">按文本</el-radio>
-                    <el-radio :label="3">按图文</el-radio>
-                    <el-radio :label="4">按视频</el-radio>
-                    <el-radio :label="5">按短链</el-radio>
-                </el-radio-group>
-                <br/>
-                <hr style="background-color:#d2d5db;height: 1px;border: none;"/>
-                <div style="font-size: 14px; display: inline-block">来源网站：</div>
-                <el-radio-group v-model="infolist_filter.source_website_radio" class="cu_infolist_radio">
-                    <el-radio :label="1">全部</el-radio>
-                    <el-radio :label="2">贴吧</el-radio>
-                    <el-radio :label="3">定向信源</el-radio>
-                </el-radio-group>
-                <el-tooltip class="item" effect="dark" content="点击跳转至定向监测" placement="top">
-                    <i class="el-icon-edit custom-helper-info" @click="goto_dingxiangjiance"></i>
-                </el-tooltip>
-                <br/>
-                <hr style="background-color:#d2d5db;height: 1px;border: none;"/>
-            </el-col>
-            <el-col :span="12">
-                <div v-show="qitashijian">
+                <el-col :span="12" >
+                    <div style="font-size: 14px; display: inline-block">时间范围：</div>
+                    <el-radio-group v-model="infolist_filter.time_range_radio" class="cu_infolist_radio"
+                                    @change="zidingyishijian">
+                        <el-radio :label=1>今日</el-radio>
+                        <el-radio :label=2>24小时</el-radio>
+                        <el-radio :label=3>2天</el-radio>
+                        <el-radio :label=4>3天</el-radio>
+                        <el-radio :label=5>7天</el-radio>
+                        <el-radio :label=6>10天</el-radio>
+                        <el-radio :label=7>自定义</el-radio>
+                    </el-radio-group>
+                    <hr style="background-color:#d2d5db;height: 1px;border: none;"/>
+                </el-col>
+                    <!--<br/>-->
+                <el-col :span="12">
+                    <div v-show="qitashijian">
                     <div style="font-size: 14px;line-height:19px;display: inline-block">其他时间：</div>
                     <div class="block zidingyi_date" style="display: inline-block;margin-left: 18px">
                         <el-date-picker
@@ -100,51 +30,151 @@
                                 end-placeholder="结束日期" size="mini">
                         </el-date-picker>
                     </div>
-                    <hr style="background-color:#d2d5db;height: 1px;border: none;margin-top: 4px"/>
+                        <hr style="background-color:#d2d5db;height: 1px;border: none;margin-top: 5px"/>
+                    </div>
+                    <div v-show="kongbai">
+                        <div style="font-size: 14px;line-height:19px;">&nbsp;</div>
+                        <hr style="background-color:#d2d5db;height: 1px;border: none;"/>
+                    </div>
+                </el-col>
+            </div>
+            <!--<hr style="background-color:#d2d5db;height: 1px;border: none;"/>-->
+            <div>
+                <div style="display: flex;flex-flow: row nowrap;">
+                <el-col span="12">
+                    <!--文章排序-->
+                    <div style="font-size: 14px; display: inline-block">文章排序：</div>
+                    <el-radio-group v-model="infolist_filter.article_order_radio" class="cu_infolist_radio">
+                        <el-radio :label=1>智能排序</el-radio>
+                        <el-radio :label=2>时间降序</el-radio>
+                        <el-radio :label=3>时间升序</el-radio>
+                        <el-radio :label=4>相似文章</el-radio>
+                        <el-radio :label=5>采集顺序</el-radio>
+                    </el-radio-group>
+                </el-col>
+                <el-col span="12">
+                    <div style="font-size: 14px; display: inline-block">敏感属性：</div>
+                    <el-radio-group v-model="infolist_filter.sensitive_attr_radio" class="cu_infolist_radio">
+                        <el-radio :label="1">全部</el-radio>
+                        <el-radio :label="2">非敏感</el-radio>
+                        <el-radio :label="3">敏感</el-radio>
+                    </el-radio-group>
+                </el-col>
+            </div>
+                <hr style="background-color:#d2d5db;height: 1px;border: none;"/>
+            </div>
+            <div>
+                <div style="display: flex;flex-flow: row nowrap;">
+                    <el-col span="12">
+                        <!--结果呈现-->
+                        <div style="font-size: 14px; display: inline-block">结果呈现：</div>
+                        <el-radio-group v-model="infolist_filter.result_show_radio" class="cu_infolist_radio">
+                            <el-radio :label="1">正常信息</el-radio>
+                            <el-radio :label="2">精准信息</el-radio>
+                            <el-radio :label="3">疑似垃圾</el-radio>
+                        </el-radio-group>
+                    </el-col>
+                    <el-col span="12">
+                        <!--相似文章-->
+                        <div style="font-size: 14px; display: inline-block">相似文章：</div>
+                        <el-radio-group v-model="infolist_filter.similar_article_radio" class="cu_infolist_radio">
+                            <el-radio :label="1">不合并</el-radio>
+                            <el-radio :label="2">合并</el-radio>
+                        </el-radio-group>
+                        <el-tooltip class="item" effect="dark" content="提供时间跨度为35天以内的信息合并" placement="right">
+                            <i class="el-icon-question custom-helper-info"></i>
+                        </el-tooltip>
+                    </el-col>
                 </div>
-                <div v-show="kongbai">
-                    <div style="font-size: 14px;line-height:19px;">&nbsp;</div>
-                    <hr style="background-color:#d2d5db;height: 1px;border: none;"/>
-                </div>
-                <div style="font-size: 14px; display: inline-block">敏感属性：</div>
-                <el-radio-group v-model="infolist_filter.sensitive_attr_radio" class="cu_infolist_radio">
-                    <el-radio :label="1">全部</el-radio>
-                    <el-radio :label="2">非敏感</el-radio>
-                    <el-radio :label="3">敏感</el-radio>
-                </el-radio-group>
-                <br/>
                 <hr style="background-color:#d2d5db;height: 1px;border: none;"/>
-                <div style="font-size: 14px; display: inline-block">相似文章：</div>
-                <el-radio-group v-model="infolist_filter.similar_article_radio" class="cu_infolist_radio">
-                    <el-radio :label="1">不合并</el-radio>
-                    <el-radio :label="2">合并</el-radio>
-                </el-radio-group>
-                <el-tooltip class="item" effect="dark" content="提供时间跨度为35天以内的信息合并" placement="right">
-                    <i class="el-icon-question custom-helper-info"></i>
-                </el-tooltip>
-                <br/>
+            </div>
+            <div>
+                <div style="display: flex;flex-flow: row nowrap;">
+                <el-col span="12">
+                    <!--转发微博-->
+                    <div style="font-size: 14px; display: inline-block">转发微博：</div>
+                    <el-radio-group v-model="infolist_filter.repost_weibo_radio" class="cu_infolist_radio">
+                        <el-radio :label="1">显示</el-radio>
+                        <el-radio :label="2">不显示</el-radio>
+                    </el-radio-group>
+                    <el-tooltip class="item" effect="dark" content="微博只对新浪微博生效" placement="right">
+                        <i class="el-icon-question custom-helper-info"></i>
+                    </el-tooltip>
+                </el-col>
+                <el-col span="12">
+                    <div style="font-size: 14px; display: inline-block">涉及方式：</div>
+                    <el-radio-group v-model="infolist_filter.related_method_radio" class="cu_infolist_radio">
+                        <el-radio :label="1">全部</el-radio>
+                        <el-radio :label="2">内容涉及</el-radio>
+                        <el-radio :label="3">定位涉及</el-radio>
+                    </el-radio-group>
+                </el-col>
+            </div>
                 <hr style="background-color:#d2d5db;height: 1px;border: none;"/>
-                <div style="font-size: 14px; display: inline-block">涉及方式：</div>
-                <el-radio-group v-model="infolist_filter.related_method_radio" class="cu_infolist_radio">
-                    <el-radio :label="1">全部</el-radio>
-                    <el-radio :label="2">内容涉及</el-radio>
-                    <el-radio :label="3">定位涉及</el-radio>
-                </el-radio-group>
-                <br/>
+            </div>
+            <div>
+                <div style="display: flex;flex-flow: row nowrap;">
+                <el-col span="12">
+                    <!--信源区域-->
+                    <div style="font-size: 14px; display: inline-block">信源区域：</div>
+                    <el-select class="xinyuanquyu" v-model="infolist_filter.msg_region" placeholder="全部" size="mini"
+                               @change="xinyuanquyu">
+                        <el-option
+                                v-for="item in options"
+                                :key="item.value"
+                                :label="item.label"
+                                :value="item.value">
+                        </el-option>
+                    </el-select>
+                    <el-radio-group v-model="infolist_filter.msg_region_radio" class="cu_infolist_radio"
+                                    @change="xinyuanquyu_danxuan">
+                        <el-radio :label="2">省内</el-radio>
+                        <el-radio :label="3">省外</el-radio>
+                    </el-radio-group>
+                </el-col>
+                <el-col span="12">
+                    <div style="font-size: 14px; display: inline-block">匹配方式：</div>
+                    <el-radio-group v-model="infolist_filter.match_method_radio" class="cu_infolist_radio">
+                        <el-radio :label="1">按全文</el-radio>
+                        <el-radio :label="2">按标题</el-radio>
+                        <el-radio :label="3">按正文</el-radio>
+                    </el-radio-group>
+                </el-col>
+            </div>
                 <hr style="background-color:#d2d5db;height: 1px;border: none;"/>
-                <div style="font-size: 14px; display: inline-block">匹配方式：</div>
-                <el-radio-group v-model="infolist_filter.match_method_radio" class="cu_infolist_radio">
-                    <el-radio :label="1">按全文</el-radio>
-                    <el-radio :label="2">按标题</el-radio>
-                    <el-radio :label="3">按正文</el-radio>
-                </el-radio-group>
-                <br/>
+            </div>
+            <div>
+                <div style="display: flex;flex-flow: row nowrap;">
+                <el-col span="12">
+                    <!--微博内容-->
+                    <div style="font-size: 14px; display: inline-block">微博内容：</div>
+                    <el-radio-group v-model="infolist_filter.weibo_content_radio" class="cu_infolist_radio">
+                        <el-radio :label="1">全部</el-radio>
+                        <el-radio :label="2">按文本</el-radio>
+                        <el-radio :label="3">按图文</el-radio>
+                        <el-radio :label="4">按视频</el-radio>
+                        <el-radio :label="5">按短链</el-radio>
+                    </el-radio-group>
+                </el-col>
+            </div>
                 <hr style="background-color:#d2d5db;height: 1px;border: none;"/>
-                <div style="font-size: 14px;line-height:19px;">&nbsp;</div>
+            </div>
+            <div>
+                <div style="display: flex;flex-flow: row nowrap;">
+                <el-col span="12">
+                    <div style="font-size: 14px; display: inline-block">来源网站：</div>
+                    <el-radio-group v-model="infolist_filter.source_website_radio" class="cu_infolist_radio">
+                        <el-radio :label="1">全部</el-radio>
+                        <el-radio :label="2">贴吧</el-radio>
+                        <el-radio :label="3">定向信源</el-radio>
+                    </el-radio-group>
+                    <el-tooltip class="item" effect="dark" content="点击跳转至定向监测" placement="top">
+                        <i class="el-icon-edit custom-helper-info" @click="goto_dingxiangjiance"></i>
+                    </el-tooltip>
+                </el-col>
+            </div>
                 <hr style="background-color:#d2d5db;height: 1px;border: none;"/>
-                <div style="font-size: 14px;line-height:19px;">&nbsp;</div>
-                <hr style="background-color:#d2d5db;height: 1px;border: none;"/>
-            </el-col>
+            </div>
         </el-row>
         <el-row style="padding-left: 10px;margin-bottom: 0px">
             <div style="font-size: 14px; display: inline-block;">来源类型（多选）：</div>
