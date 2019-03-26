@@ -385,15 +385,15 @@
                                 <el-option label="中性" value=3>中性</el-option>
                             </el-select>
 
-                            <el-button v-if="item.fields.feelings=== 1"
+                            <el-button v-if="item.fields.feelings== 1"
                                        style="position: absolute; left: 13px; top: 2px; background-color: #67c23a; color: #fff;height: 27px;"
                                        size="mini">正面
                             </el-button>
-                            <el-button v-if="item.fields.feelings === 2"
+                            <el-button v-if="item.fields.feelings == 2"
                                        style="position: absolute; left: 13px; top: 2px; background-color: #f56c6c; color: #fff;height: 27px;"
                                        size="mini">负面
                             </el-button>
-                            <el-button v-if="item.fields.feelings === 3"
+                            <el-button v-if="item.fields.feelings == 3"
                                        style="position: absolute; left: 13px; top: 2px; background-color: #909399; color: #fff;height: 27px; "
                                        size="mini">中性
                             </el-button>
