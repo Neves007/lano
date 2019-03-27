@@ -1,4 +1,5 @@
 from django.db import models
+import uuid
 
 
 # Create your models here.
@@ -45,3 +46,10 @@ class Plan(models.Model):
     exclude = models.CharField(max_length=54)
     group_id = models.IntegerField(max_length=54)
     ad_conf = models.CharField(max_length=54)
+
+
+class User(models.Model):
+    uuid = models.UUIDField(primary_key=True, auto_created=True, default=None)
+    username = models.CharField(max_length=45)
+    password = models.CharField(max_length=45)
+    name = models.CharField(max_length=45)
