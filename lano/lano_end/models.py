@@ -35,6 +35,7 @@ class Allinfolist(models.Model):
 class Group(models.Model):
     id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=45)
+    user_uuid = models.CharField(max_length=45)
 
 
 class Plan(models.Model):

@@ -47,7 +47,7 @@
                 this.group_id = id;
                 this.show = true;
                 // this.$emit('groupid',this.groupid);
-                console.log('groupidf',this.group_id)
+                // console.log('groupidf',this.group_id)
             },
             getCurrentPlan(id) {
                 // this.plan_operations = false;
