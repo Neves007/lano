@@ -67,7 +67,6 @@
 
 
     let base_url = 'http://127.0.0.1:8000/';
-    let uuid = util.cookies.get('uuid')
 
     import YqLeftSidebar from "../../components/yq-left-sidebar/index"
     import YqMainPlan from "../../components/yq-main-plan/index";
@@ -112,6 +111,8 @@
             getGroups() {
                 let that = this;
                 let temple_list = [];
+                let uuid = util.cookies.get('uuid')
+                console.log('大index，请求分组传的uuid是多少',uuid)
                 axios.post(base_url + 'api/get_groups', JSON.stringify({'uuid':uuid})).then((r) => {
                     if (r.data.error_num === 0) {
                         for (let i = 0; i < r.data.list.length; i++) {
