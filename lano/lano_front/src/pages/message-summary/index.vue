@@ -37,12 +37,13 @@
                             </el-row>
                         </el-card>
                     </el-tab-pane>
-                    <el-tab-pane label="精准设置" name="fourth">
-                    </el-tab-pane>
-                    <el-tab-pane label="定向监测" name="fifth">
+                    <!--<el-tab-pane label="精准设置" name="fourth">-->
+                    <!--</el-tab-pane>-->
+                    <el-tab-pane label="定向监测" v-if="plan_operations === true" name="fifth">
                         <yq-main-directional-monitor></yq-main-directional-monitor>
                     </el-tab-pane>
-                    <el-tab-pane label="预警设置" name="sixth">
+                    <el-tab-pane label="预警设置" v-if="plan_operations === true" name="sixth">
+                        <yq-main-warning :current-plan="currentPlan"></yq-main-warning>
                     </el-tab-pane>
                     <!--方案新建和修改tab-->
                     <el-tab-pane label="新建方案" v-if="plan_operations" name="seventh">
@@ -65,18 +66,20 @@
     import axios from 'axios'
     import util from '../../libs/util.js'
 
-
     let base_url = 'http://127.0.0.1:8000/';
+
 
     import YqLeftSidebar from "../../components/yq-left-sidebar/index"
     import YqMainPlan from "../../components/yq-main-plan/index";
     import YqMainEditPlan from "../../components/yq-main-edit-plan/index";
     import YqMainDirectionalMonitor from "../../components/yq-main-directional-monitor/index";
     import YqMainInfolist from "../../components/yq-main-infolist/index";
+    import YqMainWarning from "../../components/yq-main-warning/index";
 
     export default {
         name: 'page1',
         components: {
+            YqMainWarning,
             YqMainInfolist,
             YqMainDirectionalMonitor, YqMainEditPlan, YqMainPlan, YqLeftSidebar, D2ContainerCard
         },
@@ -130,11 +133,13 @@
                 let temple_list = [];
                 axios.get(base_url + 'api/get_plans').then((r) => {
                     if (r.data.error_num === 0) {
+                        console.log('all plans %o',r)
                         for (let i = 0; i < r.data.list.length; i++) {
                             temple_list[i] = r.data.list[i];
                         }
                         that.plans = temple_list; //拿到所有分组
-                        this.$emit('emitPlans', this.plans)                    }
+                        this.$emit('emitPlans', this.plans)
+                    }
                 }).catch(err => {
                     console.log('group error %o', err)
                 })
@@ -201,11 +206,14 @@
                     if (r.data.error_num === 0) {
                         this.infolist=r.data.list;
                         console.log("大index中返回当前页面的infolist",this.infolist)
+                        var rtrim = /^[\s\u3000\uFEFF\xA0]+|[\s\u3000\uFEFF\xA0]+$/g
                         for (let i = 0; i < this.infolist.length; i++) {
                             temple_list[i] = r.data.list[i]['fields'];
                             // temple_list[i]['time'] = temple_list[i]['time'].replace("T", " ").replace("+08:00", "");
-                            temple_list[i]['content'] = temple_list[i]['content'].replace(/<[^>]+>/g, "");
-                            temple_list[i]['key_word'] = temple_list[i]['key_word'].replace(/@/g, "、");
+                            temple_list[i]['content'] = temple_list[i]['content'].replace(/<[^>]+>/g, "").replace(rtrim,'')
+                                .replace('\r\n','').replace('\t','').replace('\u3000', '')
+;
+                            temple_list[i]['key_word'] = temple_list[i]['key_word'].replace(/@/g, " ");
                             temple_list[i]['type'] = temple_list[i]['type'];
                             temple_list[i]['content'] = temple_list[i]['content'].substring(0, 300);
                             temple_list[i]['id'] = i + 1;

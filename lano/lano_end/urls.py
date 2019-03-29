@@ -3,7 +3,10 @@ from lano_end.views import group_views
 from lano_end.views import infolist_views
 from lano_end.views import plan_views
 from lano_end.views import switch_infolist_views
+from lano_end.views import warning_views
 from lano_end.views import user_views
+from lano_end.views import direction_views
+
 urlpatterns = [
     #url(r'get_infolist', infolist_views.get_infolist),
     url(r'create_group', group_views.create_group),
@@ -14,5 +17,7 @@ urlpatterns = [
     url(r'delete_group', group_views.delete_group),
     url(r'delete_plan', plan_views.delete_plan),
     url(r'switch_get_infolist', switch_infolist_views.get_infolist),
-    url(r'login', user_views.login)
+    url(r'add_warning', warning_views.add_warning),
+    url(r'login', user_views.login),
+    url(r'monitor_web_add',direction_views.monitor_web_add)
 ]

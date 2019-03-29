@@ -72,7 +72,6 @@
     import util from '../../../libs/util.js'
     let uuid = util.cookies.get('uuid')
 
-
     let base_url = 'http://127.0.0.1:8000/';
     export default {
         name: "yq-sidebar-add-gp-dialog",

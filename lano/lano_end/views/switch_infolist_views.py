@@ -56,8 +56,6 @@ def chooseSensitiveState(infolist, filter_params):
         return infolist.exclude(sensitive_state=filter_params['sensitive_attr_radio'])
 
 
-
-
 # this method get the sina_infolist
 @require_http_methods(['GET'])
 @csrf_exempt
@@ -74,13 +72,13 @@ def get_infolist(request):
         if current_plan['fields']['name'] == 'initialplan':
             # infolist = chooseTimeRange(filter_params['time_range_radio'], user_defined_time_start, user_defined_time_end)
             # 初始化infolist，微信 新闻源，时间降序，排除空内容
-            infolist = Allinfolist.objects.filter(source__in=['微信', '新闻']).exclude(content=None)
+            infolist = Allinfolist.objects.exclude(content=None)
             infolist = chooseTimeRange(infolist, filter_params)  # 经过 时间 筛选后的infolist
             infolist = chooseArticleOrder(infolist, filter_params)  # 经过 排序 筛选后的infolist
             infolist = infolist.filter(source__in=filter_params['source_type_checkList'])  # 经过 来源类型 筛选后的infolist
             infolist = chooseSensitiveState(infolist, filter_params)  # 经过 敏感 筛选后的infolist
         else:
-            infolist = Allinfolist.objects.filter(source__in=['微信', '新闻']).exclude(content=None)
+            infolist = Allinfolist.objects.exclude(content=None)
             infolist = chooseTimeRange(infolist, filter_params)  # 经过 时间 筛选后的infolist
             infolist = chooseArticleOrder(infolist, filter_params)  # 经过 排序 筛选后的infolist
             infolist = infolist.filter(source__in=filter_params['source_type_checkList'])  # 经过 来源类型 筛选后的infolist

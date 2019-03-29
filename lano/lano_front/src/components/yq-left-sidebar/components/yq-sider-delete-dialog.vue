@@ -32,7 +32,7 @@
                 this.$emit('getGroups')
             },
             deleteGroup(){
-                // console.log('groupidz',this.group_id)
+                console.log('groupidz',this.group_id)
                 axios.post(base_url + 'api/delete_group',this.group_id).then(r => {
                     // console.log('groupid',group_id)
                     if (r.data.error_num === 0) {

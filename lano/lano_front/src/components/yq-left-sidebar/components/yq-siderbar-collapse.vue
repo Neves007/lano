@@ -47,7 +47,7 @@
                 this.group_id = id;
                 this.show = true;
                 // this.$emit('groupid',this.groupid);
-                // console.log('groupidf',this.group_id)
+                console.log('groupidf',this.group_id)
             },
             getCurrentPlan(id) {
                 // this.plan_operations = false;
@@ -55,9 +55,10 @@
                 for (let p in this.plans) {
                     if (this.plans[p].pk === id) {
                         this.currentPlan = this.plans[p]
+                        // console.log('current plan %o',this.currentPlan)
                     }
                 }
-                // console.log('collapse currentPlan',this.currentPlan.fields.name)
+                // console.log('collapse currentPlan',this.currentPlan.fields)
                 this.$emit('clickCurrentPlan',this.currentPlan);
             },
         },

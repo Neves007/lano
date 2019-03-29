@@ -1,5 +1,4 @@
 from django.db import models
-import uuid
 
 
 # Create your models here.
@@ -47,6 +46,28 @@ class Plan(models.Model):
     exclude = models.CharField(max_length=54)
     group_id = models.IntegerField(max_length=54)
     ad_conf = models.CharField(max_length=54)
+
+
+class WarningSetting(models.Model):
+    id = models.AutoField
+    warning_word = models.CharField(max_length=300)
+    warning_content_type = models.CharField(max_length=10)
+    warning_source_type = models.CharField(max_length=100)
+    warning_similar_article = models.CharField(max_length=10)
+    warning_region = models.CharField(max_length=100)
+    warning_region_type = models.CharField(max_length=10)
+    warning_source_website = models.CharField(max_length=10)
+    warning_result_show = models.CharField(max_length=10)
+    warning_forward_weibo = models.CharField(max_length=10)
+    warning_relate_method = models.CharField(max_length=10)
+    warning_match_method = models.CharField(max_length=10)
+    warning_duplicate = models.CharField(max_length=10)
+    warning_method_type = models.CharField(max_length=100)
+    warning_start_time = models.CharField(max_length=45)
+    warning_end_time = models.CharField(max_length=45)
+    warning_interval = models.CharField(max_length=10)
+    warning_weekend = models.CharField(max_length=10)
+    plan_id = models.IntegerField(max_length=11)
 
 
 class User(models.Model):

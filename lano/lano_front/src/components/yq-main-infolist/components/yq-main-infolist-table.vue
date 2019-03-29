@@ -371,25 +371,31 @@
                     <div style="height: 28px; display: flex; align-items: baseline;">
                         <!--敏感性-->
                         <el-button type="success" size="mini" style="height: 27px;" v-if="item.fields.sensitive_state"
-                                   @click="subChangeSensitive(item)">非敏感
+                                   @click="subChangeSensitive">非敏感
                         </el-button>
 
                         <el-button type="danger" size="mini" style="height: 27px;" v-else
-                                   @click="subChangeSensitive(item)">敏感
+                                   @click="subChangeSensitive">敏感
                         </el-button>
                         <!--方向性-->
                         <div style="position: relative; display: inline-block; height: 27px;">
-                            <el-select class="feeling_select" v-model="item.fields.feelings" size="mini" style="height: 27px; ">
-                                <el-option label="正面" value='1'>正面</el-option>
-                                <el-option label="负面" value='2'>负面</el-option>
-                                <el-option label="中性" value='3'>中性</el-option>
+                            <el-select class="feeling_select" v-model="item.fields.feelings" size="mini" style="height: 27px;">
+                                <el-option label="正面" value=1>正面</el-option>
+                                <el-option label="负面" value=2>负面</el-option>
+                                <el-option label="中性" value=3>中性</el-option>
                             </el-select>
 
-                            <el-button v-if="item.fields.feelings== 1"                                       style="position: absolute; left: 13px; top: 2px; background-color: #67c23a; color: #fff;height: 27px;"                                       size="mini">正面
+                            <el-button v-if="item.fields.feelings== 1"
+                                       style="position: absolute; left: 13px; top: 2px; background-color: #67c23a; color: #fff;height: 27px;"
+                                       size="mini">正面
                             </el-button>
-                            <el-button v-if="item.fields.feelings == 2"                                       style="position: absolute; left: 13px; top: 2px; background-color: #f56c6c; color: #fff;height: 27px;"                                       size="mini">负面
+                            <el-button v-if="item.fields.feelings == 2"
+                                       style="position: absolute; left: 13px; top: 2px; background-color: #f56c6c; color: #fff;height: 27px;"
+                                       size="mini">负面
                             </el-button>
-                            <el-button v-if="item.fields.feelings == 3"                                       style="position: absolute; left: 13px; top: 2px; background-color: #909399; color: #fff;height: 27px; "                                       size="mini">中性
+                            <el-button v-if="item.fields.feelings == 3"
+                                       style="position: absolute; left: 13px; top: 2px; background-color: #909399; color: #fff;height: 27px; "
+                                       size="mini">中性
                             </el-button>
                         </div>
 
@@ -909,13 +915,13 @@
                                 placement="bottom">
                         <el-button type="info" style="padding: 4px 4px;"
                                    v-if="item.is_read ===false"
-                                   @click="subChangeReadState(item)">
+                                   @click="subChangeReadState">
                             <d2-icon-svg name="eyecolse"
                                          style="width: 14px; height: 13px;color: white;fill: white;"/>
                         </el-button>
                         <el-button type="info"
                                    style="padding: 4px 4px;background-color: orange" v-else
-                                   @click="subChangeReadState(item)">
+                                   @click="subChangeReadState">
                             <i class="el-icon-view"
                                style="width: 14px;height: 13px;color: white;fill: white"></i>
                         </el-button>
@@ -1004,13 +1010,12 @@
                 this.$emit('nextPage', this.pagination.currentPage)
                 console.log("table this.infolist", this.infolist)
             },
-            subChangeSensitive(item) {
-                console.log("this.item",item)
-                this.$emit('subChange_Sensitive', item.pk);
+            subChangeSensitive() {
+                this.$emit('subChange_Sensitive', this.item.id);
 
             },
-            subChangeReadState(item) {
-                this.$emit('subChange_ReadState', item.pk);
+            subChangeReadState() {
+                this.$emit('subChange_ReadState', this.item.id);
 
             },
 

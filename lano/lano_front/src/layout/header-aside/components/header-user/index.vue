@@ -26,7 +26,6 @@ export default {
      * @description 登出
      */
     logOff () {
-      console.log('info',this.info)
       this.logout({
         vm: this,
         confirm: true

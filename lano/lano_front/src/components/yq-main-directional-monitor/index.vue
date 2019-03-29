@@ -3,14 +3,14 @@
         <div>
             <el-collapse class="cu_directional_collapse" v-model="directionCollapseName"
                          @change="handleChange">
-                <el-card class="cu_directional_card">
-                    <el-collapse-item name="1">
-                        <template slot="title">
-                            <span style="margin-left: 20px;font-size: medium">行业分类</span>
-                        </template>
-                        <yq-profession-classification></yq-profession-classification>
-                    </el-collapse-item>
-                </el-card>
+                <!--<el-card class="cu_directional_card">-->
+                    <!--<el-collapse-item name="1">-->
+                        <!--<template slot="title">-->
+                            <!--<span style="margin-left: 20px;font-size: medium">行业分类</span>-->
+                        <!--</template>-->
+                        <!--<yq-profession-classification></yq-profession-classification>-->
+                    <!--</el-collapse-item>-->
+                <!--</el-card>-->
 
                 <el-card class="cu_directional_card">
                     <el-collapse-item name="2">

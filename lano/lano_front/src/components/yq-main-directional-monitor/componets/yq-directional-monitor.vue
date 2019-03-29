@@ -211,6 +211,10 @@
 </template>
 
 <script>
+    import axios from 'axios'
+    let base_url = 'http://127.0.0.1:8000/';
+
+
     export default {
         name: "yq-directional-monitor",
         data() {
@@ -321,7 +325,19 @@
                         this.directional_data.websiteInput = ''
                     }).catch(err => {
                         console.log('error %o', err)
-                    })
+                    });
+                    // axios.post(base_url + 'api/monitor_web_add', {
+                    //     'name': '这是一个网站名称',
+                    //     'domain': this.directional_data.websiteInput
+                    // }).then(r => {
+                    //     console.log('response %o', r)
+                    //     if (r.data.code === 0) {
+                    //         this.directional_data.dir_website_tableData = r.data.domain
+                    //     }
+                    //     this.directional_data.websiteInput = ''
+                    // }).catch(err => {
+                    //     console.log('error %o', err)
+                    // })
                 }
                 if (this.directional_data.weiboInput.length !== 0) {
                     axios.post('/api/directional/weibo_add', {
@@ -362,6 +378,80 @@
                         console.log('error %o', err)
                     })
                 }
+            },
+            getDomainList() {
+                let that = this
+                axios.get('/api/directional/domain_list').then((r) => {
+                    if (r.data.code === 0) {
+                        that.directional_data.dir_website_tableData = r.data.domain
+                    }
+                    console.log('response %o', r)
+                }).catch(err => {
+                    console.log('error %o', err)
+                })
+            },
+            deleteDomain(del_index) {
+                console.log(del_index)
+                axios.post('/api/directional/domain_delete', {
+                    'index': del_index
+                }).then(r => {
+                    console.log('response %o', r)
+                    if (r.data.code === 0) {
+                        this.directional_data.dir_website_tableData = r.data.domain
+                    }
+                }).catch(err => {
+                    console.log('error %o', err)
+                })
+
+            },
+            getWeiboList() {
+                let that = this
+                axios.get('/api/directional/weibo_list').then((r) => {
+                    if (r.data.code === 0) {
+                        that.directional_data.dir_weibo_tableData = r.data.weibo
+                    }
+                    console.log('response %o', r)
+                }).catch(err => {
+                    console.log('error %o', err)
+                })
+            },
+            deleteWeibo(del_index) {
+                console.log(del_index)
+                axios.post('/api/directional/weibo_delete', {
+                    'index': del_index
+                }).then(r => {
+                    console.log('response %o', r)
+                    if (r.data.code === 0) {
+                        this.directional_data.dir_weibo_tableData = r.data.weibo
+                    }
+                }).catch(err => {
+                    console.log('error %o', err)
+                })
+
+            },
+            getWechatList() {
+                let that = this
+                axios.get('/api/directional/wechat_list').then((r) => {
+                    if (r.data.code === 0) {
+                        that.directional_data.dir_wechat_tableData = r.data.wechat
+                    }
+                    console.log('response %o', r)
+                }).catch(err => {
+                    console.log('error %o', err)
+                })
+            },
+            deleteWechat(del_index) {
+                console.log(del_index)
+                axios.post('/api/directional/wechat_delete', {
+                    'index': del_index
+                }).then(r => {
+                    console.log('response %o', r)
+                    if (r.data.code === 0) {
+                        this.directional_data.dir_wechat_tableData = r.data.wechat
+                    }
+                }).catch(err => {
+                    console.log('error %o', err)
+                })
             },
             dirTab_showInput() {
                 let val = event.target.getAttribute('id')
@@ -492,6 +582,12 @@
                     console.log('error %o', err)
                 })
             },
+        },
+        mounted() {
+            this.getDomainList();
+            this.getWeiboList();
+            this.getWechatList();
+
         }
     }
 </script>
