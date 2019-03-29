@@ -69,6 +69,9 @@
 <script>
     import YqSidebarAddGpForm from "./yq-sidebar-add-gp-form";
     import axios from 'axios'
+    import util from '../../../libs/util.js'
+    let uuid = util.cookies.get('uuid')
+
 
     let base_url = 'http://127.0.0.1:8000/';
     export default {
@@ -98,7 +101,7 @@
                     return
                 }
                 //将创建的这个分组传给后台入库
-                axios.post(base_url+'api/create_group', JSON.stringify(this.group)).then(r => {
+                axios.post(base_url+'api/create_group', JSON.stringify({'group':this.group,'uuid':uuid})).then(r => {
                     if (r.data.error_num === 0) {
                         this.getGroups()  //新分组已入库，数据库需要重新读
                         this.show = false

@@ -98,6 +98,7 @@
                 this.visible=false
             },
             getGroups() {
+
                 this.$emit('getGroups')
             },
 

@@ -63,9 +63,11 @@
 
     import D2ContainerCard from '../../components/d2-container/components/d2-container-card'
     import axios from 'axios'
+    import util from '../../libs/util.js'
+
 
     let base_url = 'http://127.0.0.1:8000/';
-
+    let uuid = util.cookies.get('uuid')
 
     import YqLeftSidebar from "../../components/yq-left-sidebar/index"
     import YqMainPlan from "../../components/yq-main-plan/index";
@@ -110,7 +112,7 @@
             getGroups() {
                 let that = this;
                 let temple_list = [];
-                axios.get(base_url + 'api/get_groups').then((r) => {
+                axios.post(base_url + 'api/get_groups', JSON.stringify({'uuid':uuid})).then((r) => {
                     if (r.data.error_num === 0) {
                         for (let i = 0; i < r.data.list.length; i++) {
                             temple_list[i] = r.data.list[i];

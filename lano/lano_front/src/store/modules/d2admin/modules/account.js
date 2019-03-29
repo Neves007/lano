@@ -25,6 +25,7 @@ export default {
         username,
         password
       }).then(async res => {
+        console.log('respnse拿到了么')
           // 设置 cookie 一定要存 uuid 和 token 两个 cookie
           // 整个系统依赖这两个数据进行校验和存储
           // uuid 是用户身份唯一标识 用户注册的时候确定 并且不可改变 不可重复
@@ -34,8 +35,7 @@ export default {
           util.cookies.set('token', res.token)
           // 设置 vuex 用户信息
           await dispatch('d2admin/user/set', {
-            name: res.user.name,
-            uuid: res.user.uuid
+            name: res.user.name
           }, { root: true })
           // 用户登录后从持久化数据加载一系列的设置
           await dispatch('load')
@@ -45,7 +45,6 @@ export default {
           vm.$router.replace(path ? { path } : route)
           // 删除 cookie 中保存的重定向页面
           util.cookies.remove('redirect')
-          console.log('uuid',res.user.uuid)
         })
         .catch(err => {
           console.log('直接就出错了')

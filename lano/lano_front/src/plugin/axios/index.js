@@ -40,12 +40,14 @@ const service = axios.create({
 // 请求拦截器
 service.interceptors.request.use(
   config => {
+    console.log('这就是这个请求的X-Token')
     // 在请求发送之前做一些处理
     if (!(/^https:\/\/|http:\/\//.test(config.url))) {
       const token = util.cookies.get('token')
       if (token && token !== 'undefined') {
         // 让每个请求携带token-- ['X-Token']为自定义key 请根据实际情况自行修改
         config.headers['X-Token'] = token
+        console.log('这就是这个请求的X-Token',config.headers['X-Token'])
       }
     }
     return config

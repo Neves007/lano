@@ -10,15 +10,18 @@ from lano_end.models import Group
 
 import json
 
-
 @require_http_methods(['POST'])
 @csrf_exempt
 def create_group(request):
     obj = json.loads(request.body)
-    name = obj['name']
+    print('create group obj', obj)
+    name = obj['group']['name']
+    user_uuid = obj['uuid']
+    print('create group name', name)
+    print('create group uuid', user_uuid)
     response = {}
     try:
-        group = Group(name=name)
+        group = Group(name=name,user_uuid=user_uuid)
         group.save()
         response['msg'] = 'success'
         response['error_num'] = 0
@@ -29,12 +32,15 @@ def create_group(request):
     return HttpResponse(json.dumps(response), content_type="application/json")
 
 
-@require_http_methods(['GET'])
+@require_http_methods(['POST'])
 @csrf_exempt
 def get_groups(request):
+    obj = json.loads(request.body)
+    print('obj', obj)
+    user_uuid = obj['uuid']
     response = {}
     try:
-        groups = Group.objects.all().order_by('id')
+        groups = Group.objects.filter(user_uuid__exact=user_uuid).order_by('id')
         response['list'] = json.loads(serializers.serialize("json", groups))
         response['msg'] = 'success'
         response['error_num'] = 0
