@@ -68,6 +68,7 @@ def login(request):
             response['code'] = 0
             response['msg'] = '登录成功'
             response['data'] = {'user': user, 'token': user['token']}
+            print('登录成功的user', user)
             response['error_num'] = 0
         else:
             response['code'] = '401'

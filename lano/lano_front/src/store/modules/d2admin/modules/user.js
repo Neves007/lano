@@ -41,6 +41,7 @@ export default {
           defaultValue: setting.user.info,
           user: true
         }, { root: true })
+        console.log('state',state)
         // end
         resolve()
       })

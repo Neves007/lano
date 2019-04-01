@@ -35,6 +35,7 @@ class Group(models.Model):
     id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=45)
     user_uuid = models.CharField(max_length=45)
+    unique_together = ("name", "user_uuid")
 
 
 class Plan(models.Model):
@@ -46,7 +47,7 @@ class Plan(models.Model):
     exclude = models.CharField(max_length=54)
     group_id = models.IntegerField(max_length=54)
     ad_conf = models.CharField(max_length=54)
-
+    user_uuid = models.CharField(max_length=45)
 
 class WarningSetting(models.Model):
     id = models.AutoField

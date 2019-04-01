@@ -70,6 +70,7 @@
 
 <script>
     import axios from 'axios'
+    import util from '../../../libs/util'
     let base_url = 'http://127.0.0.1:8000/';
 
     export default {
@@ -132,12 +133,13 @@
                 this.$emit('getPlans')
             },
             createPlan() {
+                const uuid = util.cookies.get('uuid')
                 if (this.plan.name === '') {
                     this.$message.error('please input plan name')
                     return
                 }
                 //将创建的这个分组传给后台入库
-                axios.post(base_url + 'api/create_plan', JSON.stringify(this.plan)).then(r => {
+                axios.post(base_url + 'api/create_plan', JSON.stringify({'plan':this.plan,'uuid': uuid})).then(r => {
                     if (r.data.error_num === 0) {
                         this.getPlans()  //that.plans 拿到
                         this.$message.success("方案添加成功")

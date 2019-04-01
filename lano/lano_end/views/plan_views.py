@@ -15,17 +15,18 @@ import json
 @csrf_exempt
 def create_plan(request):
     obj = json.loads(request.body)
-    name = obj['name']
-    area = obj['area']
-    character = obj['character']
-    event = obj['event']
-    exclude = obj['exclude']
-    group_id = obj['group_id']
-    ad_conf = obj['ad_conf']
+    name = obj['plan']['name']
+    area = obj['plan']['area']
+    character = obj['plan']['character']
+    event = obj['plan']['event']
+    exclude = obj['plan']['exclude']
+    group_id = obj['plan']['group_id']
+    ad_conf = obj['plan']['ad_conf']
+    user_uuid = obj['uuid']
     response = {}
     try:
         plan = Plan(name=name, area=area, character=character, event=event, exclude=exclude, group_id=group_id,
-                    ad_conf=ad_conf)
+                    ad_conf=ad_conf, user_uuid=user_uuid)
         plan.save()
         response['msg'] = 'success'
         response['error_num'] = 0

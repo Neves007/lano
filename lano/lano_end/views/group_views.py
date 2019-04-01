@@ -21,7 +21,7 @@ def create_group(request):
     print('create group uuid', user_uuid)
     response = {}
     try:
-        group = Group(name=name,user_uuid=user_uuid)
+        group = Group(name=name, user_uuid=user_uuid)
         group.save()
         response['msg'] = 'success'
         response['error_num'] = 0

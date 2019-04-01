@@ -65,25 +65,25 @@ export default {
       dialogVisible: false,
       users: [
         {
-          name: '管理员',
+          name: '用户',
+          username: 'user',
+          password: 'user'
+        },
+        {
+          name: '销售',
+          username: 'salesman',
+          password: 'salesman'
+        },
+        {
+          name: '顶级管理员',
           username: 'admin',
           password: 'admin'
-        },
-        {
-          name: '编辑',
-          username: 'editor',
-          password: 'editor'
-        },
-        {
-          name: '用户1',
-          username: 'user1',
-          password: 'user1'
         }
       ],
       // 表单
       formLogin: {
-        username: 'admin',
-        password: 'admin',
+        username: 'user',
+        password: 'user',
         code: 'v9am'
       },
       // 校验
