@@ -13,10 +13,10 @@
             <el-col :span="mainContentSpan">
                 <div class="bg-purple-light" style="margin-bottom: 10px; padding: 10px"><b>{{currentPlan.fields.name}}</b></div>
                 <el-tabs v-model="activeName" @tab-click="handleClick" type="border-card">
-                    <el-tab-pane label="信息列表" name="first">
+                    <el-tab-pane label="信息列表" v-if="plan_operations === true" name="first">
                         <yq-main-infolist :infolist="infolist" :infolist_count="infolist_count" :currentPlan="currentPlan" @getInfoList="getInfoList" @emitFilterData="filtInfolist"></yq-main-infolist>
                     </el-tab-pane>
-                    <el-tab-pane label="监测概述" name="collapse" style="background-color: #f8f8f9">
+                    <el-tab-pane label="监测概述" v-if="plan_operations === true" name="collapse" style="background-color: #f8f8f9">
                         <el-row :gutter="30">
                             <!--地域分析-地图-->
                             <el-col :span="24">
@@ -28,7 +28,7 @@
                             </el-col>
                         </el-row>
                     </el-tab-pane>
-                    <el-tab-pane label="统计分析图" name="third">
+                    <el-tab-pane label="统计分析图" v-if="plan_operations === true" name="third">
                         <el-card class="bigCard" shadow="never">
                             <el-row :gutter="10">
                                 <el-col :span='24'>
@@ -46,7 +46,7 @@
                         <yq-main-warning :current-plan="currentPlan"></yq-main-warning>
                     </el-tab-pane>
                     <!--方案新建和修改tab-->
-                    <el-tab-pane label="新建方案" v-if="plan_operations" name="seventh">
+                    <el-tab-pane label="新建方案" v-if="plan_operations === false" name="seventh">
                         <yq-main-plan @openInfolist="openInfolist" @getPlans="getPlans" @getGroups="getGroups"
                                       :groups="groups"></yq-main-plan>
                     </el-tab-pane>
@@ -91,10 +91,10 @@
                 filter_data: {},
                 groups: {},
                 plans: {},
-                plan_operations: true,
+                plan_operations: false,
                 plan_list: [],
-                activeName: 'first',
-                currentPlan: {fields:{name:'initialplan'}},
+                activeName: 'seventh',
+                currentPlan: {fields:{name:'全部舆情'}},
                 asideSpan: 4,
                 mainContentSpan: 20,
                 infolist: [],
@@ -105,11 +105,6 @@
             filtInfolist(filter_data){
                 console.log('点击查询后的filterdata',filter_data);
                 this.getInfoList(30,1,filter_data)
-            },
-            changeToEditPlan() {
-                this.plan_operations = false;
-                this.activeName = 'first'
-                this.getGroups()
             },
             getGroups() {
                 let that = this;
@@ -145,7 +140,7 @@
                 })
             },
             clickCurrentPlan(cp){
-                this.modifCurrentPlan(cp);
+                this.currentPlan = cp;
                 this.changeToEditPlan();
                 this.filter_data={
                     time_range_radio: 1,
@@ -168,26 +163,13 @@
                 
                 this.getInfoList(30,1,this.filter_data);
             },
-            modifCurrentPlan(cp) {
-                this.plan_operations = false;
-                this.currentPlan = cp
-            },
+            // 有plan被选中了，用户要对该plan操作了，跳转信息列表
             changeToEditPlan() {
-                this.plan_operations = false;
+                this.plan_operations = true;
                 this.activeName = 'first'
-            },
-            getCurrentPlan(id) {
-                console.log('大 index 点击方案getCurrentPlan id %o', id)
-                this.plan_operations = false
-                this.activeName = 'first'
-                for (var p in this.plan_list) {
-                    if (this.plan_list[p].id === id) {
-                        this.currentPlan = this.plan_list[p]
-                    }
-                }
             },
             openPlanCreate() {
-                this.plan_operations = true;
+                this.plan_operations = false
                 this.activeName = 'seventh'
             },
 
