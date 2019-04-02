@@ -17,7 +17,7 @@
                         <template slot="title">
                             <span style="margin-left: 20px;font-size: medium">定向监测</span>
                         </template>
-                        <yq-directional-monitor></yq-directional-monitor>
+                        <yq-directional-monitor :currentPlan="currentPlan"></yq-directional-monitor>
                     </el-collapse-item>
                 </el-card>
 
@@ -43,10 +43,11 @@
     export default {
         name: "yq-main-directional-monitor",
         components: {YqDirectionalExclude, YqDirectionalMonitor, YqProfessionClassification},
+        props: ['currentPlan'],
         data() {
             return{
                 directionCollapseName: ['1', '2', '3'],
-
+                currentPlan: {},
             }
         },
         methods:{
@@ -58,7 +59,7 @@
                 let checkedCount = value.length
                 this.directional_data.domain_checkAll = checkedCount === this.directional_data.domainOptions.length
                 this.directional_data.isIndeterminate = checkedCount > 0 && checkedCount < this.directional_data.domainOptions.length
-            }
+            },
         }
     }
 </script>

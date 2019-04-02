@@ -100,3 +100,5 @@ def delete_plan(request):
         response['error_num'] = 1
     return HttpResponse(json.dumps(response), content_type="application/json")
 
+
+

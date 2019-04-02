@@ -67,21 +67,21 @@
                         max-height="250"
                         style="width: 100%">
                     <el-table-column
-                            prop="name"
+                            prop="fields.name"
                             label="网站名称"
                             width="300">
                     </el-table-column>
                     <el-table-column
-                            prop="domain"
+                            prop="fields.domain"
                             label="域名"
                             width="780">
                     </el-table-column>
                     <el-table-column
-                            prop="status"
+                            prop="fields.status"
                             label="状态"
                             width="100">
                         <template slot-scope="scope">
-                            <el-tag type="success" v-if="scope.row.status">成功</el-tag>
+                            <el-tag type="success" v-if="scope.row.fields.status">成功</el-tag>
                             <el-tag type="danger" v-else>失败</el-tag>
                         </template>
                     </el-table-column>
@@ -89,7 +89,7 @@
                             prop="operation"
                             label="操作">
                         <template slot-scope="scope">
-                            <el-button @click="deleteDomain(scope.$index)" size="small"
+                            <el-button @click="deleteDomain(scope.row.pk)" size="small"
                                        style="background-color: red;color: white ">取消监测
                             </el-button>
                         </template>
@@ -103,22 +103,22 @@
                         max-height="250"
                         style="width: 100%">
                     <el-table-column
-                            prop="name"
+                            prop="fields.name"
                             label="昵称"
                             width="300">
                     </el-table-column>
                     <el-table-column
-                            prop="uid"
+                            prop="fields.uid"
                             label="微博ID"
                             width="780">
                     </el-table-column>
 
                     <el-table-column
-                            prop="status"
+                            prop="fields.status"
                             label="状态"
                             width="100">
                         <template slot-scope="scope">
-                            <el-tag type="success" v-if="scope.row.status">成功</el-tag>
+                            <el-tag type="success" v-if="scope.row.fields.status">成功</el-tag>
                             <el-tag type="danger" v-else>失败</el-tag>
                         </template>
                     </el-table-column>
@@ -127,7 +127,7 @@
                             prop="operation"
                             label="操作">
                         <template slot-scope="scope">
-                            <el-button @click="deleteWeibo(scope.$index)" size="small"
+                            <el-button @click="deleteWeibo(scope.row.pk)" size="small"
                                        style="background-color: red;color: white ">取消监测
                             </el-button>
                         </template>
@@ -141,21 +141,21 @@
                         max-height="250"
                         style="width: 100%">
                     <el-table-column
-                            prop="name"
+                            prop="fields.name"
                             label="公众号名称"
                             width="300">
                     </el-table-column>
                     <el-table-column
-                            prop="wxid"
+                            prop="fields.wxid"
                             label="微信号"
                             width="780">
                     </el-table-column>
                     <el-table-column
-                            prop="status"
+                            prop="fields.status"
                             label="状态"
                             width="100">
                         <template slot-scope="scope">
-                            <el-tag type="success" v-if="scope.row.status">成功</el-tag>
+                            <el-tag type="success" v-if="scope.row.fields.status">成功</el-tag>
                             <el-tag type="danger" v-else>失败</el-tag>
                         </template>
                     </el-table-column>
@@ -163,43 +163,7 @@
                             prop="operation"
                             label="操作">
                         <template slot-scope="scope">
-                            <el-button @click="deleteWechat(scope.$index)" size="small"
-                                       style="background-color: red;color: white ">取消监测
-                            </el-button>
-                        </template>
-                    </el-table-column>
-                </el-table>
-            </el-tab-pane>
-            <el-tab-pane label="贴吧昵称" name="3">
-                <el-table
-                        :data="directional_data.dir_tieba_tableData"
-                        border
-                        max-height="250"
-                        style="width: 100%">
-                    <el-table-column
-                            prop="name"
-                            label="吧名"
-                            width="300">
-                    </el-table-column>
-                    <el-table-column
-                            prop="introduction"
-                            label="贴吧介绍"
-                            width="780">
-                    </el-table-column>
-                    <el-table-column
-                            prop="status"
-                            label="状态"
-                            width="100">
-                        <template slot-scope="scope">
-                            <el-tag type="success" v-if="scope.row.status">成功</el-tag>
-                            <el-tag type="danger" v-else>失败</el-tag>
-                        </template>
-                    </el-table-column>
-                    <el-table-column
-                            prop="operation"
-                            label="操作">
-                        <template slot-scope="scope">
-                            <el-button @click="deleteTieba(scope.$index)" size="small"
+                            <el-button @click="deleteWechat(scope.row.pk)" size="small"
                                        style="background-color: red;color: white ">取消监测
                             </el-button>
                         </template>
@@ -259,12 +223,12 @@
                     dir_website_tableData: [],
                     dir_weibo_tableData: [],
                     dir_wechat_tableData: [],
-                    dir_tieba_tableData: [],
 
                 }
 
             }
         },
+        props: ['currentPlan'],
         methods:{
             dir_inputChange() {
                 if (this.directional_data.directional_add_method === '选项2') {
@@ -314,38 +278,37 @@
             },
             addDir() {
                 if (this.directional_data.websiteInput.length !== 0) {
-                    axios.post('/api/directional/domain_add', {
-                        'name': '这是一个网站名称',
-                        'domain': this.directional_data.websiteInput
+                    axios.post(base_url + 'api/monitor_web_add', {
+                        // 'name': '这是一个网站名称',
+                        'domain': this.directional_data.websiteInput,
+                        'planid':this.currentPlan.pk
                     }).then(r => {
-                        console.log('response %o', r)
-                        if (r.data.code === 0) {
-                            this.directional_data.dir_website_tableData = r.data.domain
+                        // console.log('response %o', r)
+                        if (r.data.error_num === 0) {
+                            this.getDomainList();
+                        }
+                        else {
+                            console.log('保存失败',r.data.msg)
+                            this.$message.error("该监测网站已存在")
                         }
                         this.directional_data.websiteInput = ''
                     }).catch(err => {
                         console.log('error %o', err)
-                    });
-                    // axios.post(base_url + 'api/monitor_web_add', {
-                    //     'name': '这是一个网站名称',
-                    //     'domain': this.directional_data.websiteInput
-                    // }).then(r => {
-                    //     console.log('response %o', r)
-                    //     if (r.data.code === 0) {
-                    //         this.directional_data.dir_website_tableData = r.data.domain
-                    //     }
-                    //     this.directional_data.websiteInput = ''
-                    // }).catch(err => {
-                    //     console.log('error %o', err)
-                    // })
+                        this.$message.error("请输入正确域名")
+                    })
                 }
                 if (this.directional_data.weiboInput.length !== 0) {
-                    axios.post('/api/directional/weibo_add', {
+                    axios.post(base_url + 'api/monitor_weibo_add', {
                         'name': this.directional_data.weiboInput,
+                        'planid':this.currentPlan.pk
                     }).then(r => {
-                        console.log('response %o', r)
-                        if (r.data.code === 0) {
-                            this.directional_data.dir_weibo_tableData = r.data.weibo
+                        // console.log('response %o', r)
+                        if (r.data.error_num === 0) {
+                            this.getWeiboList();
+                        }
+                        else {
+                            console.log('保存失败',r.data.msg)
+                            this.$message.error("该监测微博已存在")
                         }
                         this.directional_data.weiboInput = ''
                     }).catch(err => {
@@ -353,27 +316,19 @@
                     })
                 }
                 if (this.directional_data.wechatInput.length !== 0) {
-                    axios.post('/api/directional/wechat_add', {
+                    axios.post(base_url + 'api/monitor_wechat_add', {
                         'name': this.directional_data.wechatInput,
+                        'planid':this.currentPlan.pk
                     }).then(r => {
-                        console.log('response %o', r)
-                        if (r.data.code === 0) {
-                            this.directional_data.dir_wechat_tableData = r.data.wechat
+                        // console.log('response %o', r)
+                        if (r.data.error_num === 0) {
+                            this.getWechatList();
+                        }
+                        else {
+                            console.log('保存失败',r.data.msg)
+                            this.$message.error("该监测公众号已存在")
                         }
                         this.directional_data.wechatInput = ''
-                    }).catch(err => {
-                        console.log('error %o', err)
-                    })
-                }
-                if (this.directional_data.tiebaInput.length !== 0) {
-                    axios.post('/api/directional/tieba_add', {
-                        'name': this.directional_data.tiebaInput,
-                    }).then(r => {
-                        console.log('response %o', r)
-                        if (r.data.code === 0) {
-                            this.directional_data.dir_tieba_tableData = r.data.tieba
-                        }
-                        this.directional_data.tiebaInput = ''
                     }).catch(err => {
                         console.log('error %o', err)
                     })
@@ -381,73 +336,67 @@
             },
             getDomainList() {
                 let that = this
-                axios.get('/api/directional/domain_list').then((r) => {
-                    if (r.data.code === 0) {
-                        that.directional_data.dir_website_tableData = r.data.domain
+                axios.post(base_url + 'api/get_monitor_web', {'planid':this.currentPlan.pk}).then((r) => {
+                    if (r.data.error_num === 0) {
+                        // console.log('monitor_web %o',r)
+                        that.directional_data.dir_website_tableData = r.data.list
                     }
-                    console.log('response %o', r)
+                    // console.log('response %o', r)
                 }).catch(err => {
                     console.log('error %o', err)
                 })
             },
             deleteDomain(del_index) {
-                console.log(del_index)
-                axios.post('/api/directional/domain_delete', {
-                    'index': del_index
-                }).then(r => {
-                    console.log('response %o', r)
-                    if (r.data.code === 0) {
-                        this.directional_data.dir_website_tableData = r.data.domain
+                // console.log(del_index)
+                axios.post(base_url + 'api/monitor_web_delete',del_index).then(r => {
+                    // console.log('response %o', r)
+                    if (r.data.error_num === 0) {
+                        this.getDomainList();
                     }
                 }).catch(err => {
                     console.log('error %o', err)
                 })
-
             },
             getWeiboList() {
                 let that = this
-                axios.get('/api/directional/weibo_list').then((r) => {
-                    if (r.data.code === 0) {
-                        that.directional_data.dir_weibo_tableData = r.data.weibo
+                axios.post(base_url + 'api/get_monitor_weibo', {'planid':this.currentPlan.pk}).then((r) => {
+                    if (r.data.error_num === 0) {
+                        // console.log('monitor_web %o',r)
+                        that.directional_data.dir_weibo_tableData = r.data.list
                     }
-                    console.log('response %o', r)
+                    // console.log('response %o', r)
                 }).catch(err => {
                     console.log('error %o', err)
                 })
             },
             deleteWeibo(del_index) {
-                console.log(del_index)
-                axios.post('/api/directional/weibo_delete', {
-                    'index': del_index
-                }).then(r => {
+                axios.post(base_url + 'api/monitor_weibo_delete',del_index).then(r => {
                     console.log('response %o', r)
-                    if (r.data.code === 0) {
-                        this.directional_data.dir_weibo_tableData = r.data.weibo
+                    console.log('planid',this.currentPlan.pk)
+                    if (r.data.error_num === 0) {
+                        this.getWeiboList();
                     }
                 }).catch(err => {
                     console.log('error %o', err)
                 })
-
             },
             getWechatList() {
                 let that = this
-                axios.get('/api/directional/wechat_list').then((r) => {
-                    if (r.data.code === 0) {
-                        that.directional_data.dir_wechat_tableData = r.data.wechat
+                axios.post(base_url + 'api/get_monitor_wechat', {'planid':this.currentPlan.pk}).then((r) => {
+                    if (r.data.error_num === 0) {
+                        // console.log('monitor_web %o',r)
+                        that.directional_data.dir_wechat_tableData = r.data.list
                     }
-                    console.log('response %o', r)
+                    // console.log('response %o', r)
                 }).catch(err => {
                     console.log('error %o', err)
                 })
             },
             deleteWechat(del_index) {
-                console.log(del_index)
-                axios.post('/api/directional/wechat_delete', {
-                    'index': del_index
-                }).then(r => {
+                axios.post(base_url + 'api/monitor_wechat_delete',del_index).then(r => {
                     console.log('response %o', r)
-                    if (r.data.code === 0) {
-                        this.directional_data.dir_wechat_tableData = r.data.wechat
+                    if (r.data.error_num === 0) {
+                        this.getWechatList();
                     }
                 }).catch(err => {
                     console.log('error %o', err)
@@ -527,60 +476,6 @@
                         this.directional_data.showbtn = false
                     }
                 }
-            },
-            deleteDomain(del_index) {
-                console.log(del_index)
-                axios.post('/api/directional/domain_delete', {
-                    'index': del_index
-                }).then(r => {
-                    console.log('response %o', r)
-                    if (r.data.code === 0) {
-                        this.directional_data.dir_website_tableData = r.data.domain
-                    }
-                }).catch(err => {
-                    console.log('error %o', err)
-                })
-
-            },
-            deleteWeibo(del_index) {
-                console.log(del_index)
-                axios.post('/api/directional/weibo_delete', {
-                    'index': del_index
-                }).then(r => {
-                    console.log('response %o', r)
-                    if (r.data.code === 0) {
-                        this.directional_data.dir_weibo_tableData = r.data.weibo
-                    }
-                }).catch(err => {
-                    console.log('error %o', err)
-                })
-
-            },
-            deleteWechat(del_index) {
-                console.log(del_index)
-                axios.post('/api/directional/wechat_delete', {
-                    'index': del_index
-                }).then(r => {
-                    console.log('response %o', r)
-                    if (r.data.code === 0) {
-                        this.directional_data.dir_wechat_tableData = r.data.wechat
-                    }
-                }).catch(err => {
-                    console.log('error %o', err)
-                })
-            },
-            deleteTieba(del_index) {
-                console.log(del_index)
-                axios.post('/api/directional/tieba_delete', {
-                    'index': del_index
-                }).then(r => {
-                    console.log('response %o', r)
-                    if (r.data.code === 0) {
-                        this.directional_data.dir_tieba_tableData = r.data.tieba
-                    }
-                }).catch(err => {
-                    console.log('error %o', err)
-                })
             },
         },
         mounted() {

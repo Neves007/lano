@@ -14,7 +14,9 @@
                 <div class="bg-purple-light" style="margin-bottom: 10px; padding: 10px"><b>{{currentPlan.fields.name}}</b></div>
                 <el-tabs v-model="activeName" @tab-click="handleClick" type="border-card">
                     <el-tab-pane label="信息列表" v-if="plan_operations === true" name="first">
-                        <yq-main-infolist :infolist="infolist" :infolist_count="infolist_count" :currentPlan="currentPlan" @getInfoList="getInfoList" @emitFilterData="filtInfolist"></yq-main-infolist>
+                        <yq-main-infolist :infolist="infolist" :infolist_count="infolist_count"
+                                          :currentPlan="currentPlan" @getInfoList="getInfoList"
+                                          @emitFilterData="filtInfolist"></yq-main-infolist>
                     </el-tab-pane>
                     <el-tab-pane label="监测概述" v-if="plan_operations === true" name="collapse" style="background-color: #f8f8f9">
                         <el-row :gutter="30">
@@ -39,18 +41,18 @@
                     </el-tab-pane>
                     <!--<el-tab-pane label="精准设置" name="fourth">-->
                     <!--</el-tab-pane>-->
-                    <el-tab-pane label="定向监测" v-if="plan_operations === true" name="fifth">
-                        <yq-main-directional-monitor></yq-main-directional-monitor>
+                    <el-tab-pane label="定向监测" v-if="plan_operations" name="fifth">
+                        <yq-main-directional-monitor :currentPlan="currentPlan"></yq-main-directional-monitor>
                     </el-tab-pane>
-                    <el-tab-pane label="预警设置" v-if="plan_operations === true" name="sixth">
+                    <el-tab-pane label="预警设置" v-if="plan_operations" name="sixth">
                         <yq-main-warning :current-plan="currentPlan"></yq-main-warning>
                     </el-tab-pane>
                     <!--方案新建和修改tab-->
-                    <el-tab-pane label="新建方案" v-if="plan_operations === false" name="seventh">
+                    <el-tab-pane label="新建方案" v-else name="seventh">
                         <yq-main-plan @openInfolist="openInfolist" @getPlans="getPlans" @getGroups="getGroups"
                                       :groups="groups"></yq-main-plan>
                     </el-tab-pane>
-                    <el-tab-pane label="修改方案" v-else name="eighth">
+                    <el-tab-pane label="修改方案" v-if="plan_operations" name="eighth">
                         <yq-main-edit-plan :currentPlan="currentPlan" @changeToEditPlan="changeToEditPlan"
                                            @getPlans="getPlans"></yq-main-edit-plan>
                     </el-tab-pane>
@@ -160,7 +162,6 @@
                     isIndeterminate: true,
                     time_value: '',
                 };
-                
                 this.getInfoList(30,1,this.filter_data);
             },
             // 有plan被选中了，用户要对该plan操作了，跳转信息列表
@@ -169,8 +170,17 @@
                 this.activeName = 'first'
             },
             openPlanCreate() {
-                this.plan_operations = false
-                this.activeName = 'seventh'
+                this.plan_operations = true
+                this.activeName = 'first'
+                for (let p in this.plan_list) {
+                    if (this.plan_list[p].id === id) {
+                        this.currentPlan = this.plan_list[p]
+                    }
+                }
+            },
+            openPlanCreate() {
+                this.plan_operations = false;
+                this.activeName = 'seventh';
             },
 
             getInfoList(page_size, page_num, filter_data) {

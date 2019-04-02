@@ -10,6 +10,7 @@ from lano_end.models import Group
 
 import json
 
+
 @require_http_methods(['POST'])
 @csrf_exempt
 def create_group(request):

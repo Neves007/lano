@@ -19,5 +19,13 @@ urlpatterns = [
     url(r'switch_get_infolist', switch_infolist_views.get_infolist),
     url(r'add_warning', warning_views.add_warning),
     url(r'login', user_views.login),
-    url(r'monitor_web_add',direction_views.monitor_web_add)
+    url(r'monitor_web_add', direction_views.monitor_web_add),
+    url(r'get_monitor_web', direction_views.get_monitor_web),
+    url(r'monitor_web_delete', direction_views.monitor_web_delete),
+    url(r'get_monitor_weibo', direction_views.get_monitor_weibo),
+    url(r'monitor_weibo_add', direction_views.monitor_weibo_add),
+    url(r'monitor_weibo_delete', direction_views.monitor_weibo_delete),
+    url(r'get_monitor_wechat', direction_views.get_monitor_wechat),
+    url(r'monitor_wechat_add', direction_views.monitor_wechat_add),
+    url(r'monitor_wechat_delete', direction_views.monitor_wechat_delete)
 ]

@@ -49,6 +49,7 @@ class Plan(models.Model):
     ad_conf = models.CharField(max_length=54)
     user_uuid = models.CharField(max_length=45)
 
+
 class WarningSetting(models.Model):
     id = models.AutoField
     warning_word = models.CharField(max_length=300)
@@ -76,3 +77,27 @@ class User(models.Model):
     username = models.CharField(max_length=45)
     password = models.CharField(max_length=45)
     name = models.CharField(max_length=45)
+
+
+class Monitor_web(models.Model):
+    id = models.AutoField
+    name = models.CharField(max_length=45)
+    domain = models.CharField(max_length=255)
+    status = models.BooleanField()
+    plan_id = models.IntegerField(max_length=11)
+
+
+class Monitor_weibo(models.Model):
+    id = models.AutoField
+    name = models.CharField(max_length=45)
+    uid = models.CharField(max_length=45)
+    status = models.BooleanField()
+    plan_id = models.IntegerField(max_length=11)
+
+
+class Monitor_wechat(models.Model):
+    id = models.AutoField
+    name = models.CharField(max_length=45)
+    wxid = models.CharField(max_length=45)
+    status = models.BooleanField()
+    plan_id = models.IntegerField(max_length=11)
