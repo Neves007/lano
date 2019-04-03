@@ -15,7 +15,7 @@ urlpatterns = [
     url(r'create_ad_plan', plan_views.create_ad_plan),
     url(r'create_fast_plan', plan_views.create_fast_plan),
     url(r'get_plans', plan_views.get_plans),
-    url(r'update_ad_plans', plan_views.update_plans),
+    url(r'update_ad_plans', plan_views.update_ad_plans),
     url(r'delete_group', group_views.delete_group),
     url(r'delete_plan', plan_views.delete_plan),
 

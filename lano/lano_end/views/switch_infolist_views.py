@@ -68,17 +68,20 @@ def filtkeywords(infolist, current_plan):
     fast_event = current_plan['fields']['fast_event']
     fast_exclude = current_plan['fields']['fast_exclude']
     # 是否是高级配置
-    if ad_name!=None:
-        thisIsAdvancePlan = True
-    else :
-        thisIsAdvancePlan = False
-
+    if ad_name is not None:
+        this_is_advance_plan = True
+    else:
+        this_is_advance_plan = False
     #高级配置
-    if thisIsAdvancePlan == True:
-        regex = r"[^[\+,\|]]"
-        pattern = re.compile(regex)
-        keywords_in_ad_match=pattern.findall(ad_match)
-        
+    if this_is_advance_plan is True:
+        keywords_regex = r"[\u4e00-\u9fa5]+"
+        keywords_pattern = re.compile(keywords_regex)
+        keywords_in_ad_match=keywords_pattern.findall(ad_match)
+        print('keywords_in_ad_match', keywords_in_ad_match)
+        signs_regex = r"[+|]+"
+        signs_pattern = re.compile(signs_regex)
+        signs_in_ad_match =signs_pattern.findall(ad_match)
+        print('signs_in_ad_match', signs_in_ad_match)
 
 
     print('filtkeywords ad_match, ad_exclude, fast_area, fast_character, fast_event, fast_exclude'
