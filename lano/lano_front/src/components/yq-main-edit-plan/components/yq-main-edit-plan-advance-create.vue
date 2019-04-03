@@ -147,7 +147,7 @@
                     return
                 }
                 console.log('update_plans currrentPlan',this.currentPlan)
-                axios.post(base_url + 'api/update_plans', JSON.stringify(this.currentPlan)).then(r => {
+                axios.post(base_url + 'api/update_ad_plans', JSON.stringify(this.currentPlan)).then(r => {
                     if (r.data.error_num === 0) {
                         this.$message.success("方案修改成功")
                     } else {

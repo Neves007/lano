@@ -56,6 +56,21 @@ def chooseSensitiveState(infolist, filter_params):
         return infolist.exclude(sensitive_state=filter_params['sensitive_attr_radio'])
 
 
+def filtkeywords(infolist, current_plan):
+    # infolist=infolist.filter(key_word__reg=current_plan['fields']['ad_match'])  # 关键字筛选
+
+    ad_match = current_plan['fields']['ad_match']
+    ad_exclude = current_plan['fields']['ad_exclude']
+    fast_area = current_plan['fields']['fast_area']
+    fast_character = current_plan['fields']['fast_character']
+    fast_event = current_plan['fields']['fast_event']
+    fast_exclude = current_plan['fields']['fast_exclude']
+    print('filtkeywords ad_match, ad_exclude, fast_area, fast_character, fast_event, fast_exclude'
+          , ad_match, ad_exclude, fast_area, fast_character, fast_event, fast_exclude)
+
+    return infolist
+
+
 # this method get the sina_infolist
 @require_http_methods(['GET'])
 @csrf_exempt
@@ -83,7 +98,7 @@ def get_infolist(request):
         infolist = chooseArticleOrder(infolist, filter_params)  # 经过 排序 筛选后的infolist
         infolist = infolist.filter(source__in=filter_params['source_type_checkList'])  # 经过 来源类型 筛选后的infolist
         infolist = chooseSensitiveState(infolist, filter_params)  # 经过 敏感 筛选后的infolist
-        infolist = infolist.filter(key_word__contains=current_plan['fields']['ad_match'])  #关键字筛选
+        infolist = filtkeywords(infolist,current_plan)
 
 
         list = infolist[current_col:current_col + int(page_size)]
