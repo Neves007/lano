@@ -46,7 +46,6 @@ export default {
           util.cookies.remove('redirect')
         })
         .catch(err => {
-          console.log('直接就出错了')
           console.log('err: ', err)
         })
     },

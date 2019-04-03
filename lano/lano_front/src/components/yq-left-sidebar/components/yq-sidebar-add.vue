@@ -25,7 +25,7 @@
 
 <script>
     import YqSidebarAddGpDialog from "./yq-sidebar-add-gp-dialog";
-    import bus from './eventBus';
+    import bus from '../../../pages/message-summary/eventBus';
 
     export default {
         name: "yq-sidebar-add",

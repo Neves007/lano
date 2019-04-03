@@ -4,13 +4,13 @@
              label-width="200px">
         <el-row>
             <el-form-item label="方案名称">
-                <el-input v-model="advance_form.name" placeholder="请输入方案名称" style="width: 40%"></el-input>
+                <el-input v-model="advance_form.ad_name" placeholder="请输入方案名称" style="width: 40%"></el-input>
             </el-form-item>
         </el-row>
         <el-row>
             <i class="el-icon-question new_plan" @click="openAdvanceTip"></i>
             <el-form-item label="匹配关键词" prop="match">
-                <el-input type="textarea" :rows="3" placeholder="请输入匹配关键词" v-model="advance_form.match"
+                <el-input type="textarea" :rows="3" placeholder="请输入匹配关键词" v-model="advance_form.ad_match"
                           ref="match_input"></el-input>
                 <el-button size="mini" @click="add1"
                            style="background-color: #e5e9f2;padding: 5px 10px;font-size: large">+
@@ -37,7 +37,7 @@
             <i class="el-icon-question new_plan" @click="openAdvanceTip"></i>
             <el-form-item label="排除关键词" prop="except2">
                 <el-input type="textarea" :rows="3" placeholder="请输入排除关键词" ref="except_input"
-                          v-model="advance_form.except2"></el-input>
+                          v-model="advance_form.ad_exclude"></el-input>
                 <el-button size="mini" @click="add2"
                            style="background-color: #e5e9f2;padding: 5px 10px;font-size: large">+
                 </el-button>
@@ -105,9 +105,9 @@
             };
             return {
                 advance_form: {
-                    name: '',
-                    match: '',
-                    except2: '',
+                    ad_name: '',
+                    ad_match: '',
+                    ad_exclude: '',
                 },
                 plan: {},
                 plans:{},
@@ -134,12 +134,12 @@
             },
             createPlan() {
                 const uuid = util.cookies.get('uuid')
-                if (this.plan.name === '') {
+                if (this.plan.ad_name === '') {
                     this.$message.error('please input plan name')
                     return
                 }
                 //将创建的这个分组传给后台入库
-                axios.post(base_url + 'api/create_plan', JSON.stringify({'plan':this.plan,'uuid': uuid})).then(r => {
+                axios.post(base_url + 'api/create_ad_plan', JSON.stringify({'plan':this.plan,'uuid': uuid})).then(r => {
                     if (r.data.error_num === 0) {
                         this.getPlans()  //that.plans 拿到
                         this.$message.success("方案添加成功")
@@ -152,16 +152,13 @@
 
             savePlan() {
                 this.plan['group_id'] = this.groupid
-                this.plan['name'] = this.advance_form.name
-                this.plan['character'] = ''
-                this.plan['event'] = ''
-                this.plan['area'] = ''
-                this.plan['ad_conf'] = this.advance_form.match
-                this.plan['exclude'] = this.advance_form.except2
+                this.plan['ad_name'] = this.advance_form.ad_name
+                this.plan['ad_match'] = this.advance_form.ad_match
+                this.plan['ad_exclude'] = this.advance_form.ad_exclude
                 this.createPlan()
-                this.advance_form.name=''
-                this.advance_form.match=''
-                this.advance_form.except2=''
+                this.advance_form.ad_name=''
+                this.advance_form.ad_match=''
+                this.advance_form.ad_exclude=''
             },
             openAdvanceTip() {
                 this.$alert(

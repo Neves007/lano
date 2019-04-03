@@ -72,7 +72,7 @@
         </el-row>
         <el-row>
             <el-form-item>
-                <el-button class="save" @click="openInfolist">保存</el-button>
+                <el-button class="save" @click="savePlan">保存</el-button>
                 <!--<el-button id="cancel">取消</el-button>-->
             </el-form-item>
         </el-row>
@@ -82,6 +82,11 @@
 
 <script>
     import axios from 'axios'
+    import util from '../../../libs/util'
+
+    let base_url = 'http://127.0.0.1:8000/';
+
+
     export default {
         name: "yq-main-plan-fast-create",
         data() {
@@ -116,6 +121,16 @@
                 new_radio1: '1',
                 new_radio2: '1',
                 new_radio3: '1',
+                plan: {
+                    fast_name:'',
+                    fast_area:'',
+                    fast_character:'',
+                    fast_event:'',
+                    fast_exclude:'',
+                    ad_name:'',
+                    ad_match:'',
+                    ad_exclude:'',
+                    },
                 fast_form: {
                     name: '',
                     region: '',
@@ -139,8 +154,11 @@
                 },
             }
         },
-        props: ['showFast'],
-        methods:{
+        props: ['showFast', 'groupid'],
+        methods: {
+             getPlans() {
+                this.$emit('getPlans')
+            },
             openLocationMsg() {
                 this.$alert(
                     '<el-row style="position: relative;">' +
@@ -163,25 +181,41 @@
 
                     })
             },
-
-            addNewPlan() {
-                axios.post('/api/plan/plan_add',
-                    this.newPlan,
-                ).then(r => {
-                    console.log('response %o', r)
-                    if (r.data.code === 0) {
-                        this.plan_list = r.data.plan
+            createPlan() {
+                const uuid = util.cookies.get('uuid')
+                if (this.plan.fast_name === '') {
+                    this.$message.error('please input plan name')
+                    return
+                }
+                //将创建的这个分组传给后台入库
+                axios.post(base_url + 'api/create_fast_plan', JSON.stringify({
+                    'plan': this.plan,
+                    'uuid': uuid
+                })).then(r => {
+                    if (r.data.error_num === 0) {
+                        this.getPlans()  //that.plans 拿到
+                        this.$message.success("方案添加成功")
+                    } else {
+                        console.log('fast传递失败', r.data.msg)
+                        this.$message.error("方案添加错误")
                     }
-                    this.newPlan = {}
-                }).catch(err => {
-                    console.log('error %o', err)
                 })
             },
-            openInfolist() {
-                this.$alert('成功保存!');
-                this.addNewPlan();
-                this.$emit('openInfolist')
+            savePlan() {
+                this.plan['group_id'] = this.groupid
+                this.plan['fast_name'] = this.fast_form.name
+                this.plan['fast_area'] = this.fast_form.region
+                this.plan['fast_character'] = this.fast_form.person
+                this.plan['fast_event'] = this.fast_form.thing
+                this.plan['fast_exclude'] = this.fast_form.except
+                this.createPlan()
+                this.fast_form.name = ''
+                this.fast_form.region = ''
+                this.fast_form.person = ''
+                this.fast_form.thing = ''
+                this.fast_form.except = ''
             },
+
         }
     }
 </script>

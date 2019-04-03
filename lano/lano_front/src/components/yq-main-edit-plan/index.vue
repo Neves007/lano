@@ -1,15 +1,13 @@
 <template>
     <div>
         <div class="new-plan-fast_header">
-            <div style="margin-left: 25px; display: inline-block;">{{form_title}}配置</div>
-            <el-button type="text" style="display: inline-block; margin-left: 20px" @click="changeForm">
-                切换到{{type}}配置
-            </el-button>
+            <div style="margin-left: 25px;margin-top: 10px;margin-bottom: 10px; display: inline-block;">{{form_title}}配置</div>
         </div>
-        <yq-main-edit-plan-fast-create :show-fast="showFast" @openInfolist="openInfolist"></yq-main-edit-plan-fast-create>
+        <yq-main-edit-plan-fast-create :show-fast="showFast" :currentPlan="currentPlan"
+                                            ></yq-main-edit-plan-fast-create>
         <yq-main-edit-plan-advance-create :show-advance="showAdvance" :currentPlan="currentPlan"
-                                           @changeToEditPlan="changeToEditPlan"
-                                           @getPlans="getPlans"></yq-main-edit-plan-advance-create>
+                                          @changeToEditPlan="changeToEditPlan"
+                                          @getPlans="getPlans"></yq-main-edit-plan-advance-create>
     </div>
 </template>
 
@@ -17,23 +15,49 @@
 
     import YqMainEditPlanFastCreate from "./components/yq-main-edit-plan-fast-create";
     import YqMainEditPlanAdvanceCreate from "./components/yq-main-edit-plan-advance-create";
+
     export default {
         name: "yq-main-edit-plan",
         components: {YqMainEditPlanAdvanceCreate, YqMainEditPlanFastCreate},
-        props: ['currentPlan'],
-        data(){
-            return{
+        data() {
+            return {
                 type: '高级',
                 form_title: '快速',
-                showFast:true,
-                showAdvance:false,
-                currentPlan: {},
+                showFast: true,
+                showAdvance: false,
+                currentPlan: {fields:{
+                    fast_name:'',
+                    fast_area:'',
+                    fast_character:'',
+                    fast_event:'',
+                    fast_exclude:'',
+                    ad_name:'',
+                    ad_match:'',
+                    ad_exclude:'',
+                    }},
 
             }
         },
 
-        methods:{
-            getPlans(){
+        methods: {
+            clickCurrentplan(currentPlan){
+                console.log('editplan知道点击了plan',currentPlan)
+                this.currentPlan=currentPlan
+                this. initEditPlan()
+            },
+            initEditPlan(){
+                if (this.currentPlan.fields.ad_name != null) {
+                    this.form_title = '高级'
+                    this.showAdvance = true
+                    this.showFast = false
+                }
+                else if(this.currentPlan.fields.fast_name != null){
+                    this.form_title = '快速'
+                    this.showAdvance = false
+                    this.showFast = true
+                }
+            },
+            getPlans() {
                 this.$emit('getPlans')
             },
             getGroups() {
@@ -44,23 +68,9 @@
                 this.$emit('changeToEditPlan')
                 this.$emit('getGroups')
             },
-            changeForm() {
-                if (this.type === '高级') {
-                    this.showFast = false;
-                    this.showAdvance = true;
-                    this.type = '快速';
-                    this.form_title = '高级'
-                }
-                else {
-                    this.showFast = true;
-                    this.showAdvance = false;
-                    this.type = '高级';
-                    this.form_title = '快速'
-                }
-            },
-            openInfolist(){
-                this.$emit('openInfolist')
-            }
+        },
+        mounted() {
+            console.log('子组件eidit plan 已经mounted')
         }
     }
 </script>

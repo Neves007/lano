@@ -25,7 +25,7 @@
         </el-row>
         <yq-sidebar-add-gp-dialog @getGroups="getGroups" :show.sync="show"></yq-sidebar-add-gp-dialog>
         <div v-if="show_setting">
-            <yq-main-plan-fast-create :show-fast="showFast" @openInfolist="openInfolist"></yq-main-plan-fast-create>
+            <yq-main-plan-fast-create :show-fast="showFast"          :groupid="groupid"  @getPlans="getPlans"></yq-main-plan-fast-create>
             <yq-main-plan-advance-create :show-advance="showAdvance" :groupid="groupid" @getPlans="getPlans" ></yq-main-plan-advance-create>
         </div>
     </div>
@@ -52,11 +52,20 @@
                 groups:[],
                 show: false,
                 show_setting: false,
-                type: '高级',
-                form_title: '快速',
-                showFast:true,
-                showAdvance:false,
-                currentPlan: {},
+                type: '快速',
+                form_title: '高级',
+                showFast:false,
+                showAdvance:true,
+                currentPlan: {fields:{
+                    fast_name:'',
+                    fast_area:'',
+                    fast_character:'',
+                    fast_event:'',
+                    fast_exclude:'',
+                    ad_name:'',
+                    ad_match:'',
+                    ad_exclude:'',
+                    }},
                 groupid:'',
                 }
         },

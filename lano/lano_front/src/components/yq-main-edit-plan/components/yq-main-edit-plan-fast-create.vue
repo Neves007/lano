@@ -1,10 +1,10 @@
 <template>
-    <el-form ref="form" :model="fast_form" :rules="fastRules" v-if="showFast" style="margin-top: 40px"
+    <el-form ref="form" :model="currentPlan" :rules="fastRules" v-if="showFast" style="margin-top: 40px"
              label-position="left"
              label-width="200px">
         <el-row>
             <el-form-item label="方案名称">
-                <el-input v-model="fast_form.name" placeholder="请输入方案名称"
+                <el-input v-model="currentPlan.fields.fast_name" placeholder="请输入方案名称"
                           style="width: 40%"></el-input>
             </el-form-item>
         </el-row>
@@ -13,7 +13,7 @@
             <i class="el-icon-question new_plan" @click="openLocationMsg"></i>
             <el-form-item label="地域关键词" prop="region">
                 <el-input type="textarea" :rows="3" placeholder="请输入地域关键词"
-                          v-model="fast_form.region"></el-input>
+                          v-model="currentPlan.fields.fast_area"></el-input>
                 <el-button icon="el-icon-plus" size="small"
                            style="background-color: #00bc00;color: white;margin-top: 5px">添加关键词
                 </el-button>
@@ -31,7 +31,7 @@
             <i class="el-icon-question new_plan" @click="openLocationMsg"></i>
             <el-form-item label="人物关键词">
                 <el-input type="textarea" :rows="3" placeholder="请输入人物关键词"
-                          v-model="fast_form.person"></el-input>
+                          v-model="currentPlan.fields.fast_character"></el-input>
                 <el-button icon="el-icon-plus" size="small"
                            style="background-color: #00bc00;color: white;margin-top: 5px">添加主体词
                 </el-button>
@@ -46,7 +46,7 @@
             <i class="el-icon-question new_plan" @click="openLocationMsg"></i>
             <el-form-item label="事件关键词">
                 <el-input type="textarea" :rows="3" placeholder="请输入事件关键词"
-                          v-model="fast_form.thing"></el-input>
+                          v-model="currentPlan.fields.fast_event"></el-input>
                 <el-button icon="el-icon-plus" size="small"
                            style="background-color: #00bc00;color: white;margin-top: 5px">添加关键词
                 </el-button>
@@ -61,7 +61,7 @@
             <i class="el-icon-question new_plan" @click="openLocationMsg"></i>
             <el-form-item label="排除关键词" prop="except">
                 <el-input type="textarea" :rows="3" placeholder="请输入排除关键词"
-                          v-model="fast_form.except"></el-input>
+                          v-model="currentPlan.fields.fast_exclude"></el-input>
                 <el-button icon="el-icon-plus" size="small"
                            style="background-color: #00bc00;color: white;margin-top: 5px">添加关键词
                 </el-button>
@@ -95,7 +95,7 @@
                     this.regionUsedCount = len
                 } else {
                     this.regionUsedCount = this.regionMaxLength;
-                    this.fast_form.region = value.substr(0, this.regionMaxLength)
+                    this.currentPlan.fields.fast_area = value.substr(0, this.regionMaxLength)
                 }
             };
             let exceptValidate = (rule, value, callback) => {
@@ -108,7 +108,7 @@
                     this.exceptUsedCount = len
                 } else {
                     this.exceptUsedCount = this.exceptMaxLength;
-                    this.fast_form.except = value.substr(0, this.exceptMaxLength)
+                    this.currentPlan.fields.fast_exclude = value.substr(0, this.exceptMaxLength)
                 }
             };
 
@@ -116,13 +116,6 @@
                 new_radio1: '1',
                 new_radio2: '1',
                 new_radio3: '1',
-                fast_form: {
-                    name: '',
-                    region: '',
-                    person: '',
-                    thing: '',
-                    except: '',
-                },
                 regionUsedCount: 0,
                 exceptUsedCount: 0,
                 regionMaxLength: 18,
@@ -139,7 +132,7 @@
                 },
             }
         },
-        props: ['showFast'],
+        props: ['showFast','currentPlan'],
         methods:{
             openLocationMsg() {
                 this.$alert(

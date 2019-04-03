@@ -4,13 +4,13 @@
              label-width="200px">
         <el-row>
             <el-form-item label="方案名称">
-                <el-input v-model="currentPlan.fields.name" placeholder="请输入方案名称" style="width: 40%"></el-input>
+                <el-input v-model="currentPlan.fields.ad_name" placeholder="请输入方案名称" style="width: 40%"></el-input>
             </el-form-item>
         </el-row>
         <el-row>
             <i class="el-icon-question new_plan" @click="openAdvanceTip"></i>
             <el-form-item label="匹配关键词" prop="match">
-                <el-input type="textarea" :rows="3" placeholder="请输入匹配关键词" v-model="currentPlan.fields.ad_conf"
+                <el-input type="textarea" :rows="3" placeholder="请输入匹配关键词" v-model="currentPlan.fields.ad_match"
                           ref="match_input"></el-input>
                 <el-button size="mini" @click="add1"
                            style="background-color: #e5e9f2;padding: 5px 10px;font-size: large">+
@@ -37,7 +37,7 @@
             <i class="el-icon-question new_plan" @click="openAdvanceTip"></i>
             <el-form-item label="排除关键词" prop="except2">
                 <el-input type="textarea" :rows="3" placeholder="请输入排除关键词" ref="except_input"
-                          v-model="currentPlan.fields.exclude"></el-input>
+                          v-model="currentPlan.fields.ad_exclude"></el-input>
                 <el-button size="mini" @click="add2"
                            style="background-color: #e5e9f2;padding: 5px 10px;font-size: large">+
                 </el-button>
@@ -142,7 +142,7 @@
                 this.visible=false;
             },
             modifPlan() {
-                if (this.currentPlan.fields.name === '') {
+                if (this.currentPlan.fields.ad_name === '') {
                     this.$message.error('please input plan name')
                     return
                 }
@@ -192,39 +192,39 @@
             add1() {
                 this.$refs.match_input.value = this.$refs.match_input.value + '+';
                 // console.log("matchinput=",this.$refs.match_input.value);
-                this.currentPlan.fields.ad_conf= this.$refs.match_input.value
+                this.currentPlan.fields.ad_match= this.$refs.match_input.value
             },
 
             or1() {
                 this.$refs.match_input.value = this.$refs.match_input.value + '|';
-                this.currentPlan.fields.ad_conf= this.$refs.match_input.value
+                this.currentPlan.fields.ad_match= this.$refs.match_input.value
             },
 
             left_bracket1() {
                 this.$refs.match_input.value = this.$refs.match_input.value + '(';
-                this.currentPlan.fields.ad_conf= this.$refs.match_input.value
+                this.currentPlan.fields.ad_match= this.$refs.match_input.value
             },
 
             right_bracket1() {
                 this.$refs.match_input.value = this.$refs.match_input.value + ')';
-                this.currentPlan.fields.ad_conf= this.$refs.match_input.value
+                this.currentPlan.fields.ad_match= this.$refs.match_input.value
             },
             add2() {
                 this.$refs.except_input.value = this.$refs.except_input.value + '+';
-                 this.currentPlan.fields.exclude= this.$refs.except_input.value
+                 this.currentPlan.fields.ad_exclude= this.$refs.except_input.value
             },
 
             or2() {
                 this.$refs.except_input.value = this.$refs.except_input.value + '|';
-                this.currentPlan.fields.exclude= this.$refs.except_input.value
+                this.currentPlan.fields.ad_exclude= this.$refs.except_input.value
             },
             left_bracket2() {
                 this.$refs.except_input.value = this.$refs.except_input.value + '(';
-                this.currentPlan.fields.exclude= this.$refs.except_input.value
+                this.currentPlan.fields.ad_exclude= this.$refs.except_input.value
             },
             right_bracket2() {
                 this.$refs.except_input.value = this.$refs.except_input.value + ')';
-                this.currentPlan.fields.exclude= this.$refs.except_input.value
+                this.currentPlan.fields.ad_exclude= this.$refs.except_input.value
             },
             new_plan_onSubmit2() {
                 this.$alert('成功保存!')

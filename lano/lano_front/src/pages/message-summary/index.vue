@@ -11,7 +11,7 @@
                 </el-card>
             </el-col>
             <el-col :span="mainContentSpan">
-                <div class="bg-purple-light" style="margin-bottom: 10px; padding: 10px"><b>{{currentPlan.fields.name}}</b></div>
+                <div class="bg-purple-light" style="margin-bottom: 10px; padding: 10px"><b>{{currentPlan.fields.fast_name}}{{currentPlan.fields.ad_name}}</b></div>
                 <el-tabs v-model="activeName" @tab-click="handleClick" type="border-card">
                     <el-tab-pane label="信息列表" v-if="plan_operations === true" name="first">
                         <yq-main-infolist :infolist="infolist" :infolist_count="infolist_count"
@@ -48,13 +48,13 @@
                         <yq-main-warning :current-plan="currentPlan"></yq-main-warning>
                     </el-tab-pane>
                     <!--方案新建和修改tab-->
-                    <el-tab-pane label="新建方案" v-else name="seventh">
-                        <yq-main-plan @openInfolist="openInfolist" @getPlans="getPlans" @getGroups="getGroups"
+                    <el-tab-pane label="新建方案" v-if="plan_operations===false" name="seventh">
+                        <yq-main-plan @getPlans="getPlans" @getGroups="getGroups"
                                       :groups="groups"></yq-main-plan>
                     </el-tab-pane>
-                    <el-tab-pane label="修改方案" v-if="plan_operations" name="eighth">
+                    <el-tab-pane label="修改方案" v-if="plan_operations===true" name="eighth">
                         <yq-main-edit-plan :currentPlan="currentPlan" @changeToEditPlan="changeToEditPlan"
-                                           @getPlans="getPlans"></yq-main-edit-plan>
+                                           @getPlans="getPlans" ref="whenClickPlan"></yq-main-edit-plan>
                     </el-tab-pane>
                 </el-tabs>
             </el-col>
@@ -96,7 +96,16 @@
                 plan_operations: false,
                 plan_list: [],
                 activeName: 'seventh',
-                currentPlan: {fields:{name:'全部舆情'}},
+                currentPlan: {fields:{
+                    fast_name:'',
+                    fast_area:'',
+                    fast_character:'',
+                    fast_event:'',
+                    fast_exclude:'',
+                    ad_name:'',
+                    ad_match:'',
+                    ad_exclude:'',
+                    }},
                 asideSpan: 4,
                 mainContentSpan: 20,
                 infolist: [],
@@ -105,14 +114,12 @@
         },
         methods: {
             filtInfolist(filter_data){
-                console.log('点击查询后的filterdata',filter_data);
                 this.getInfoList(30,1,filter_data)
             },
             getGroups() {
                 let that = this;
                 let temple_list = [];
                 let uuid = util.cookies.get('uuid')
-                console.log('大index，请求分组传的uuid是多少',uuid)
                 axios.post(base_url + 'api/get_groups', JSON.stringify({'uuid':uuid})).then((r) => {
                     if (r.data.error_num === 0) {
                         for (let i = 0; i < r.data.list.length; i++) {
@@ -130,7 +137,7 @@
                 let temple_list = [];
                 axios.get(base_url + 'api/get_plans').then((r) => {
                     if (r.data.error_num === 0) {
-                        console.log('all plans %o',r)
+
                         for (let i = 0; i < r.data.list.length; i++) {
                             temple_list[i] = r.data.list[i];
                         }
@@ -163,6 +170,10 @@
                     time_value: '',
                 };
                 this.getInfoList(30,1,this.filter_data);
+                console.log('我要使用子组件clickCurrentplan')
+                setTimeout(() => {
+                    this.$refs.whenClickPlan.clickCurrentplan(this.currentPlan);
+                })
             },
             // 有plan被选中了，用户要对该plan操作了，跳转信息列表
             changeToEditPlan() {
@@ -197,7 +208,6 @@
                 }).then((r) => {
                     if (r.data.error_num === 0) {
                         this.infolist=r.data.list;
-                        console.log("大index中返回当前页面的infolist",this.infolist)
                         var rtrim = /^[\s\u3000\uFEFF\xA0]+|[\s\u3000\uFEFF\xA0]+$/g
                         for (let i = 0; i < this.infolist.length; i++) {
                             temple_list[i] = r.data.list[i]['fields'];
@@ -220,12 +230,9 @@
                 })
             },
         },
-
-
         mounted() {
-            console.log("大index mouted的時候filter_data",this.filter_data)
-            console.log("大index mouted的時候currentPlan",this.currentPlan)
         },
+
 
     }
 

@@ -8,7 +8,7 @@
                 <el-row style="margin-bottom: 0" v-for="plan_item in plans" :key="plan_item.pk">
                     <el-button-group v-show="plan_item.fields.group_id==gp.pk">
                         <el-button id="1" plain @click="getCurrentPlan(plan_item.pk)"><i class="fa fa-wrench"></i>
-                            {{plan_item.fields.name}}
+                            {{plan_item.fields.ad_name}}{{plan_item.fields.fast_name}}
                         </el-button>
                     </el-button-group>
                 </el-row>
