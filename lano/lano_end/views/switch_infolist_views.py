@@ -8,6 +8,7 @@ from django.views.decorators.csrf import csrf_exempt
 
 import json
 import datetime
+import re
 
 
 def chooseTimeRange(infolist, filter_params):
@@ -59,12 +60,27 @@ def chooseSensitiveState(infolist, filter_params):
 def filtkeywords(infolist, current_plan):
     # infolist=infolist.filter(key_word__reg=current_plan['fields']['ad_match'])  # 关键字筛选
 
+    ad_name = current_plan['fields']['ad_match']
     ad_match = current_plan['fields']['ad_match']
     ad_exclude = current_plan['fields']['ad_exclude']
     fast_area = current_plan['fields']['fast_area']
     fast_character = current_plan['fields']['fast_character']
     fast_event = current_plan['fields']['fast_event']
     fast_exclude = current_plan['fields']['fast_exclude']
+    # 是否是高级配置
+    if ad_name!=None:
+        thisIsAdvancePlan = True
+    else :
+        thisIsAdvancePlan = False
+
+    #高级配置
+    if thisIsAdvancePlan == True:
+        regex = r"[^[\+,\|]]"
+        pattern = re.compile(regex)
+        keywords_in_ad_match=pattern.findall(ad_match)
+        
+
+
     print('filtkeywords ad_match, ad_exclude, fast_area, fast_character, fast_event, fast_exclude'
           , ad_match, ad_exclude, fast_area, fast_character, fast_event, fast_exclude)
 

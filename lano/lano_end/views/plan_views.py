@@ -17,7 +17,7 @@ def create_ad_plan(request):
     obj = json.loads(request.body)
     ad_name = obj['plan']['ad_name']
     ad_match = obj['plan']['ad_match']
-    ad_exclude=obj['plan']['ad_exclude']
+    ad_exclude = obj['plan']['ad_exclude']
     group_id = obj['plan']['group_id']
     user_uuid = obj['uuid']
     response = {}
