@@ -69,21 +69,23 @@ def get_infolist(request):
     print('filter_params', filter_params)
     response = {}
     try:
-        if current_plan['fields']['name'] == 'initialplan':
-            # infolist = chooseTimeRange(filter_params['time_range_radio'], user_defined_time_start, user_defined_time_end)
-            # 初始化infolist，微信 新闻源，时间降序，排除空内容
-            infolist = Allinfolist.objects.exclude(content=None)
-            infolist = chooseTimeRange(infolist, filter_params)  # 经过 时间 筛选后的infolist
-            infolist = chooseArticleOrder(infolist, filter_params)  # 经过 排序 筛选后的infolist
-            infolist = infolist.filter(source__in=filter_params['source_type_checkList'])  # 经过 来源类型 筛选后的infolist
-            infolist = chooseSensitiveState(infolist, filter_params)  # 经过 敏感 筛选后的infolist
-        else:
-            infolist = Allinfolist.objects.exclude(content=None)
-            infolist = chooseTimeRange(infolist, filter_params)  # 经过 时间 筛选后的infolist
-            infolist = chooseArticleOrder(infolist, filter_params)  # 经过 排序 筛选后的infolist
-            infolist = infolist.filter(source__in=filter_params['source_type_checkList'])  # 经过 来源类型 筛选后的infolist
-            infolist = chooseSensitiveState(infolist, filter_params)  # 经过 敏感 筛选后的infolist
-            infolist = infolist.filter(key_word__contains=current_plan['fields']['ad_conf'])
+        # if current_plan['fields']['name'] == 'initialplan':
+        #     # infolist = chooseTimeRange(filter_params['time_range_radio'], user_defined_time_start, user_defined_time_end)
+        #     # 初始化infolist，微信 新闻源，时间降序，排除空内容
+        #     infolist = Allinfolist.objects.exclude(content=None)
+        #     infolist = chooseTimeRange(infolist, filter_params)  # 经过 时间 筛选后的infolist
+        #     infolist = chooseArticleOrder(infolist, filter_params)  # 经过 排序 筛选后的infolist
+        #     infolist = infolist.filter(source__in=filter_params['source_type_checkList'])  # 经过 来源类型 筛选后的infolist
+        #     infolist = chooseSensitiveState(infolist, filter_params)  # 经过 敏感 筛选后的infolist
+        # else:
+        infolist = Allinfolist.objects.exclude(content=None)
+        infolist = chooseTimeRange(infolist, filter_params)  # 经过 时间 筛选后的infolist
+        infolist = chooseArticleOrder(infolist, filter_params)  # 经过 排序 筛选后的infolist
+        infolist = infolist.filter(source__in=filter_params['source_type_checkList'])  # 经过 来源类型 筛选后的infolist
+        infolist = chooseSensitiveState(infolist, filter_params)  # 经过 敏感 筛选后的infolist
+        infolist = infolist.filter(key_word__contains=current_plan['fields']['ad_match'])  #关键字筛选
+
+
         list = infolist[current_col:current_col + int(page_size)]
         response['list_count'] = infolist.count()
         response['list'] = json.loads(serializers.serialize("json", list))

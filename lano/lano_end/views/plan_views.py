@@ -13,20 +13,42 @@ import json
 
 @require_http_methods(['POST'])
 @csrf_exempt
-def create_plan(request):
+def create_ad_plan(request):
     obj = json.loads(request.body)
-    name = obj['plan']['name']
-    area = obj['plan']['area']
-    character = obj['plan']['character']
-    event = obj['plan']['event']
-    exclude = obj['plan']['exclude']
+    ad_name = obj['plan']['ad_name']
+    ad_match = obj['plan']['ad_match']
+    ad_exclude=obj['plan']['ad_exclude']
     group_id = obj['plan']['group_id']
-    ad_conf = obj['plan']['ad_conf']
     user_uuid = obj['uuid']
     response = {}
     try:
-        plan = Plan(name=name, area=area, character=character, event=event, exclude=exclude, group_id=group_id,
-                    ad_conf=ad_conf, user_uuid=user_uuid)
+        plan = Plan(fast_name=None, fast_area=None, fast_character=None, fast_event=None, fast_exclude=None,
+                    ad_name=ad_name,ad_match=ad_match,ad_exclude=ad_exclude, group_id=group_id, user_uuid=user_uuid)
+        plan.save()
+        response['msg'] = 'success'
+        response['error_num'] = 0
+    except Exception as e:
+        response['msg'] = str(e)
+        response['error_num'] = 1
+
+    return HttpResponse(json.dumps(response), content_type="application/json")
+
+
+@require_http_methods(['POST'])
+@csrf_exempt
+def create_fast_plan(request):
+    obj = json.loads(request.body)
+    fast_name = obj['plan']['fast_name']
+    fast_area = obj['plan']['fast_area']
+    fast_character = obj['plan']['fast_character']
+    fast_event = obj['plan']['fast_event']
+    fast_exclude = obj['plan']['fast_exclude']
+    group_id = obj['plan']['group_id']
+    user_uuid = obj['uuid']
+    response = {}
+    try:
+        plan = Plan(fast_name=fast_name, fast_area=fast_area, fast_character=fast_character, fast_event=fast_event,fast_exclude=fast_exclude,
+                    ad_name=None,ad_match=None,ad_exclude=None, group_id=group_id, user_uuid=user_uuid)
         plan.save()
         response['msg'] = 'success'
         response['error_num'] = 0

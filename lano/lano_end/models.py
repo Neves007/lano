@@ -40,13 +40,15 @@ class Group(models.Model):
 
 class Plan(models.Model):
     id = models.AutoField(primary_key=True)
-    name = models.CharField(max_length=45)
-    area = models.CharField(max_length=54)
-    character = models.CharField(max_length=54)
-    event = models.CharField(max_length=54)
-    exclude = models.CharField(max_length=54)
+    fast_name = models.CharField(max_length=45)
+    fast_area = models.CharField(max_length=54)
+    fast_character = models.CharField(max_length=54)
+    fast_event = models.CharField(max_length=54)
+    fast_exclude = models.CharField(max_length=54)
+    ad_name = models.CharField(max_length=45)
+    ad_match = models.CharField(max_length=54)
+    ad_exclude = models.CharField(max_length=54)
     group_id = models.IntegerField(max_length=54)
-    ad_conf = models.CharField(max_length=54)
     user_uuid = models.CharField(max_length=45)
 
 
