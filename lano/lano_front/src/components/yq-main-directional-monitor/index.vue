@@ -15,9 +15,9 @@
                 <el-card class="cu_directional_card">
                     <el-collapse-item name="2">
                         <template slot="title">
-                            <span style="margin-left: 20px;font-size: medium">定向监测</span>
+                            <span ref="monitor" style="margin-left: 20px;font-size: medium">定向监测</span>
                         </template>
-                        <yq-directional-monitor :currentPlan="currentPlan"></yq-directional-monitor>
+                        <yq-directional-monitor ref="monitor" :currentPlan="currentPlan"></yq-directional-monitor>
                     </el-collapse-item>
                 </el-card>
 
@@ -26,7 +26,7 @@
                         <template slot="title">
                             <span style="margin-left: 20px;font-size: medium">定向排除</span>
                         </template>
-                        <yq-directional-exclude></yq-directional-exclude>
+                        <yq-directional-exclude ref="exclude" :currentPlan="currentPlan"></yq-directional-exclude>
                     </el-collapse-item>
                 </el-card>
             </el-collapse>
@@ -60,6 +60,14 @@
                 this.directional_data.domain_checkAll = checkedCount === this.directional_data.domainOptions.length
                 this.directional_data.isIndeterminate = checkedCount > 0 && checkedCount < this.directional_data.domainOptions.length
             },
+            test(){
+                this.$refs.monitor.getDomainList();
+                this.$refs.monitor.getWeiboList();
+                this.$refs.monitor.getWechatList();
+                this.$refs.exclude.getExDomainList();
+                this.$refs.exclude.getExWeiboList();
+                this.$refs.exclude.getExWechatList();
+            }
         }
     }
 </script>

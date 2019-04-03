@@ -52,7 +52,7 @@
                       v-if="directional_data.ex_showTiebaInput"
                       placeholder="请输入贴吧昵称，例如：李毅吧"></el-input>
 
-            <el-button v-if="directional_data.ex_showbtn"
+            <el-button v-if="directional_data.ex_showbtn" @click="addExc"
                        style="margin-left: 10px;background-color: orange;color: white;">添加
             </el-button>
             <el-button v-if="directional_data.ex_showbtn"
@@ -69,28 +69,29 @@
                         border
                         style="width: 100%">
                     <el-table-column
-                            prop="name"
+                            prop="fields.name"
                             label="网站名称"
                             width="300">
                     </el-table-column>
                     <el-table-column
-                            prop="domain"
+                            prop="fields.domain"
                             label="域名"
                             width="780">
                     </el-table-column>
                     <el-table-column
-                            prop="status"
+                            prop="fields.status"
                             label="状态"
                             width="100">
                         <template slot-scope="scope">
-                            <el-tag type="success">成功</el-tag>
+                            <el-tag type="success" v-if="scope.row.fields.status">成功</el-tag>
+                            <el-tag type="danger" v-else>失败</el-tag>
                         </template>
                     </el-table-column>
                     <el-table-column
                             prop="operation"
                             label="操作">
                         <template slot-scope="scope">
-                            <el-button @click="handleClick(scope.row)" size="small"
+                            <el-button @click="deleteDomain(scope.row.pk)" size="small"
                                        style="background-color: red;color: white ">取消监测
                             </el-button>
                         </template>
@@ -103,28 +104,29 @@
                         border
                         style="width: 100%">
                     <el-table-column
-                            prop="name"
+                            prop="fields.name"
                             label="昵称"
                             width="300">
                     </el-table-column>
                     <el-table-column
-                            prop="uid"
+                            prop="fields.uid"
                             label="微博ID"
                             width="780">
                     </el-table-column>
                     <el-table-column
-                            prop="status"
+                            prop="fields.status"
                             label="状态"
                             width="100">
                         <template slot-scope="scope">
-                            <el-tag type="success">成功</el-tag>
+                            <el-tag type="success" v-if="scope.row.fields.status">成功</el-tag>
+                            <el-tag type="danger" v-else>失败</el-tag>
                         </template>
                     </el-table-column>
                     <el-table-column
                             prop="operation"
                             label="操作">
                         <template slot-scope="scope">
-                            <el-button @click="handleClick(scope.row)" size="small"
+                            <el-button @click="deleteWeibo(scope.row.pk)" size="small"
                                        style="background-color: red;color: white ">取消监测
                             </el-button>
                         </template>
@@ -137,63 +139,29 @@
                         border
                         style="width: 100%">
                     <el-table-column
-                            prop="name"
+                            prop="fields.name"
                             label="公众号名称"
                             width="300">
                     </el-table-column>
                     <el-table-column
-                            prop="wxid"
+                            prop="fields.wxid"
                             label="微信号"
                             width="780">
                     </el-table-column>
                     <el-table-column
-                            prop="status"
+                            prop="fields.status"
                             label="状态"
                             width="100">
                         <template slot-scope="scope">
-                            <el-tag type="success">成功</el-tag>
+                            <el-tag type="success" v-if="scope.row.fields.status">成功</el-tag>
+                            <el-tag type="danger" v-else>失败</el-tag>
                         </template>
                     </el-table-column>
                     <el-table-column
                             prop="operation"
                             label="操作">
                         <template slot-scope="scope">
-                            <el-button
-                                    size="small"
-                                    style="background-color: red;color: white ">取消监测
-                            </el-button>
-                        </template>
-                    </el-table-column>
-                </el-table>
-            </el-tab-pane>
-            <el-tab-pane label="贴吧昵称" name="3">
-                <el-table
-                        :data="directional_data.dir_tieba_tableData"
-                        border
-                        style="width: 100%">
-                    <el-table-column
-                            prop="name"
-                            label="吧名"
-                            width="300">
-                    </el-table-column>
-                    <el-table-column
-                            prop="introduction"
-                            label="贴吧介绍"
-                            width="780">
-                    </el-table-column>
-                    <el-table-column
-                            prop="status"
-                            label="状态"
-                            width="100">
-                        <template slot-scope="scope">
-                            <el-tag type="success">成功</el-tag>
-                        </template>
-                    </el-table-column>
-                    <el-table-column
-                            prop="operation"
-                            label="操作">
-                        <template slot-scope="scope">
-                            <el-button @click="handleClick(scope.row)" size="small"
+                            <el-button @click="deleteWechat(scope.row.pk)" size="small"
                                        style="background-color: red;color: white ">取消监测
                             </el-button>
                         </template>
@@ -205,6 +173,9 @@
 </template>
 
 <script>
+    import axios from 'axios'
+    let base_url = 'http://127.0.0.1:8000/';
+
     export default {
         name: "yq-directional-exclude",
         data() {
@@ -253,12 +224,11 @@
 
                     myChart1: null,
                     myChart2: null,
-
-
                 }
 
             }
         },
+        props: ['currentPlan'],
         methods:{
             ex_dir_inputChange() {
                 if (this.directional_data.ex_directional_add_method === '选项2') {
@@ -305,6 +275,134 @@
                     }
                     this.directional_data.ex_showbtn = true
                 }
+            },
+            addExc() {
+                if (this.directional_data.ex_websiteInput.length !== 0) {
+                    axios.post(base_url + 'api/exclude_web_add', {
+                        // 'name': '这是一个网站名称',
+                        'domain':this.directional_data.ex_websiteInput,
+                        'planid':this.currentPlan.pk
+                    }).then(r => {
+                        // console.log('response %o', r)
+                        if (r.data.error_num === 0) {
+                            this.getExDomainList();
+                        }
+                        else {
+                            console.log('保存失败',r.data.msg)
+                            this.$message.error("该排除网站已存在")
+                        }
+                        this.directional_data.ex_websiteInput = ''
+                    }).catch(err => {
+                        console.log('error %o', err)
+                        this.$message.error("请输入正确域名")
+                    })
+                }
+                if (this.directional_data.ex_weiboInput.length !== 0) {
+                    axios.post(base_url + 'api/exclude_weibo_add', {
+                        'name': this.directional_data.ex_weiboInput,
+                        'planid':this.currentPlan.pk
+                    }).then(r => {
+                        // console.log('response %o', r)
+                        if (r.data.error_num === 0) {
+                            this.getExWeiboList();
+                        }
+                        else {
+                            console.log('保存失败',r.data.msg)
+                            this.$message.error("该排除微博已存在")
+                        }
+                        this.directional_data.ex_weiboInput = ''
+                    }).catch(err => {
+                        console.log('error %o', err)
+                    })
+                }
+                if (this.directional_data.ex_wechatInput.length !== 0) {
+                    axios.post(base_url + 'api/exclude_wechat_add', {
+                        'name': this.directional_data.ex_wechatInput,
+                        'planid':this.currentPlan.pk
+                    }).then(r => {
+                        // console.log('response %o', r)
+                        if (r.data.error_num === 0) {
+                            this.getExWechatList();
+                        }
+                        else {
+                            console.log('保存失败',r.data.msg)
+                            this.$message.error("该排除公众号已存在")
+                        }
+                        this.directional_data.ex_wechatInput = ''
+                    }).catch(err => {
+                        console.log('error %o', err)
+                    })
+                }
+            },
+            getExDomainList() {
+                let that = this
+                // console.log('planid', this.currentPlan.pk)
+                axios.post(base_url + 'api/get_exclude_web', {'planid':this.currentPlan.pk}).then((r) => {
+                    if (r.data.error_num === 0) {
+                        // console.log('exclude_web %o',r)
+                        that.directional_data.dir_website_tableData = r.data.list
+                    }
+                    // console.log('response %o', r)
+                }).catch(err => {
+                    console.log('error %o', err)
+                })
+            },
+            deleteDomain(del_index) {
+                // console.log(del_index)
+                axios.post(base_url + 'api/exclude_web_delete',del_index).then(r => {
+                    // console.log('response %o', r)
+                    if (r.data.error_num === 0) {
+                        this.getExDomainList();
+                    }
+                }).catch(err => {
+                    console.log('error %o', err)
+                })
+            },
+            getExWeiboList() {
+                // console.log('getExWeiboList')
+                let that = this
+                axios.post(base_url + 'api/get_exclude_weibo', {'planid':this.currentPlan.pk}).then((r) => {
+                    if (r.data.error_num === 0) {
+                        // console.log('exclude_weibo %o',r)
+                        that.directional_data.dir_weibo_tableData = r.data.list
+                    }
+                    // console.log('response %o', r)
+                }).catch(err => {
+                    console.log('error %o', err)
+                })
+            },
+            deleteWeibo(del_index) {
+                axios.post(base_url + 'api/exclude_weibo_delete',del_index).then(r => {
+                    console.log('response %o', r)
+                    // console.log('planid',this.currentPlan.pk)
+                    if (r.data.error_num === 0) {
+                        this.getExWeiboList();
+                    }
+                }).catch(err => {
+                    console.log('error %o', err)
+                })
+            },
+            getExWechatList() {
+                let that = this
+                axios.post(base_url + 'api/get_exclude_wechat', {'planid':this.currentPlan.pk}).then((r) => {
+                    if (r.data.error_num === 0) {
+                        // console.log('monitor_web %o',r)
+                        that.directional_data.dir_wechat_tableData = r.data.list
+                    }
+                    // console.log('response %o', r)
+                }).catch(err => {
+                    console.log('error %o', err)
+                })
+            },
+            deleteWechat(del_index) {
+                axios.post(base_url + 'api/exclude_wechat_delete',del_index).then(r => {
+                    // console.log('response %o', r)
+                    if (r.data.error_num === 0) {
+                        this.getExWechatList();
+                    }
+                }).catch(err => {
+                    console.log('error %o', err)
+                })
             },
             ex_dirTab_showInput() {
                 let val = event.target.getAttribute('id')
@@ -399,8 +497,12 @@
                         }
                     }
                 })
-            },
-
+            }
+        },
+        mounted() {
+            this.getExDomainList();
+            this.getExWeiboList();
+            this.getExWechatList();
         }
     }
 </script>

@@ -5,6 +5,7 @@ from lano_end.views import switch_infolist_views
 from lano_end.views import warning_views
 from lano_end.views import user_views
 from lano_end.views import direction_views
+from lano_end.views import exclude_views
 
 urlpatterns = [
     #url(r'get_infolist', infolist_views.get_infolist),
@@ -31,5 +32,14 @@ urlpatterns = [
     url(r'monitor_weibo_delete', direction_views.monitor_weibo_delete),
     url(r'get_monitor_wechat', direction_views.get_monitor_wechat),
     url(r'monitor_wechat_add', direction_views.monitor_wechat_add),
-    url(r'monitor_wechat_delete', direction_views.monitor_wechat_delete)
+    url(r'monitor_wechat_delete', direction_views.monitor_wechat_delete),
+    url(r'get_exclude_web', exclude_views.get_exclude_web),
+    url(r'exclude_web_add', exclude_views.exclude_web_add),
+    url(r'exclude_web_delete', exclude_views.exclude_web_delete),
+    url(r'get_exclude_weibo', exclude_views.get_exclude_weibo),
+    url(r'exclude_weibo_add', exclude_views.exclude_weibo_add),
+    url(r'exclude_weibo_delete', exclude_views.exclude_weibo_delete),
+    url(r'get_exclude_wechat', exclude_views.get_exclude_wechat),
+    url(r'exclude_wechat_add', exclude_views.exclude_wechat_add),
+    url(r'exclude_wechat_delete', exclude_views.exclude_wechat_delete)
 ]

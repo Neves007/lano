@@ -103,3 +103,27 @@ class Monitor_wechat(models.Model):
     wxid = models.CharField(max_length=45)
     status = models.BooleanField()
     plan_id = models.IntegerField(max_length=11)
+
+
+class Exclude_web(models.Model):
+    id = models.AutoField
+    name = models.CharField(max_length=45)
+    domain = models.CharField(max_length=255)
+    status = models.BooleanField()
+    plan_id = models.IntegerField(max_length=11)
+
+
+class Exclude_weibo(models.Model):
+    id = models.AutoField
+    name = models.CharField(max_length=45)
+    uid = models.CharField(max_length=45)
+    status = models.BooleanField()
+    plan_id = models.IntegerField(max_length=11)
+
+
+class Exclude_wechat(models.Model):
+    id = models.AutoField
+    name = models.CharField(max_length=45)
+    wxid = models.CharField(max_length=45)
+    status = models.BooleanField()
+    plan_id = models.IntegerField(max_length=11)

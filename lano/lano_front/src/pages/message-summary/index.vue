@@ -42,7 +42,7 @@
                     <!--<el-tab-pane label="精准设置" name="fourth">-->
                     <!--</el-tab-pane>-->
                     <el-tab-pane label="定向监测" v-if="plan_operations" name="fifth">
-                        <yq-main-directional-monitor :currentPlan="currentPlan"></yq-main-directional-monitor>
+                        <yq-main-directional-monitor  ref="dir"     :currentPlan="currentPlan"></yq-main-directional-monitor>
                     </el-tab-pane>
                     <el-tab-pane label="预警设置" v-if="plan_operations" name="sixth">
                         <yq-main-warning :current-plan="currentPlan"></yq-main-warning>
@@ -168,12 +168,18 @@
                     source_type_checkAll: false,
                     isIndeterminate: true,
                     time_value: '',
+
                 };
                 this.getInfoList(30,1,this.filter_data);
-                console.log('我要使用子组件clickCurrentplan')
+                // console.log('我要使用子组件clickCurrentplan')
                 setTimeout(() => {
                     this.$refs.whenClickPlan.clickCurrentplan(this.currentPlan);
                 })
+				// console.log('clickCurrentPlan');
+                setTimeout(()=>{
+                    this.$refs.dir.test();
+                })
+                // this.$refs.dir.test();
             },
             // 有plan被选中了，用户要对该plan操作了，跳转信息列表
             changeToEditPlan() {
