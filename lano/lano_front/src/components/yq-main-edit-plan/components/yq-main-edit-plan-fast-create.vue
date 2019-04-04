@@ -14,9 +14,6 @@
             <el-form-item label="地域关键词" prop="region">
                 <el-input type="textarea" :rows="3" placeholder="请输入地域关键词"
                           v-model="fast_form.region"></el-input>
-                <el-button icon="el-icon-plus" size="small"
-                           style="background-color: #00bc00;color: white;margin-top: 5px">添加关键词
-                </el-button>
                 <span>(注意：匹配关键字总数请保持在18字以内，已输入
                                         <strong style="color: red;">{{regionUsedCount}}</strong>个字，还可以输入
                                         <strong style="color: red;">{{regionMaxLength - regionUsedCount}}</strong>个字。）</span>
@@ -32,9 +29,6 @@
             <el-form-item label="人物关键词">
                 <el-input type="textarea" :rows="3" placeholder="请输入人物关键词"
                           v-model="fast_form.person"></el-input>
-                <el-button icon="el-icon-plus" size="small"
-                           style="background-color: #00bc00;color: white;margin-top: 5px">添加主体词
-                </el-button>
                 <el-row>
                     <span style="margin-right: 15px">人物关系：</span>
                     <el-radio v-model="new_radio2" label="1">或</el-radio>
@@ -47,9 +41,6 @@
             <el-form-item label="事件关键词">
                 <el-input type="textarea" :rows="3" placeholder="请输入事件关键词"
                           v-model="fast_form.thing"></el-input>
-                <el-button icon="el-icon-plus" size="small"
-                           style="background-color: #00bc00;color: white;margin-top: 5px">添加关键词
-                </el-button>
                 <el-row>
                     <span style="margin-right: 15px">事件关系：</span>
                     <el-radio v-model="new_radio3" label="1">或</el-radio>
@@ -62,9 +53,6 @@
             <el-form-item label="排除关键词" prop="except">
                 <el-input type="textarea" :rows="3" placeholder="请输入排除关键词"
                           v-model="fast_form.except"></el-input>
-                <el-button icon="el-icon-plus" size="small"
-                           style="background-color: #00bc00;color: white;margin-top: 5px">添加关键词
-                </el-button>
                 <span>(注意：排除关键词只支持或运算，不超过1000个字，已输入
                                         <strong style="color: red;">{{exceptUsedCount}}</strong>个字，还可以输入
                                         <strong style="color: red;">{{exceptMaxLength - exceptUsedCount}}</strong>个字。）</span>
