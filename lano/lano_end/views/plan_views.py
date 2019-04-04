@@ -110,28 +110,25 @@ def update_ad_plans(request):
 @csrf_exempt
 def update_fast_plans(request):
     obj = json.loads(request.body)
-    ad_name = obj['fields']['ad_name']
-    ad_match = obj['fields']['ad_match']
-    fast_name = obj['fields']['ad_exclude']
-    fast_area = obj['fields']['ad_exclude']
-    fast_character = obj['fields']['ad_exclude']
-    ad_exclude = obj['fields']['ad_exclude']
-    ad_exclude = obj['fields']['ad_exclude']
-    ad_exclude = obj['fields']['ad_exclude']
+    fast_name = obj['fields']['fast_name']
+    fast_area = obj['fields']['fast_area']
+    fast_character = obj['fields']['fast_character']
+    fast_event = obj['fields']['fast_event']
+    fast_exclude = obj['fields']['fast_exclude']
     group_id = obj['fields']['group_id']
     response = {}
     try:
         # plan = Plan(ad_name=name, area=area, character=character, event=event, exclude=exclude, group_id=group_id,
         #             ad_conf=ad_conf)
         plan = Plan.objects.get(id=obj['pk'])
-        plan.ad_name = ad_name
-        plan.ad_match = ad_match
-        plan.ad_exclude = ad_exclude
-        plan.fast_name = None
-        plan.fast_area = None
-        plan.fast_character = None
-        plan.fast_event = None
-        plan.fast_exclude = None
+        plan.ad_name = None
+        plan.ad_match = None
+        plan.ad_exclude = None
+        plan.fast_name = fast_name
+        plan.fast_area = fast_area
+        plan.fast_character = fast_character
+        plan.fast_event = fast_event
+        plan.fast_exclude = fast_exclude
         plan.group_id = group_id
         plan.save()
         response['msg'] = 'success'

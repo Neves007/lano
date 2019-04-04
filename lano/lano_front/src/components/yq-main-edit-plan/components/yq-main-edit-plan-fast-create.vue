@@ -13,7 +13,7 @@
             <i class="el-icon-question new_plan" @click="openLocationMsg"></i>
             <el-form-item label="地域关键词" prop="region">
                 <el-input type="textarea" :rows="3" placeholder="请输入地域关键词"
-                          v-model="currentPlan.fields.fast_area"></el-input>
+                          v-model="fast_form.region"></el-input>
                 <el-button icon="el-icon-plus" size="small"
                            style="background-color: #00bc00;color: white;margin-top: 5px">添加关键词
                 </el-button>
@@ -31,7 +31,7 @@
             <i class="el-icon-question new_plan" @click="openLocationMsg"></i>
             <el-form-item label="人物关键词">
                 <el-input type="textarea" :rows="3" placeholder="请输入人物关键词"
-                          v-model="currentPlan.fields.fast_character"></el-input>
+                          v-model="fast_form.person"></el-input>
                 <el-button icon="el-icon-plus" size="small"
                            style="background-color: #00bc00;color: white;margin-top: 5px">添加主体词
                 </el-button>
@@ -46,7 +46,7 @@
             <i class="el-icon-question new_plan" @click="openLocationMsg"></i>
             <el-form-item label="事件关键词">
                 <el-input type="textarea" :rows="3" placeholder="请输入事件关键词"
-                          v-model="currentPlan.fields.fast_event"></el-input>
+                          v-model="fast_form.thing"></el-input>
                 <el-button icon="el-icon-plus" size="small"
                            style="background-color: #00bc00;color: white;margin-top: 5px">添加关键词
                 </el-button>
@@ -61,7 +61,7 @@
             <i class="el-icon-question new_plan" @click="openLocationMsg"></i>
             <el-form-item label="排除关键词" prop="except">
                 <el-input type="textarea" :rows="3" placeholder="请输入排除关键词"
-                          v-model="currentPlan.fields.fast_exclude"></el-input>
+                          v-model="fast_form.except"></el-input>
                 <el-button icon="el-icon-plus" size="small"
                            style="background-color: #00bc00;color: white;margin-top: 5px">添加关键词
                 </el-button>
@@ -71,8 +71,10 @@
             </el-form-item>
         </el-row>
         <el-row>
-            <el-form-item>
-                <el-button class="save" @click="openInfolist">保存</el-button>
+            <el-form-item style="text-align:center">
+                <el-button class="save" @click="modifPlan">保存</el-button>
+                <el-button class="delete" @click="deletePlan">删除</el-button>
+                <!--<el-button class="save" @click="openInfolist">保存</el-button>-->
                 <!--<el-button id="cancel">取消</el-button>-->
             </el-form-item>
         </el-row>
@@ -82,6 +84,8 @@
 
 <script>
     import axios from 'axios'
+    let base_url = 'http://127.0.0.1:8000/';
+
     export default {
         name: "yq-main-edit-plan-fast-create",
         data() {
@@ -116,6 +120,13 @@
                 new_radio1: '1',
                 new_radio2: '1',
                 new_radio3: '1',
+                fast_form: {
+                    name: '',
+                    region: '',
+                    person: '',
+                    thing: '',
+                    except: '',
+                },
                 regionUsedCount: 0,
                 exceptUsedCount: 0,
                 regionMaxLength: 18,
@@ -134,6 +145,60 @@
         },
         props: ['showFast','currentPlan'],
         methods:{
+            showFastPlan(){
+                this.fast_form.region = this.currentPlan.fields.fast_area.replace(/\+/g, " ").replace(/\|/g," ")
+                this.fast_form.person = this.currentPlan.fields.fast_character.replace(/\+/g, " ").replace(/\|/g," ")
+                this.fast_form.thing = this.currentPlan.fields.fast_event.replace(/\+/g, " ").replace(/\|/g," ")
+                this.fast_form.except = this.currentPlan.fields.fast_exclude.replace(/\+/g, " ")
+            },
+            modifPlan() {
+                if (this.currentPlan.fields.ad_name === '') {
+                    this.$message.error('please input plan name')
+                    return
+                }
+                if (this.new_radio1 ==='1'){
+                    this.currentPlan.fields.fast_area = this.currentPlan.fields.fast_area.replace(/\s+/g, "|")
+                }
+                else {
+                    this.currentPlan.fields.fast_area = this.currentPlan.fields.fast_area.replace(/\s+/g, "+")
+                }
+                if (this.new_radio2 ==='1'){
+                    this.currentPlan.fields.fast_character = this.currentPlan.fields.fast_character.replace(/\s+/g, "|")
+                }
+                else {
+                    this.currentPlan.fields.fast_character = this.currentPlan.fields.fast_character.replace(/\s+/g, "+")
+                }
+                if (this.new_radio3 ==='1'){
+                    this.currentPlan.fields.fast_event = this.currentPlan.fields.fast_event .replace(/\s+/g, "|")
+                }
+                else {
+                    this.currentPlan.fields.fast_event = this.currentPlan.fields.fast_event.replace(/\s+/g, "+")
+                }
+                this.currentPlan.fields.fast_exclude = this.currentPlan.fields.fast_exclude.replace(/\s+/g, "+")
+                console.log('update_plans currrentPlan',this.currentPlan)
+                axios.post(base_url + 'api/update_fast_plans', JSON.stringify(this.currentPlan)).then(r => {
+                    if (r.data.error_num === 0) {
+                        this.$message.success("方案修改成功")
+                    } else {
+                        console.log('传递失败', r.data.msg)
+                        this.$message.error("方案修改错误")
+                    }
+                })
+            },
+            deletePlan(){
+                console.log('planid',this.currentPlan.pk);
+                axios.post(base_url + 'api/delete_plan',this.currentPlan.pk).then(r => {
+                    if (r.data.error_num === 0) {
+                        this.$message.success("方案删除成功")
+                        this.$emit('changeToEditPlan')
+                        this.$emit('getPlans')
+                    } else {
+                        console.log('传递失败',r.data.msg)
+                        this.$message.error("方案删除错误")
+                    }
+                })
+                this.visible=false;
+            },
             openLocationMsg() {
                 this.$alert(
                     '<el-row style="position: relative;">' +
@@ -153,27 +218,7 @@
                     '关键词表达式使用示例', {
                         dangerouslyUseHTMLString: true,
                         showConfirmButton: false,
-
                     })
-            },
-
-            addNewPlan() {
-                axios.post('/api/plan/plan_add',
-                    this.newPlan,
-                ).then(r => {
-                    console.log('response %o', r)
-                    if (r.data.code === 0) {
-                        this.plan_list = r.data.plan
-                    }
-                    this.newPlan = {}
-                }).catch(err => {
-                    console.log('error %o', err)
-                })
-            },
-            openInfolist() {
-                this.$alert('成功保存!');
-                this.addNewPlan();
-                this.$emit('openInfolist')
             },
         }
     }

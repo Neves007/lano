@@ -74,6 +74,7 @@ def filtkeywords(infolist, current_plan):
         this_is_advance_plan = False
     #高级配置
     if this_is_advance_plan is True:
+        print('ad_match', ad_match)
         keywords_regex = r"[\u4e00-\u9fa5]+"
         keywords_pattern = re.compile(keywords_regex)
         keywords_in_ad_match=keywords_pattern.findall(ad_match)
@@ -82,6 +83,9 @@ def filtkeywords(infolist, current_plan):
         signs_pattern = re.compile(signs_regex)
         signs_in_ad_match =signs_pattern.findall(ad_match)
         print('signs_in_ad_match', signs_in_ad_match)
+    #快速配置
+    else:
+        keywords_regex = r"[\u4e00-\u9fa5]+"
 
 
     print('filtkeywords ad_match, ad_exclude, fast_area, fast_character, fast_event, fast_exclude'

@@ -71,7 +71,7 @@
             </el-form-item>
         </el-row>
         <el-row>
-            <el-form-item>
+            <el-form-item style="text-align:center">
                 <el-button class="save" @click="savePlan">保存</el-button>
                 <!--<el-button id="cancel">取消</el-button>-->
             </el-form-item>
@@ -127,9 +127,6 @@
                     fast_character:'',
                     fast_event:'',
                     fast_exclude:'',
-                    ad_name:'',
-                    ad_match:'',
-                    ad_exclude:'',
                     },
                 fast_form: {
                     name: '',
@@ -187,6 +184,25 @@
                     this.$message.error('please input plan name')
                     return
                 }
+                if (this.new_radio1 ==='1'){
+                    this.plan['fast_area'] = this.plan['fast_area'].replace(/\s+/g, "|")
+                }
+                else {
+                    this.plan['fast_area'] = this.plan['fast_area'].replace(/\s+/g, "+")
+                }
+                if (this.new_radio2 ==='1'){
+                    this.plan['fast_character'] = this.plan['fast_character'].replace(/\s+/g, "|")
+                }
+                else {
+                    this.plan['fast_character'] = this.plan['fast_character'].replace(/\s+/g, "+")
+                }
+                if (this.new_radio3 ==='1'){
+                    this.plan['fast_event'] = this.plan['fast_event'].replace(/\s+/g, "|")
+                }
+                else {
+                    this.plan['fast_event'] = this.plan['fast_event'].replace(/\s+/g, "+")
+                }
+                this.plan['fast_exclude'] = this.plan['fast_exclude'].replace(/\s+/g, "+")
                 //将创建的这个分组传给后台入库
                 axios.post(base_url + 'api/create_fast_plan', JSON.stringify({
                     'plan': this.plan,
