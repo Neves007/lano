@@ -145,22 +145,22 @@
                     return
                 }
                 if (this.new_radio1 ==='1'){
-                    this.currentPlan.fields.fast_area = this.currentPlan.fields.fast_area.replace(/\s+/g, "|")
+                    this.currentPlan.fields.fast_area = this.fast_form.region.replace(/\s+/g, "|")
                 }
                 else {
-                    this.currentPlan.fields.fast_area = this.currentPlan.fields.fast_area.replace(/\s+/g, "+")
+                    this.currentPlan.fields.fast_area = this.fast_form.region.replace(/\s+/g, "+")
                 }
                 if (this.new_radio2 ==='1'){
-                    this.currentPlan.fields.fast_character = this.currentPlan.fields.fast_character.replace(/\s+/g, "|")
+                    this.currentPlan.fields.fast_character = this.fast_form.person.replace(/\s+/g, "|")
                 }
                 else {
-                    this.currentPlan.fields.fast_character = this.currentPlan.fields.fast_character.replace(/\s+/g, "+")
+                    this.currentPlan.fields.fast_character = this.fast_form.person.replace(/\s+/g, "+")
                 }
                 if (this.new_radio3 ==='1'){
-                    this.currentPlan.fields.fast_event = this.currentPlan.fields.fast_event .replace(/\s+/g, "|")
+                    this.currentPlan.fields.fast_event = this.fast_form.thing .replace(/\s+/g, "|")
                 }
                 else {
-                    this.currentPlan.fields.fast_event = this.currentPlan.fields.fast_event.replace(/\s+/g, "+")
+                    this.currentPlan.fields.fast_event = this.fast_form.thing.replace(/\s+/g, "+")
                 }
                 this.currentPlan.fields.fast_exclude = this.currentPlan.fields.fast_exclude.replace(/\s+/g, "+")
                 console.log('update_plans currrentPlan',this.currentPlan)

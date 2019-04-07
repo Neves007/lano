@@ -59,6 +59,8 @@ def chooseSensitiveState(infolist, filter_params):
 
 def filtkeywords(infolist, current_plan):
     # infolist=infolist.filter(key_word__reg=current_plan['fields']['ad_match'])  # 关键字筛选
+    print('current_plan',current_plan)
+    print('infolist', infolist)
 
     ad_name = current_plan['fields']['ad_match']
     ad_match = current_plan['fields']['ad_match']
@@ -83,10 +85,50 @@ def filtkeywords(infolist, current_plan):
         signs_pattern = re.compile(signs_regex)
         signs_in_ad_match =signs_pattern.findall(ad_match)
         print('signs_in_ad_match', signs_in_ad_match)
+
+
     #快速配置
     else:
+        print('快速', current_plan)
         keywords_regex = r"[\u4e00-\u9fa5]+"
+        keywords_pattern = re.compile(keywords_regex)
+        keywords_fast_area = keywords_pattern.findall(fast_area)
+        keywords_fast_character = keywords_pattern.findall(fast_character)
+        keywords_fast_event = keywords_pattern.findall(fast_event)
+        keywords_fast_exclude = keywords_pattern.findall(fast_exclude)
+        print('keywords_fast_area', keywords_fast_area)
+        signs_regex = r"[+|]"
+        signs_pattern = re.compile(signs_regex)
+        signs_in_fast_area = signs_pattern.findall(fast_area)
+        signs_in_fast_character = signs_pattern.findall(fast_character)
+        signs_in_fast_event = signs_pattern.findall(fast_event)
+        # signs_in_fast_exclude = signs_pattern.findall(fast_exclude)
+        print('signs_in_fast_area', signs_in_fast_area)
+        if signs_in_fast_area[0] == '+':
+            for i in keywords_fast_area:
+                infolist = infolist.filter(content__contains=i)
+        elif signs_in_fast_area[0] == '|':
+            str = 'infolist = infolist.filter(content__contains=\'{}\')'.format(keywords_fast_area[0])
+            for i in keywords_fast_area:
+                str = str + '|infolist.filter(content__contains=\'{}\')'.format(i)
+            print('str',str)
+            eval("str")
+            print('infolist',infolist)
+            # infolist = infolist.filter(content__contains='妈妈') | infolist.filter(
+            #     content__contains='妈妈') | infolist.filter(content__contains='学校')
 
+        if signs_in_fast_character[0] == '+':
+            for i in keywords_fast_character:
+                infolist = infolist.filter(content__contains=i)
+        else:
+            infolist = infolist.filter(content__contains=signs_in_fast_area)
+        if signs_in_fast_event[0] == '+':
+            for i in keywords_fast_event:
+                infolist = infolist.filter(content__contains=i)
+        else:
+            infolist = infolist.filter(content__contains=signs_in_fast_area)
+        for i in keywords_fast_exclude:
+            infolist = infolist.exclude(content__contains=i)
 
     print('filtkeywords ad_match, ad_exclude, fast_area, fast_character, fast_event, fast_exclude'
           , ad_match, ad_exclude, fast_area, fast_character, fast_event, fast_exclude)
