@@ -105,9 +105,9 @@
             };
 
             return {
-                new_radio1: '1',
-                new_radio2: '1',
-                new_radio3: '1',
+                new_radio1:'',
+                new_radio2:'',
+                new_radio3:'',
                 fast_form: {
                     name: '',
                     region: '',
@@ -138,6 +138,21 @@
                 this.fast_form.person = this.currentPlan.fields.fast_character.replace(/\+/g, " ").replace(/\|/g," ")
                 this.fast_form.thing = this.currentPlan.fields.fast_event.replace(/\+/g, " ").replace(/\|/g," ")
                 this.fast_form.except = this.currentPlan.fields.fast_exclude.replace(/\+/g, " ")
+                if(this.currentPlan.fields.fast_area.indexOf("\+")===-1){
+                    this.new_radio1 = '1'
+                }else {
+                    this.new_radio1 = '2'
+                }
+                if(this.currentPlan.fields.fast_character.indexOf("\+")===-1){
+                    this.new_radio2 = '1'
+                }else {
+                    this.new_radio2 = '2'
+                }
+                if(this.currentPlan.fields.fast_event.indexOf("\+")===-1){
+                    this.new_radio3 = '1'
+                }else {
+                    this.new_radio3 = '2'
+                }
             },
             modifPlan() {
                 if (this.currentPlan.fields.ad_name === '') {
@@ -162,7 +177,7 @@
                 else {
                     this.currentPlan.fields.fast_event = this.fast_form.thing.replace(/\s+/g, "+")
                 }
-                this.currentPlan.fields.fast_exclude = this.currentPlan.fields.fast_exclude.replace(/\s+/g, "+")
+                this.currentPlan.fields.fast_exclude = this.fast_form.except.replace(/\s+/g, "+")
                 console.log('update_plans currrentPlan',this.currentPlan)
                 axios.post(base_url + 'api/update_fast_plans', JSON.stringify(this.currentPlan)).then(r => {
                     if (r.data.error_num === 0) {
