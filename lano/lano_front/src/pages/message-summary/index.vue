@@ -115,6 +115,7 @@
         methods: {
             filtInfolist(filter_data){
                 this.filter_data = filter_data
+                console.log('this.filter_data',this.filter_data)
                 this.getInfoList(30,1,filter_data)
             },
             getGroups() {

@@ -134,7 +134,7 @@
         props: ['showFast','currentPlan'],
         methods:{
             showFastPlan(){
-                if(this.currentPlan.fields.name!=null){
+                if(this.currentPlan.fields.fast_name!=null){
                     this.fast_form.region = this.currentPlan.fields.fast_area.replace(/\+/g, " ").replace(/\|/g," ")
                     this.fast_form.person = this.currentPlan.fields.fast_character.replace(/\+/g, " ").replace(/\|/g," ")
                     this.fast_form.thing = this.currentPlan.fields.fast_event.replace(/\+/g, " ").replace(/\|/g," ")
