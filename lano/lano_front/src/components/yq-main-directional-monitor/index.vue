@@ -60,7 +60,7 @@
                 this.directional_data.domain_checkAll = checkedCount === this.directional_data.domainOptions.length
                 this.directional_data.isIndeterminate = checkedCount > 0 && checkedCount < this.directional_data.domainOptions.length
             },
-            test(){
+            direction(){
                 this.$refs.monitor.getDomainList();
                 this.$refs.monitor.getWeiboList();
                 this.$refs.monitor.getWechatList();

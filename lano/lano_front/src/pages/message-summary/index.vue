@@ -42,14 +42,14 @@
                     <!--<el-tab-pane label="精准设置" name="fourth">-->
                     <!--</el-tab-pane>-->
                     <el-tab-pane label="定向监测" v-if="plan_operations" name="fifth">
-                        <yq-main-directional-monitor  ref="dir"     :currentPlan="currentPlan"></yq-main-directional-monitor>
+                        <yq-main-directional-monitor ref="dir" :currentPlan="currentPlan"></yq-main-directional-monitor>
                     </el-tab-pane>
                     <el-tab-pane label="预警设置" v-if="plan_operations" name="sixth">
                         <yq-main-warning :current-plan="currentPlan"></yq-main-warning>
                     </el-tab-pane>
                     <!--方案新建和修改tab-->
                     <el-tab-pane label="新建方案" v-if="plan_operations===false" name="seventh">
-                        <yq-main-plan @getPlans="getPlans" @getGroups="getGroups"
+                        <yq-main-plan @getPlans="getPlans" @getGroups="getGroups" @changeToEditPlan="changeToEditPlan"
                                       :groups="groups"></yq-main-plan>
                     </el-tab-pane>
                     <el-tab-pane label="修改方案" v-if="plan_operations===true" name="eighth">
@@ -138,12 +138,10 @@
                 let temple_list = [];
                 axios.get(base_url + 'api/get_plans').then((r) => {
                     if (r.data.error_num === 0) {
-
                         for (let i = 0; i < r.data.list.length; i++) {
                             temple_list[i] = r.data.list[i];
                         }
-                        that.plans = temple_list; //拿到所有分组
-                        this.$emit('emitPlans', this.plans)
+                        that.plans = temple_list;
                     }
                 }).catch(err => {
                     console.log('group error %o', err)
@@ -179,13 +177,14 @@
                 })
 				// console.log('clickCurrentPlan');
                 setTimeout(()=>{
-                    this.$refs.dir.test();
+                    this.$refs.dir.direction();
                 })
                 // this.$refs.dir.test();
             },
             // 有plan被选中了，用户要对该plan操作了，跳转信息列表
             changeToEditPlan() {
                 this.plan_operations = true;
+                this.getInfoList(30,1,this.filter_data);
                 this.activeName = 'first'
             },
             openPlanCreate() {

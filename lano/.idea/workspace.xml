@@ -17,23 +17,29 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lano_end/views/switch_infolist_views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="736">
+            <state relative-caret-position="1558">
               <caret line="82" column="50" selection-start-line="82" selection-start-column="50" selection-end-line="82" selection-end-column="50" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
-                <element signature="e#450#1771#0" />
-                <element signature="e#1827#2105#0" />
-                <element signature="e#2163#2783#0" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lano_front/src/pages/message-summary/index.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="656">
-              <caret line="41" column="67" lean-forward="true" selection-start-line="41" selection-start-column="67" selection-end-line="41" selection-end-column="67" />
+            <state relative-caret-position="397">
+              <caret line="36" column="80" lean-forward="true" selection-start-line="36" selection-start-column="80" selection-end-line="36" selection-end-column="80" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/lano_front/src/components/yq-main-directional-monitor/componets/yq-profession-classification.vue">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="304">
+              <caret line="25" column="19" lean-forward="true" selection-start-line="25" selection-start-column="19" selection-end-line="25" selection-end-column="19" />
             </state>
           </provider>
         </entry>
@@ -41,7 +47,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lano_front/src/components/yq-main-infolist/components/yq-main-infolist-top.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="233">
+            <state relative-caret-position="5149">
               <caret line="271" column="42" selection-start-line="271" selection-start-column="28" selection-end-line="271" selection-end-column="42" />
             </state>
           </provider>
@@ -50,7 +56,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lano_front/src/components/yq-main-infolist/index.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="347">
+            <state relative-caret-position="988">
               <caret line="55" column="56" selection-start-line="55" selection-start-column="45" selection-end-line="55" selection-end-column="56" />
             </state>
           </provider>
@@ -64,6 +70,7 @@
       <find>filter_data</find>
       <find>filterData</find>
       <find>emitFilterData</find>
+      <find>pythonds</find>
     </findStrings>
     <replaceStrings>
       <replace>l</replace>
@@ -72,9 +79,9 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/lano_end/views/switch_infolist_views.py" />
         <option value="$PROJECT_DIR$/lano_front/src/components/yq-main-infolist/index.vue" />
         <option value="$PROJECT_DIR$/lano_front/src/pages/message-summary/index.vue" />
+        <option value="$PROJECT_DIR$/lano_end/views/switch_infolist_views.py" />
       </list>
     </option>
   </component>
@@ -89,7 +96,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -138,6 +144,23 @@
               <item name="lano_front" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="yq-main-directional-monitor" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="lano" type="b2602c69:ProjectViewProjectNode" />
+              <item name="lano" type="462c0819:PsiDirectoryNode" />
+              <item name="lano_front" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="yq-main-directional-monitor" type="462c0819:PsiDirectoryNode" />
+              <item name="componets" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="lano" type="b2602c69:ProjectViewProjectNode" />
+              <item name="lano" type="462c0819:PsiDirectoryNode" />
+              <item name="lano_front" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
               <item name="yq-main-infolist" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -168,6 +191,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -230,18 +254,18 @@
       <workItem from="1554519820489" duration="1445000" />
       <workItem from="1554685611317" duration="11190000" />
       <workItem from="1554766917584" duration="13510000" />
+      <workItem from="1554792658197" duration="1222000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="50557000" />
+    <option name="totallyTimeSpent" value="51779000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
-    <editor active="true" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49324325" visible="true" weight="0.35187668" />
-      <window_info id="Structure" order="1" sideWeight="0.5067568" side_tool="true" visible="true" weight="0.35187668" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49137932" visible="true" weight="0.3555437" />
+      <window_info id="Structure" order="1" sideWeight="0.5086207" side_tool="true" weight="0.3555437" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
@@ -254,7 +278,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="11" visible="true" weight="0.37199435" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="11" visible="true" weight="0.3716143" />
       <window_info anchor="bottom" id="Python Console" order="12" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -269,35 +293,39 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/lano_end/views/switch_infolist_views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="736">
+        <state relative-caret-position="1558">
           <caret line="82" column="50" selection-start-line="82" selection-start-column="50" selection-end-line="82" selection-end-column="50" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
-            <element signature="e#450#1771#0" />
-            <element signature="e#1827#2105#0" />
-            <element signature="e#2163#2783#0" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lano_front/src/components/yq-main-infolist/index.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="347">
-          <caret line="55" column="56" selection-start-line="55" selection-start-column="45" selection-end-line="55" selection-end-column="56" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/lano_front/src/components/yq-main-infolist/components/yq-main-infolist-top.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="233">
+        <state relative-caret-position="5149">
           <caret line="271" column="42" selection-start-line="271" selection-start-column="28" selection-end-line="271" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lano_front/src/components/yq-main-infolist/index.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="988">
+          <caret line="55" column="56" selection-start-line="55" selection-start-column="45" selection-end-line="55" selection-end-column="56" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/lano_front/src/pages/message-summary/index.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="656">
-          <caret line="41" column="67" lean-forward="true" selection-start-line="41" selection-start-column="67" selection-end-line="41" selection-end-column="67" />
+        <state relative-caret-position="397">
+          <caret line="36" column="80" lean-forward="true" selection-start-line="36" selection-start-column="80" selection-end-line="36" selection-end-column="80" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lano_front/src/components/yq-main-directional-monitor/componets/yq-profession-classification.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="304">
+          <caret line="25" column="19" lean-forward="true" selection-start-line="25" selection-start-column="19" selection-end-line="25" selection-end-column="19" />
         </state>
       </provider>
     </entry>

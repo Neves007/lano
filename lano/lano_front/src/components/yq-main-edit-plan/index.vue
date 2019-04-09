@@ -4,7 +4,7 @@
             <div style="margin-left: 25px;margin-top: 10px;margin-bottom: 10px; display: inline-block;">{{form_title}}配置</div>
         </div>
         <yq-main-edit-plan-fast-create ref="fast" :show-fast="showFast" :currentPlan="currentPlan"
-                                            ></yq-main-edit-plan-fast-create>
+                                       @changeToEditPlan="changeToEditPlan" @getPlans="getPlans"></yq-main-edit-plan-fast-create>
         <yq-main-edit-plan-advance-create :show-advance="showAdvance" :currentPlan="currentPlan"
                                           @changeToEditPlan="changeToEditPlan"
                                           @getPlans="getPlans"></yq-main-edit-plan-advance-create>
@@ -40,6 +40,9 @@
         },
 
         methods: {
+            changeToEditPlan(){
+                this.$emit('changeToEditPlan')
+            },
             clickCurrentplan(currentPlan){
                 console.log('editplan知道点击了plan',currentPlan)
                 this.currentPlan=currentPlan

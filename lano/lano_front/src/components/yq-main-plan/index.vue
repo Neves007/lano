@@ -25,8 +25,12 @@
         </el-row>
         <yq-sidebar-add-gp-dialog @getGroups="getGroups" :show.sync="show"></yq-sidebar-add-gp-dialog>
         <div v-if="show_setting">
-            <yq-main-plan-fast-create :show-fast="showFast"          :groupid="groupid"  @getPlans="getPlans"></yq-main-plan-fast-create>
-            <yq-main-plan-advance-create :show-advance="showAdvance" :groupid="groupid" @getPlans="getPlans" ></yq-main-plan-advance-create>
+            <yq-main-plan-fast-create :show-fast="showFast" :groupid="groupid"
+                                      @changeToEditPlan="changeToEditPlan" @getPlans="getPlans">
+            </yq-main-plan-fast-create>
+            <yq-main-plan-advance-create :show-advance="showAdvance" :groupid="groupid"
+                                         @changeToEditPlan="changeToEditPlan" @getPlans="getPlans">
+            </yq-main-plan-advance-create>
         </div>
     </div>
 </template>
@@ -71,6 +75,9 @@
         },
 
         methods:{
+            changeToEditPlan(){
+                this.$emit('changeToEditPlan')
+            },
             getGroups(){
                 this.$emit('getGroups')
             },

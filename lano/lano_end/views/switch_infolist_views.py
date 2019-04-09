@@ -12,8 +12,8 @@ import json
 import datetime
 import re
 
-from pythonds.basic.stack import Stack
-from pythonds.trees.binaryTree import BinaryTree
+# from pythonds.basic.stack import Stack
+# from pythonds.trees.binaryTree import BinaryTree
 
 
 def chooseTimeRange(infolist, filter_params):
@@ -107,6 +107,78 @@ def filtkeywords(infolist, current_plan):
         infolist = eval(Qnode_expression)
         return infolist
 
+
+    #快速配置
+    else:
+        print('快速', current_plan)
+        # keywords_regex = r"[\u4e00-\u9fa5]+"
+        # keywords_pattern = re.compile(keywords_regex)
+        keywords_fast_area = re.split(r'[+,|]\s*', fast_area)
+        print('keywords_fast_area', keywords_fast_area)
+        keywords_fast_character = re.split(r'[+,|]\s*', fast_character)
+        print('keywords_fast_character', keywords_fast_character)
+        keywords_fast_event = re.split(r'[+,|]\s*', fast_event)
+        print('keywords_fast_event', keywords_fast_event)
+        keywords_fast_exclude = re.split(r'[+,|]\s*', fast_exclude)
+        print('keywords_fast_exclude', keywords_fast_exclude)
+        signs_regex = r"[+|]"
+        signs_pattern = re.compile(signs_regex)
+        signs_in_fast_area = signs_pattern.findall(fast_area)
+        signs_in_fast_character = signs_pattern.findall(fast_character)
+        signs_in_fast_event = signs_pattern.findall(fast_event)
+        # signs_in_fast_exclude = signs_pattern.findall(fast_exclude)
+        # print('signs_in_fast_character', signs_in_fast_character)
+
+        if signs_in_fast_area:
+            if signs_in_fast_area[0] == '+':
+                for i in keywords_fast_area:
+                    infolist = infolist.filter(content__contains=i)
+            else:
+                str = 'infolist.filter(content__contains=\'{}\')'.format(keywords_fast_area[0])
+                for i in keywords_fast_area:
+                    str = str + '|infolist.filter(content__contains=\'{}\')'.format(i)
+                # print('str', str)
+                infolist = eval(str)
+        else:
+            if keywords_fast_area:
+                infolist = infolist.filter(content__contains=keywords_fast_area[0])
+
+        if signs_in_fast_character:
+            if signs_in_fast_character[0] == '+':
+                for i in keywords_fast_character:
+                    infolist = infolist.filter(content__contains=i)
+            else:
+                str = 'infolist.filter(content__contains=\'{}\')'.format(keywords_fast_character[0])
+                for i in keywords_fast_character:
+                    str = str + '|infolist.filter(content__contains=\'{}\')'.format(i)
+                print('str', str)
+                infolist = eval(str)
+        else:
+            if keywords_fast_character:
+                infolist = infolist.filter(content__contains=keywords_fast_character[0])
+
+        if signs_in_fast_event:
+            if signs_in_fast_event[0] == '+':
+                for i in keywords_fast_event:
+                    infolist = infolist.filter(content__contains=i)
+            else:
+                str = 'infolist.filter(content__contains=\'{}\')'.format(keywords_fast_event[0])
+                for i in keywords_fast_event:
+                    str = str + '|infolist.filter(content__contains=\'{}\')'.format(i)
+                # print('str', str)
+                infolist = eval(str)
+        else:
+            if keywords_fast_event:
+                infolist = infolist.filter(content__contains=keywords_fast_event[0])
+
+        if keywords_fast_exclude != ['']:
+            for i in keywords_fast_exclude:
+                infolist = infolist.exclude(content__contains=i)
+
+    print('filtkeywords ad_match, ad_exclude, fast_area, fast_character, fast_event, fast_exclude'
+          , ad_match, ad_exclude, fast_area, fast_character, fast_event, fast_exclude)
+
+    return infolist
 
 # this method get the sina_infolist
 @require_http_methods(['GET'])

@@ -155,6 +155,7 @@
                         this.$message.error("方案修改错误")
                     }
                 })
+                this.$emit('changeToEditPlan')
             },
             openAdvanceTip() {
                 this.$alert(

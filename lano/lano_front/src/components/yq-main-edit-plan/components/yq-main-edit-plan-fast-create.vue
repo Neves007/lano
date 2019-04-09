@@ -187,6 +187,7 @@
                         this.$message.error("方案修改错误")
                     }
                 })
+                this.$emit('changeToEditPlan')
             },
             deletePlan(){
                 console.log('planid',this.currentPlan.pk);

@@ -129,9 +129,9 @@
         },
         props: ['showAdvance', 'groupid'],
         methods: {
-            getPlans() {
-                this.$emit('getPlans')
-            },
+            // getPlans() {
+            //     this.$emit('getPlans')
+            // },
             createPlan() {
                 const uuid = util.cookies.get('uuid')
                 if (this.plan.ad_name === '') {
@@ -141,7 +141,8 @@
                 //将创建的这个分组传给后台入库
                 axios.post(base_url + 'api/create_ad_plan', JSON.stringify({'plan':this.plan,'uuid': uuid})).then(r => {
                     if (r.data.error_num === 0) {
-                        this.getPlans()  //that.plans 拿到
+                        // this.getPlans()  //that.plans 拿到
+                        this.$emit('getPlans')
                         this.$message.success("方案添加成功")
                     } else {
                         console.log('传递失败',r.data.msg)
