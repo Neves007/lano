@@ -114,6 +114,7 @@
         },
         methods: {
             filtInfolist(filter_data){
+                this.filter_data = filter_data
                 this.getInfoList(30,1,filter_data)
             },
             getGroups() {
@@ -170,6 +171,7 @@
                     time_value: '',
 
                 };
+                console.log('filterdata',this.filter_data)
                 this.getInfoList(30,1,this.filter_data);
                 // console.log('我要使用子组件clickCurrentplan')
                 setTimeout(() => {
