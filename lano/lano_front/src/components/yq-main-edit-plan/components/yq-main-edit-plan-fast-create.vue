@@ -134,24 +134,26 @@
         props: ['showFast','currentPlan'],
         methods:{
             showFastPlan(){
-                this.fast_form.region = this.currentPlan.fields.fast_area.replace(/\+/g, " ").replace(/\|/g," ")
-                this.fast_form.person = this.currentPlan.fields.fast_character.replace(/\+/g, " ").replace(/\|/g," ")
-                this.fast_form.thing = this.currentPlan.fields.fast_event.replace(/\+/g, " ").replace(/\|/g," ")
-                this.fast_form.except = this.currentPlan.fields.fast_exclude.replace(/\+/g, " ")
-                if(this.currentPlan.fields.fast_area.indexOf("\+")===-1){
-                    this.new_radio1 = '1'
-                }else {
-                    this.new_radio1 = '2'
-                }
-                if(this.currentPlan.fields.fast_character.indexOf("\+")===-1){
-                    this.new_radio2 = '1'
-                }else {
-                    this.new_radio2 = '2'
-                }
-                if(this.currentPlan.fields.fast_event.indexOf("\+")===-1){
-                    this.new_radio3 = '1'
-                }else {
-                    this.new_radio3 = '2'
+                if(this.currentPlan.fields.name!=null){
+                    this.fast_form.region = this.currentPlan.fields.fast_area.replace(/\+/g, " ").replace(/\|/g," ")
+                    this.fast_form.person = this.currentPlan.fields.fast_character.replace(/\+/g, " ").replace(/\|/g," ")
+                    this.fast_form.thing = this.currentPlan.fields.fast_event.replace(/\+/g, " ").replace(/\|/g," ")
+                    this.fast_form.except = this.currentPlan.fields.fast_exclude.replace(/\+/g, " ")
+                    if(this.currentPlan.fields.fast_area.indexOf("\+")===-1){
+                        this.new_radio1 = '1'
+                    }else {
+                        this.new_radio1 = '2'
+                    }
+                    if(this.currentPlan.fields.fast_character.indexOf("\+")===-1){
+                        this.new_radio2 = '1'
+                    }else {
+                        this.new_radio2 = '2'
+                    }
+                    if(this.currentPlan.fields.fast_event.indexOf("\+")===-1){
+                        this.new_radio3 = '1'
+                    }else {
+                        this.new_radio3 = '2'
+                    }
                 }
             },
             modifPlan() {

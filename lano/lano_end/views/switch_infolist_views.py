@@ -114,13 +114,9 @@ def filtkeywords(infolist, current_plan):
         # keywords_regex = r"[\u4e00-\u9fa5]+"
         # keywords_pattern = re.compile(keywords_regex)
         keywords_fast_area = re.split(r'[+,|]\s*', fast_area)
-        print('keywords_fast_area', keywords_fast_area)
         keywords_fast_character = re.split(r'[+,|]\s*', fast_character)
-        print('keywords_fast_character', keywords_fast_character)
         keywords_fast_event = re.split(r'[+,|]\s*', fast_event)
-        print('keywords_fast_event', keywords_fast_event)
         keywords_fast_exclude = re.split(r'[+,|]\s*', fast_exclude)
-        print('keywords_fast_exclude', keywords_fast_exclude)
         signs_regex = r"[+|]"
         signs_pattern = re.compile(signs_regex)
         signs_in_fast_area = signs_pattern.findall(fast_area)
